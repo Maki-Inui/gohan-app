@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class SampleController extends Controller
 {
-    public function index ($message = 'no message') {
-        print_r($message);
+    public function index ($message) {
+        return view('sample', ['messege' =>$message]);
     }
     //
 }
