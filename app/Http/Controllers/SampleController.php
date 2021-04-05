@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class SampleController extends Controller
 {
     public function index ($message) {
-        return view('sample', ['messege' =>$message]);
+        return view('sample', ['message' =>$message]);
     }
     //
 }
