@@ -8,7 +8,18 @@
 </head>
 <body>
 
-<h1>@yield('h1')<h1>
+<header>
+	<h1>ご飯アプリ</h1>
+	<nav>
+   @yield('nav')
+	</nav>
+</header>
+
+<h2>@yield('h2')</h2>
   
 </body>
+
+<footer>
+</footer>
+
 </html>
