@@ -14,8 +14,6 @@ use App\Http\Controllers\TopPageController;
 |
 */
 
-Route::get('/{message}','App\Http\Controllers\SampleController@index');
-
 Route::get('/', 'App\Http\Controllers\TopPageController@show');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
