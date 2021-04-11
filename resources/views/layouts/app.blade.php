@@ -8,18 +8,12 @@
 </head>
 <body>
 
-<header>
-	<h1>ご飯アプリ</h1>
-	<nav>
-   @yield('nav')
-	</nav>
-</header>
+@include('layouts.header')
 
 <h2>@yield('h2')</h2>
   
 </body>
 
-<footer>
-</footer>
+@include('layouts.footer')
 
 </html>
