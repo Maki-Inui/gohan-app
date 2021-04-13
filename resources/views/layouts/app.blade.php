@@ -9,6 +9,7 @@
 <body>
 
 @include('layouts.header')
+@yield('content')
 
 <h2>@yield('h2')</h2>
   
