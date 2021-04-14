@@ -22,6 +22,8 @@
     @endif
   @endif
 
+  <p><a href="{{ route('shop_list') }}">お店一覧はこちら</a></p>
+
 @endsection
 
 <main>

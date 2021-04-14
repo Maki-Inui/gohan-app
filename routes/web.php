@@ -17,8 +17,10 @@ use App\Http\Controllers\TopPageController;
 Route::get('/', 'App\Http\Controllers\TopPageController@show');
 
 Route::resource('shops', 'App\Http\Controllers\ShopsController')->only([
-    'show' // このメソッドは有効
+    'index','show' // このメソッドは有効
 ]);
+
+Route::get('shops', 'App\Http\Controllers\ShopsController@index')->name("shop_list");
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

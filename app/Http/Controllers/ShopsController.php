@@ -15,6 +15,8 @@ class ShopsController extends Controller
     public function index()
     {
         //
+        $shops = Shops::orderBy('created_at', 'desc')->get();
+        return view('shop_list', ['shop_list' => $shops]);
     }
 
     /**
