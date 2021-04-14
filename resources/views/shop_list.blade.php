@@ -7,6 +7,8 @@
 
 
       @if($shop_list->isEmpty())
+
+      <p>登録がありません</p>
         
       @else
           @foreach($shop_list as $shop)
