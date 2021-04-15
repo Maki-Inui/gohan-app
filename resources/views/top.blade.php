@@ -22,7 +22,7 @@
     @endif
   @endif
 
-  <p><a href="{{ route('shop_list') }}">お店一覧はこちら</a></p>
+  <p><a href="{{ route('shops.index') }}">お店一覧はこちら</a></p>
 
 @endsection
 

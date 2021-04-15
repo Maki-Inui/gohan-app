@@ -4,8 +4,6 @@
 @section('content')
 <main>
     <section style="text-align: center;">
-
-
       @if($shop_list->isEmpty())
 
       <p>登録がありません</p>
@@ -19,8 +17,6 @@
               </div>
           @endforeach
       @endif
-
     </section>
-      
 </main>
 @endsection

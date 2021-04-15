@@ -16,7 +16,9 @@ class ShopsController extends Controller
     {
         //
         $shops = Shops::orderBy('created_at', 'desc')->get();
-        return view('shop_list', ['shop_list' => $shops]);
+        return view('shop_list', [
+            'shop_list' => $shops,
+            ]);
     }
 
     /**

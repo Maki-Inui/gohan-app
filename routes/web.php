@@ -20,8 +20,6 @@ Route::resource('shops', 'App\Http\Controllers\ShopsController')->only([
     'index','show' // このメソッドは有効
 ]);
 
-Route::get('shops', 'App\Http\Controllers\ShopsController@index')->name("shop_list");
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
