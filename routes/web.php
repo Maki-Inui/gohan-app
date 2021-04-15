@@ -17,7 +17,7 @@ use App\Http\Controllers\TopPageController;
 Route::get('/', 'App\Http\Controllers\TopPageController@show');
 
 Route::resource('shops', 'App\Http\Controllers\ShopsController')->only([
-    'index','show' // このメソッドは有効
+    'index','show','create','store' // このメソッドは有効
 ]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

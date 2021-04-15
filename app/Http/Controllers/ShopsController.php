@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shops;
+use App\Http\Requests\StoreShop;
 
 class ShopsController extends Controller
 {
@@ -29,6 +30,7 @@ class ShopsController extends Controller
     public function create()
     {
         //
+        return view('create_shop');
     }
 
     /**
@@ -37,9 +39,11 @@ class ShopsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreShop $request)
     {
         //
+        Shops::create($request->all());
+        return redirect()->route('shops.index')->with('success', '新規登録完了');
     }
 
     /**

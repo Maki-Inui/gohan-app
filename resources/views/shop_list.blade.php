@@ -3,7 +3,12 @@
 @section('title', 'shop-page')
 @section('content')
 <main>
+    <p><a href="{{ route('shops.create') }}" class="btn btn-primary">新規のお店を登録する</a></p>
     <section style="text-align: center;">
+      @if ($message = Session::get('success'))
+            <p style="color: red;">{{ $message }}</p>
+      @endif
+
       @if($shop_list->isEmpty())
 
       <p>登録がありません</p>
@@ -18,5 +23,6 @@
           @endforeach
       @endif
     </section>
+    
 </main>
 @endsection
