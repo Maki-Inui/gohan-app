@@ -2,13 +2,7 @@
 @section('title', 'create-shop')
 @section('content')
   <h3>新規のお店を登録する</h3>
-  @if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    @endif
+  @include('layouts.error-msg')
   <form method="post" action="{{ route('shops.store')}}">
   @csrf
     <div class="form-group">

@@ -2,13 +2,7 @@
 @section('title', 'edit-shop')
 @section('content')
   <h3>お店情報を編集する</h3>  
-    @if ($errors->any())
-    <ul style="color: red;">
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    @endif
+    @include('layouts.error-msg')
   <form action="{{ route('shops.update',$shop->id)}}" method="POST">
   @csrf
   @method('PUT')

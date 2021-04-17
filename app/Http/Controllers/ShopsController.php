@@ -88,7 +88,7 @@ class ShopsController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ];
-        Shops::where('id', $id)->update($update);
+        Shops::find($id)->update($update);
         return redirect()->route('shops.show',$id)->with('success', '編集完了');
     }
 
@@ -101,7 +101,7 @@ class ShopsController extends Controller
     public function destroy($id)
     {
         //
-        Shops::where('id', $id)->delete();
+        Shops::find($id)->delete();
         return redirect()->route('shops.index')->with('success', 'お店を削除しました');
     }
 }
