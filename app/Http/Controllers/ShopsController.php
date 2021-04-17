@@ -70,6 +70,8 @@ class ShopsController extends Controller
     public function edit($id)
     {
         //
+        $shop = Shops::find($id);
+        return view('edit_shop', compact('shop'));
     }
 
     /**
@@ -79,9 +81,15 @@ class ShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreShop $request, $id)
     {
         //
+        $update = [
+            'name' => $request->name,
+            'description' => $request->description,
+        ];
+        Shops::find($id)->update($update);
+        return redirect()->route('shops.show',$id)->with('success', '編集完了');
     }
 
     /**
@@ -93,5 +101,7 @@ class ShopsController extends Controller
     public function destroy($id)
     {
         //
+        Shops::find($id)->delete();
+        return redirect()->route('shops.index')->with('success', 'お店を削除しました');
     }
 }

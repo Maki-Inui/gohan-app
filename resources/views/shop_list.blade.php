@@ -19,6 +19,12 @@
                   <p>{{$shop->id}}{{$shop->name}}</p>
                   <p>おすすめ度→星{{ $shop->recommend_score }}個</p>
                   <p>料理の満足度→星{{ $shop->food_score }}個</p>
+                  <a href="{{ route('shops.edit',$shop->id)}}">編集する</a>
+                  <form action="{{ route('shops.destroy', $shop->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="削除する">
+                    </form>
               </div>
           @endforeach
       @endif

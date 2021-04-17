@@ -4,6 +4,10 @@
 @section('content')
 <main>
     <section style="text-align: center;">
+        @if ($message = Session::get('success'))
+            <p style="color: red;">{{ $message }}</p>
+        @endif
+        <p><a href="{{ route('shops.index') }}">お店一覧画面へ</a></p>
         <h2>{{ $shop->name }}</h2>
 
         <div class="description">
