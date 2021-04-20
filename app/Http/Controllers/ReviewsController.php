@@ -39,13 +39,13 @@ class ReviewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReview $request)
+    public function store(StoreReview $request,$id)
     {
-        // 
         $review = new Review();
         $review->title = $request->title;
         $review->comment = $request->comment;
-        $review->shop_id = $request->shop_id;
+        $shop_id = $id;
+        $review->shop_id = $shop_id;
         $review->save();
 
         $shop = Shops::find($id);
