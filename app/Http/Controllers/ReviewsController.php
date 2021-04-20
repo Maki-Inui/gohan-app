@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReview;
 use App\Models\Review;
+use App\Models\Shops;
 
 class ReviewsController extends Controller
 {
@@ -16,8 +17,8 @@ class ReviewsController extends Controller
     public function index()
     {
         //
-        $reviews = Reviews::all()->sortByDesc("id");
-        return view('index', compact('reviews'));
+        $reviews = Review::all()->sortByDesc("id");
+        return view('shops.review.index', compact('reviews'));
     }
 
     /**
@@ -25,10 +26,11 @@ class ReviewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
-        return view('post_review');
+        $shop = Shops::find($id);
+        return view('post_review', compact('shop'));
     }
 
     /**
@@ -39,9 +41,16 @@ class ReviewsController extends Controller
      */
     public function store(StoreReview $request)
     {
-        //
-        Review::create($request->all());
-        return redirect()->route('shops.show',['id' => $request->shop_id])->with('success', '新規登録完了');
+        // 
+        $review = new Review();
+        $review->title = $request->title;
+        $review->comment = $request->comment;
+        $review->shop_id = $request->shop_id;
+        $review->save();
+
+        $shop = Shops::find($id);
+
+        return redirect()->route('shops.show',['shop'=>$shop])->with('success', 'レビューを投稿しました！');
     }
 
     /**
@@ -53,8 +62,8 @@ class ReviewsController extends Controller
     public function show($id)
     {
         //
-        $review = Reviews::find($id);
-        return view('shops', compact('review'));
+        $review = Review::find($id);
+        return view('review', compact('review'));
     }
 
     /**
