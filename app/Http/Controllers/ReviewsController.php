@@ -39,16 +39,16 @@ class ReviewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReview $request,$id)
+    public function store(StoreReview $request,$shop)
     {
         $review = new Review();
+        $review->recommend_score = $request->recommend_score;
+        $review->food_score = $request->food_score;
         $review->title = $request->title;
         $review->comment = $request->comment;
-        $shop_id = $id;
+        $shop_id = $shop;
         $review->shop_id = $shop_id;
         $review->save();
-
-        $shop = Shops::find($id);
 
         return redirect()->route('shops.show',['shop'=>$shop])->with('success', 'レビューを投稿しました！');
     }

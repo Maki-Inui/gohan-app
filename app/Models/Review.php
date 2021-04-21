@@ -15,6 +15,8 @@ class Review extends Model
         'shop_id',
         'title',
         'comment',
+        'recommend_score',
+        'food_score'
     ];
 
     public function shop()
