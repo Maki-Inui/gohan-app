@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Reviews;
 
 
-class Shops extends Model
+class Shop extends Model
 {
     use HasFactory;
     protected $table = 'shops';
