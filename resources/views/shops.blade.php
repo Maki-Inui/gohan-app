@@ -24,6 +24,7 @@
             <h3>料理の満足度</h3>
             <p>星{{ $shop->food_score }}個</p>
         </div>
+        <p><a href="{{ route('shops.review.create',['shop'=>$shop] ) }}" >レビューを投稿する</a></p>
 
     </section>
       

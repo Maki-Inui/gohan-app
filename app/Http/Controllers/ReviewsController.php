@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreReview;
+use App\Models\Review;
 use App\Models\Shop;
-use App\Http\Requests\StoreShop;
 
-class ShopsController extends Controller
+class ReviewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +16,8 @@ class ShopsController extends Controller
      */
     public function index()
     {
-        //
-        $shops = Shop::orderBy('created_at', 'desc')->get();
-        return view('shop_list', [
-            'shop_list' => $shops,
-            ]);
+        $reviews = Review::all()->sortByDesc("id");
+        return view('shops.review.index', compact('reviews'));
     }
 
     /**
@@ -27,10 +25,10 @@ class ShopsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
-        return view('create_shop');
+        $shop = Shop::find($id);
+        return view('post_review', compact('shop'));
     }
 
     /**
@@ -39,11 +37,17 @@ class ShopsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreShop $request)
+    public function store(StoreReview $request,$shop_id)
     {
-        //
-        Shop::create($request->all());
-        return redirect()->route('shops.index')->with('success', '新規登録完了');
+        $review = new Review();
+        $review->recommend_score = $request->recommend_score;
+        $review->food_score = $request->food_score;
+        $review->title = $request->title;
+        $review->comment = $request->comment;
+        $review->shop_id = $shop_id;
+        $review->save();
+
+        return redirect()->route('shops.show',['shop'=>$shop_id])->with('success', 'レビューを投稿しました！');
     }
 
     /**
@@ -54,11 +58,8 @@ class ShopsController extends Controller
      */
     public function show($id)
     {
-        //
-        $shop = Shop::findOrFail($id);
-        return view('shops',[
-            'shop' => $shop,
-        ]);
+        $review = Review::find($id);
+        return view('review', compact('review'));
     }
 
     /**
@@ -70,8 +71,6 @@ class ShopsController extends Controller
     public function edit($id)
     {
         //
-        $shop = Shop::find($id);
-        return view('edit_shop', compact('shop'));
     }
 
     /**
@@ -81,15 +80,9 @@ class ShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreShop $request, $id)
+    public function update(Request $request, $id)
     {
         //
-        $update = [
-            'name' => $request->name,
-            'description' => $request->description,
-        ];
-        Shop::find($id)->update($update);
-        return redirect()->route('shops.show',$id)->with('success', '編集完了');
     }
 
     /**
@@ -101,7 +94,5 @@ class ShopsController extends Controller
     public function destroy($id)
     {
         //
-        Shop::find($id)->delete();
-        return redirect()->route('shops.index')->with('success', 'お店を削除しました');
     }
 }

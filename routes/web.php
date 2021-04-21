@@ -18,6 +18,9 @@ Route::get('/', 'App\Http\Controllers\TopPageController@show');
 
 Route::resource('shops', 'App\Http\Controllers\ShopsController');
 
+Route::resource('shops.review', 'App\Http\Controllers\ReviewsController', ['only' => ['index', 'show', 'create', 'store']]
+);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
