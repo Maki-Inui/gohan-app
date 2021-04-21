@@ -21,6 +21,6 @@ class Review extends Model
 
     public function shop()
     {
-        return $this->belongsTo(Shops::class);
+        return $this->belongsTo(Shop::class);
     }
 }
