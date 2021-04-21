@@ -17,9 +17,9 @@ class CreateShopsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('category');
+            $table->foreignId('category_id');
             $table->foreignId('area_id');
-            $table->binary('image');
+            $table->string('image');
             $table->integer('recommend_score');
             $table->integer('food_score');
             $table->timestamps();

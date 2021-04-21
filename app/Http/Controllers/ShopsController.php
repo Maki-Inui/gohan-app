@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Shops;
+use App\Models\Shop;
 use App\Http\Requests\StoreShop;
 
 class ShopsController extends Controller
@@ -16,7 +16,7 @@ class ShopsController extends Controller
     public function index()
     {
         //
-        $shops = Shops::orderBy('created_at', 'desc')->get();
+        $shops = Shop::orderBy('created_at', 'desc')->get();
         return view('shop_list', [
             'shop_list' => $shops,
             ]);
@@ -42,7 +42,7 @@ class ShopsController extends Controller
     public function store(StoreShop $request)
     {
         //
-        Shops::create($request->all());
+        Shop::create($request->all());
         return redirect()->route('shops.index')->with('success', '新規登録完了');
     }
 
@@ -55,7 +55,7 @@ class ShopsController extends Controller
     public function show($id)
     {
         //
-        $shop = Shops::findOrFail($id);
+        $shop = Shop::findOrFail($id);
         return view('shops',[
             'shop' => $shop,
         ]);
@@ -70,7 +70,7 @@ class ShopsController extends Controller
     public function edit($id)
     {
         //
-        $shop = Shops::find($id);
+        $shop = Shop::find($id);
         return view('edit_shop', compact('shop'));
     }
 
@@ -88,7 +88,7 @@ class ShopsController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ];
-        Shops::find($id)->update($update);
+        Shop::find($id)->update($update);
         return redirect()->route('shops.show',$id)->with('success', '編集完了');
     }
 
@@ -101,7 +101,7 @@ class ShopsController extends Controller
     public function destroy($id)
     {
         //
-        Shops::find($id)->delete();
+        Shop::find($id)->delete();
         return redirect()->route('shops.index')->with('success', 'お店を削除しました');
     }
 }

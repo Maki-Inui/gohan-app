@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Reviews;
 
 
-class Shops extends Model
+class Shop extends Model
 {
     use HasFactory;
     protected $table = 'shops';
@@ -15,6 +15,6 @@ class Shops extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Reviews::class);
+        return $this->hasMany(Review::class);
     }
 }

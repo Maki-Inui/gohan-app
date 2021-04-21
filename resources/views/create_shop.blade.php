@@ -2,7 +2,7 @@
 @section('title', 'create-shop')
 @section('content')
   <h3>新規のお店を登録する</h3>
-  @include('layouts.error-msg')
+  @include('layouts.error_message')
   <form method="post" action="{{ route('shops.store')}}">
   @csrf
     <div class="form-group">
