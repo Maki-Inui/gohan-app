@@ -17,8 +17,8 @@ class ShopsController extends Controller
     {
         //
         $shops = Shop::orderBy('created_at', 'desc')->get();
-        return view('shop.shop_list', [
-            'shop_list' => $shops,
+        return view('shop.index', [
+            'shop_index' => $shops,
             ]);
     }
 
@@ -30,7 +30,7 @@ class ShopsController extends Controller
     public function create()
     {
         //
-        return view('shop.create_shop');
+        return view('shop.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class ShopsController extends Controller
     {
         //
         $shop = Shop::findOrFail($id);
-        return view('shop.show_shop',[
+        return view('shop.show',[
             'shop' => $shop,
         ]);
     }
@@ -71,7 +71,7 @@ class ShopsController extends Controller
     {
         //
         $shop = Shop::find($id);
-        return view('shop.edit_shop', compact('shop'));
+        return view('shop.edit', compact('shop'));
     }
 
     /**
