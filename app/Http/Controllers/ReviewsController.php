@@ -28,7 +28,7 @@ class ReviewsController extends Controller
     public function create($id)
     {
         $shop = Shop::find($id);
-        return view('post_review', compact('shop'));
+        return view('review.post_review', compact('shop'));
     }
 
     /**
@@ -59,7 +59,7 @@ class ReviewsController extends Controller
     public function show($id)
     {
         $review = Review::find($id);
-        return view('review', compact('review'));
+        return view('review.show_review', compact('review'));
     }
 
     /**
