@@ -9,12 +9,12 @@
             <p style="color: red;">{{ $message }}</p>
       @endif
 
-      @if($shop_list->isEmpty())
+      @if($shops->isEmpty())
 
       <p>登録がありません</p>
         
       @else
-          @foreach($shop_list as $shop)
+          @foreach($shops as $shop)
               <div class="article" style="background-color: gray;">
                   <p>{{$shop->id}}{{$shop->name}}</p>
                   <p>おすすめ度→星{{ $shop->recommend_score }}個</p>
