@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Http\Requests\StoreShop;
+use App\Models\Review;
 
 class ShopsController extends Controller
 {
@@ -56,8 +57,10 @@ class ShopsController extends Controller
     {
         //
         $shop = Shop::findOrFail($id);
+        $reviews = Review::where('shop_id', $shop->id)->orderBy('created_at', 'desc')->get();
         return view('shop.show',[
             'shop' => $shop,
+            'reviews' => $reviews,
         ]);
     }
 

@@ -16,8 +16,6 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all()->sortByDesc("id");
-        return view('shops.review.index', compact('reviews'));
     }
 
     /**
@@ -68,9 +66,10 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($shop_id,$id)
     {
-        //
+        $review = Review::find($id);
+        return view('review.edit', compact('review','shop_id'));
     }
 
     /**
@@ -80,9 +79,14 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreReview $request,$shop_id,$id)
     {
-        //
+        $update = [
+            'title' => $request->title,
+            'comment' => $request->comment,
+        ];
+        Review::find($id)->update($update);
+        return redirect()->route('shops.show',['shop'=>$shop_id])->with('success', '編集完了');
     }
 
     /**
@@ -91,8 +95,9 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($shop_id,$id)
     {
-        //
+        Review::find($id)->delete();
+        return redirect()->route('shops.show',['shop'=>$shop_id])->with('success', 'レビューを削除しました');
     }
 }
