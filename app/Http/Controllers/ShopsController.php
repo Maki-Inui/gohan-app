@@ -57,7 +57,7 @@ class ShopsController extends Controller
     {
         //
         $shop = Shop::findOrFail($id);
-        $reviews = Review::where('shop_id', $shop->id)->orderBy('created_at', 'desc')->get();
+        $reviews = Review::where('shop_id', $shop->id)->latest()->get();
         return view('shop.show',[
             'shop' => $shop,
             'reviews' => $reviews,

@@ -66,10 +66,10 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($shop_id,$id)
+    public function edit($id)
     {
         $review = Review::find($id);
-        return view('review.edit', compact('review','shop_id'));
+        return view('review.edit', compact('review'));
     }
 
     /**
@@ -79,13 +79,17 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreReview $request,$shop_id,$id)
+    public function update(StoreReview $request,$id)
     {
         $update = [
             'title' => $request->title,
             'comment' => $request->comment,
+            'recommend_score' => $request->recommend_score,
+            'food_score' => $request->food_score,
         ];
         Review::find($id)->update($update);
+        $review = Review::find($id);
+        $shop_id = $review->shop_id;
         return redirect()->route('shops.show',['shop'=>$shop_id])->with('success', '編集完了');
     }
 
@@ -95,9 +99,11 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($shop_id,$id)
+    public function destroy($id)
     {
         Review::find($id)->delete();
+        $review = Review::find($id);
+        $shop_id = $review->shop_id;
         return redirect()->route('shops.show',['shop'=>$shop_id])->with('success', 'レビューを削除しました');
     }
 }
