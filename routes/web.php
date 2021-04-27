@@ -23,3 +23,9 @@ Route::resource('shops.review', 'App\Http\Controllers\ReviewsController');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::view('mypage', 'mypage.show')->name('mypage');
+});
+
+Route::resource('mypage', 'App\Http\Controllers\MypagesController',['only' => ['show', 'edit', 'update']]); 

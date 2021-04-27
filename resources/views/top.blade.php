@@ -5,7 +5,7 @@
 @section('nav')
 
   @auth
-    <a href="{{ url('/') }}">mypage</a>
+    <a href="{{ route('mypage.show',['mypage'=>$user])}}">mypage</a>
     <form method="POST" action="{{ route('logout') }}">
       @csrf
 
