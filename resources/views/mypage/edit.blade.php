@@ -20,8 +20,9 @@
     <div class="form-group">
         <label>変更後のエリア</label>
         <select name="area_id">
-        <option value="1">表参道</option>
-        <option value="2">渋谷</option>
+        @foreach ($areas as $value)
+          <option value="{{ $value->id }}">{{ $value->area_name }}</option>
+        @endforeach
         </select>
     </div>
     <input type="submit" value="更新する">

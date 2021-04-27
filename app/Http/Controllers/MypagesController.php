@@ -12,26 +12,24 @@ class MypagesController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $area_id = $user->area_id;
-        $area = Area::find($area_id);
         return view('mypage.show', compact('user'));
     }
 
     public function edit($id)
     {
         $user = User::find($id);
-        $area_id = $user->area_id;
-        $area = Area::find($area_id);
-        return view('mypage.change_area', compact('user','area'));
+        $area = $user->area;
+        $areas = Area::select('id','area_name')->get();
+        return view('mypage.edit', compact('user','area','areas'));
     }
 
     public function update(Request $request, $id)
     {
         $update = [
             'area_id' => $request->area_id,
+            'profile' => $request->profile,
         ];
         User::find($id)->update($update);
-        $user = User::find($id);
-        return redirect()->route('mypage.show',['mypage'=>$user->id])->with('success', '変更完了');
+        return redirect()->route('mypage.show',['mypage'=>$id])->with('success', '変更完了');
     }
 }
