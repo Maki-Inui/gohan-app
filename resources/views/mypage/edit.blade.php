@@ -8,9 +8,14 @@
     <div class="form-group">
         <label>よく行くエリアの設定</label>
         <select name="area_id">
-        <option value="1">表参道</option>
-        <option value="2">渋谷</option>
+        @foreach ($areas as $value)
+          <option value="{{ $value->id }}">{{ $value->area_name }}</option>
+        @endforeach
         </select>
+    </div>
+    <div class="form-group">
+        <label>プロフィールの登録</label><br>
+        <textarea name="profile" placeholder="プロフィール文を入力してください"></textarea>
     </div>
     <input type="submit" value="登録する">
   @else
@@ -24,6 +29,10 @@
           <option value="{{ $value->id }}">{{ $value->area_name }}</option>
         @endforeach
         </select>
+    </div>
+    <div class="form-group">
+        <label>プロフィール</label><br>
+        <textarea name="profile">{{ $user->profile }}</textarea>
     </div>
     <input type="submit" value="更新する">
     @endif
