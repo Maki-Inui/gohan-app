@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVisitedTable extends Migration
+class CreateVisitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVisitedTable extends Migration
      */
     public function up()
     {
-        Schema::create('visited', function (Blueprint $table) {
+        Schema::create('visits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('shop_id')->references('id')->on('shops')->onDelete('cascade'); 
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade'); 
@@ -28,6 +28,6 @@ class CreateVisitedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('visited');
+        Schema::dropIfExists('visits');
     }
 }

@@ -20,13 +20,8 @@ class Shop extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function visited()
+    public function visits()
     {
         return $this->hasMany(Visited::class)->withTimestamps();
-    }
-
-    public function you_visited()
-    {
-        return Visited::where('user_id', Auth::user()->id)->first();
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Visited extends Model
 {
     use HasFactory;
-    protected $table = 'visited';
+    protected $table = 'visits';
     protected $fillable = [
         'shop_id',
         'user_id',

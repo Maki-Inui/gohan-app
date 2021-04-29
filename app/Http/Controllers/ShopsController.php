@@ -61,7 +61,7 @@ class ShopsController extends Controller
         $shop = Shop::findOrFail($id);
         $reviews = Review::where('shop_id', $shop->id)->latest()->get();
         $user = Auth::id();
-        $visited = Visited::where('shop_id', $shop->id)->where('user_id', $user)->get();
+        $visited = Visited::where('shop_id', $shop->id)->where('user_id', $user)->first();
         return view('shop.show',[
             'shop' => $shop,
             'reviews' => $reviews,
