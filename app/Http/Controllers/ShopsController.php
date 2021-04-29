@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Http\Requests\StoreShop;
 use App\Models\Review;
+use App\Models\Visited;
+use Illuminate\Support\Facades\Auth;
 
 class ShopsController extends Controller
 {
@@ -58,9 +60,13 @@ class ShopsController extends Controller
         //
         $shop = Shop::findOrFail($id);
         $reviews = Review::where('shop_id', $shop->id)->latest()->get();
+        $user = Auth::id();
+        $visited = Visited::where('shop_id', $shop->id)->where('user_id', $user)->get();
         return view('shop.show',[
             'shop' => $shop,
             'reviews' => $reviews,
+            'visited' => $visited,
+            'user' => $user,
         ]);
     }
 

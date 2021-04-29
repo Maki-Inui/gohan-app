@@ -3,6 +3,24 @@
 @section('title', 'shop-page')
 @section('content')
 <main>
+@if (Auth::check())
+    @if($visited === null)
+    <form action="{{ route('shops.visited.store', [
+        'shop' =>$shop]) }}" method="POST">
+    @csrf
+    <input type="submit" value="行ったお店に登録する">
+    </form>
+    @else
+    <p>来店済みです</p>
+    <form action="{{ route('shops.visited.destroy', [
+        'shop' =>$shop,
+        'visited'=>$visited]) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="削除する">
+    </form>
+    @endif
+@endif
     <section style="text-align: center;">
         @if ($message = Session::get('success'))
             <p style="color: red;">{{ $message }}</p>

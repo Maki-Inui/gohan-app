@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Area::class);
     }
+
+    public function visited()
+    {
+        return $this->hasMany(Visited::class)->withTimestamps();
+    }
 }
