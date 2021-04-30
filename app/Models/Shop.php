@@ -24,4 +24,9 @@ class Shop extends Model
     {
         return $this->hasMany(Visit::class)->withTimestamps();
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class)->withTimestamps();
+    }
 }
