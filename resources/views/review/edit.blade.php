@@ -3,8 +3,7 @@
 @section('content')
   <h3>レビューを編集する</h3>  
     @include('layouts.error_message')
-  <form action="{{ route('shops.review.update',['review'=>$review->id, 
-  'shop'=>$review->shop_id])}}" method="POST">
+  <form action="{{ route('shops.review.update',['review'=>$review->id, 'shop'=>$review->shop_id])}}" method="POST">
   @csrf
   @method('PUT')
     <div class="form-group">
