@@ -26,4 +26,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('mypage', 'App\Http\Controllers\MypagesController',['only' => ['show', 'edit', 'update']]); 
 
-Route::resource('shops.visited', 'App\Http\Controllers\VisitedController',['only' => ['store', 'destroy']]); 
+Route::resource('shops.visit', 'App\Http\Controllers\VisitsController',['only' => ['store', 'destroy']]); 

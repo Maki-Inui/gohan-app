@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Visited extends Model
+class Visit extends Model
 {
     use HasFactory;
     protected $table = 'visits';
@@ -16,12 +16,12 @@ class Visited extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsTo(User::class)->withTimestamps();
     }
 
     public function shops()
     {
-        return $this->belongsToMany(Shop::class)->withTimestamps();
+        return $this->belongsTo(Shop::class)->withTimestamps();
     }
 
 }

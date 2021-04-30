@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Review;
-use App\Models\Visited;
+use App\Models\Visit;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -22,6 +22,6 @@ class Shop extends Model
 
     public function visits()
     {
-        return $this->hasMany(Visited::class)->withTimestamps();
+        return $this->hasMany(Visit::class)->withTimestamps();
     }
 }

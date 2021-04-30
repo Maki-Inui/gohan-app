@@ -5,17 +5,17 @@
 <main>
     <section style="text-align: center;">
         @if (Auth::check())
-        @if($visited === null)
-        <form action="{{ route('shops.visited.store', [
+        @if($visit === null)
+        <form action="{{ route('shops.visit.store', [
             'shop' =>$shop]) }}" method="POST">
         @csrf
         <input type="submit" value="行ったお店に登録する">
         </form>
         @else
         <p style='color: pink;'>行ったお店</p>
-        <form action="{{ route('shops.visited.destroy', [
+        <form action="{{ route('shops.visit.destroy', [
             'shop' =>$shop,
-            'visited'=>$visited]) }}" method="POST">
+            'visit'=>$visit]) }}" method="POST">
             @csrf
             @method('DELETE')
             <input type="submit" value="来店済みを解除">

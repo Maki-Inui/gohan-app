@@ -68,6 +68,6 @@ class User extends Authenticatable
 
     public function visits()
     {
-        return $this->hasMany(Visited::class)->withTimestamps();
+        return $this->hasMany(Visit::class)->withTimestamps();
     }
 }
