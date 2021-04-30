@@ -6,32 +6,26 @@
     <section style="text-align: center;">
         @if (Auth::check())
             @if($visit === null)
-            <form action="{{ route('shops.visit.store', [
-                'shop' =>$shop]) }}" method="POST">
+            <form action="{{ route('shops.visit.store', ['shop' =>$shop]) }}" method="POST">
             @csrf
             <input type="submit" value="行ったお店に登録する">
             </form>
             @else
             <p style='color: pink;'>行ったお店</p>
-            <form action="{{ route('shops.visit.destroy', [
-                'shop' =>$shop,
-                'visit'=>$visit]) }}" method="POST">
+            <form action="{{ route('shops.visit.destroy', ['shop' =>$shop,'visit'=>$visit]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="来店済みを解除">
             </form>
             @endif
             @if($like === null)
-            <form action="{{ route('shops.like.store', [
-                'shop' =>$shop]) }}" method="POST">
+            <form action="{{ route('shops.like.store', ['shop' =>$shop]) }}" method="POST">
             @csrf
             <input type="submit" value="気になるお店に登録する">
             </form>
             @else
             <p style='color: orange;'>気になるお店</p>
-            <form action="{{ route('shops.like.destroy', [
-                'shop' =>$shop,
-                'like'=>$like]) }}" method="POST">
+            <form action="{{ route('shops.like.destroy', ['shop' =>$shop,'like'=>$like]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="気になるお店を解除">
@@ -87,14 +81,9 @@
                     <p>星{{ $review->food_score }}個</p>
                 </div>
                 <div class="edit">
-                    <a href="{{ route('shops.review.edit', [
-                    'shop' =>$shop,
-                    'review'=>$review,
-                    ]) }}">編集する</a>
+                    <a href="{{ route('shops.review.edit', ['shop' =>$shop,'review'=>$review,]) }}">編集する</a>
                 </div>
-                <form action="{{ route('shops.review.destroy', [
-                    'shop' =>$shop,
-                    'review'=>$review,]) }}" method="POST">
+                <form action="{{ route('shops.review.destroy', ['shop' =>$shop,'review'=>$review,]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="submit" value="削除する">

@@ -21,9 +21,7 @@ class ShopsController extends Controller
     {
         //
         $shops = Shop::orderBy('created_at', 'desc')->get();
-        return view('shop.index', [
-            'shops' => $shops,
-            ]);
+        return view('shop.index', ['shops' => $shops,]);
     }
 
     /**
