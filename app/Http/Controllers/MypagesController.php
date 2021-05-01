@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Area;
+use App\Models\Like;
+use App\Models\Shop;
 
 class MypagesController extends Controller
 {
@@ -12,7 +14,8 @@ class MypagesController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('mypage.show', compact('user'));
+        $likes = Like::with('shop')->where('user_id', $user->id)->get(); 
+        return view('mypage.show', compact('user','likes'));
     }
 
     public function edit($id)

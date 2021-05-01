@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+        $likes = Like::with('shop')->where('user_id', $user->id)->get(); 
+        return view('like.index',compact('user','likes'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
