@@ -22,11 +22,11 @@ class Shop extends Model
 
     public function visits()
     {
-        return $this->hasMany(Visit::class)->withTimestamps();
+        return $this->hasMany(Visit::class);
     }
 
     public function likes()
     {
-        return $this->hasMany(Like::class)->withTimestamps();
+        return $this->hasMany(Like::class);
     }
 }

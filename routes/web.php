@@ -29,3 +29,7 @@ Route::resource('mypage', 'App\Http\Controllers\MypagesController',['only' => ['
 Route::resource('shops.visit', 'App\Http\Controllers\VisitsController',['only' => ['store', 'destroy']]); 
 
 Route::resource('shops.like', 'App\Http\Controllers\LikesController',['only' => ['store', 'destroy']]); 
+
+Route::resource('mypage.visit', 'App\Http\Controllers\VisitsController',['only' => ['index']]); 
+
+Route::resource('mypage.like', 'App\Http\Controllers\LikesController',['only' => ['index']]); 

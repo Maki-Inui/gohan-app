@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class VisitsController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+        $visits = Visit::with('shop')->where('user_id', $user->id)->get(); 
+        return view('visit.index',compact('user','visits'));
+    }
+
     public function store(Request $request, $shop_id)
     {
         $visit = new Visit();
