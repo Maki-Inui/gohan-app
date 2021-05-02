@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     } 
+
+    public function nices()
+    {
+        return $this->hasMany(Nice::class);
+    } 
 }

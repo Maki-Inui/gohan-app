@@ -23,4 +23,9 @@ class Review extends Model
     {
         return $this->belongsTo(Shop::class);
     }
+
+    public function nices()
+    {
+        return $this->HasMany(Nice::class);
+    }
 }

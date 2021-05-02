@@ -66,6 +66,22 @@
           @foreach($reviews as $review)
             <div class="review" style="background-color: pink;">
                 <h2>レビュータイトル：{{ $review->title }}</h2>
+                @if (Auth::check())
+                    @foreach($review->nices as $nice)
+                        @if($nice->review_id === $review->id)
+                        <form action="{{ route('shops.review.nice.destroy', ['shop' =>$shop,'review' =>$review,'nice' =>$nice->id,]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="いいねを解除">
+                        </form>
+                        @else
+                        <form action="{{ route('shops.review.nice.store', ['shop' =>$shop,'review' =>$review->id,]) }}" method="POST">
+                        @csrf
+                        <input type="submit" value="いいねを押す">
+                        </form>
+                        @endif
+                    @endforeach
+                @endif
                 <div class="description">
                     <h3>コメント</h3>
                     {{ $review->comment }}
