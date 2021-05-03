@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Shop;
 
-
 class Review extends Model
 {
     use HasFactory;
@@ -22,5 +21,10 @@ class Review extends Model
     public function shop()
     {
         return $this->belongsTo(Shop::class);
+    }
+
+    public function nices()
+    {
+        return $this->HasMany(Nice::class);
     }
 }

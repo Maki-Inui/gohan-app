@@ -8,6 +8,7 @@ use App\Http\Requests\StoreShop;
 use App\Models\Review;
 use App\Models\Visit;
 use App\Models\Like;
+use App\Models\Nice;
 use Illuminate\Support\Facades\Auth;
 
 class ShopsController extends Controller
@@ -56,9 +57,8 @@ class ShopsController extends Controller
      */
     public function show($id)
     {
-        //
         $shop = Shop::findOrFail($id);
-        $reviews = Review::where('shop_id', $shop->id)->latest()->get();
+        $reviews = Review::with('nices.user')->where('shop_id', $shop->id)->latest()->get();
         $user_id = Auth::id();
         $visit = Visit::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
         $like = Like::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
@@ -67,6 +67,7 @@ class ShopsController extends Controller
             'reviews' => $reviews,
             'visit' => $visit,
             'like' => $like,
+            'user_id' => $user_id,
         ]);
     }
 

@@ -20,6 +20,8 @@ Route::resource('shops', 'App\Http\Controllers\ShopsController');
 
 Route::resource('shops.review', 'App\Http\Controllers\ReviewsController');
 
+Route::resource('shops.review.nice', 'App\Http\Controllers\NicesController',['only' => ['store', 'destroy']]); 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
