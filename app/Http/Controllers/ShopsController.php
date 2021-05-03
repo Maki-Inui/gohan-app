@@ -57,19 +57,17 @@ class ShopsController extends Controller
      */
     public function show($id)
     {
-        //
         $shop = Shop::findOrFail($id);
-        $reviews = Review::with('nices')->where('shop_id', $shop->id)->latest()->get();
+        $reviews = Review::with('nices.user')->where('shop_id', $shop->id)->latest()->get();
         $user_id = Auth::id();
         $visit = Visit::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
         $like = Like::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
-        $nices = Nice::with('review')->where('user_id', $user_id)->get();
         return view('shop.show',[
             'shop' => $shop,
             'reviews' => $reviews,
             'visit' => $visit,
             'like' => $like,
-            'nices' => $nices,
+            'user_id' => $user_id,
         ]);
     }
 
