@@ -80,4 +80,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Nice::class);
     } 
+
+    //フォロー中のユーザー
+    public function follows()
+    {
+      return $this->belongsToMany(User::class,'follows','user_id','follow_user_id');
+    }
+
+    //フォロされているユーザー
+    public function followUsers()
+    {
+      return $this->belongsToMany(User::class,'follows','follow_user_id','user_id');
+    }
 }

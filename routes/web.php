@@ -35,3 +35,7 @@ Route::resource('shops.like', 'App\Http\Controllers\LikesController',['only' => 
 Route::resource('mypage.visit', 'App\Http\Controllers\VisitsController',['only' => ['index']]); 
 
 Route::resource('mypage.like', 'App\Http\Controllers\LikesController',['only' => ['index']]); 
+
+Route::resource('users', 'App\Http\Controllers\UsersController', ['only' => ['index','show']]);
+
+Route::resource('users.follow', 'App\Http\Controllers\FollowsController', ['only' => ['store','destroy']]);
