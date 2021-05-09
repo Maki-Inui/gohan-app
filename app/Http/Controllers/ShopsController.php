@@ -66,10 +66,11 @@ class ShopsController extends Controller
 
         if (Auth::check()) 
         {
-        $history = new History();
-        $history->shop_id = $shop->id;
-        $history->user_id = $user_id;
-        $history->save();
+            $history = new History();
+            $history->shop_id = $shop->id;
+            History::where('user_id',$user_id)->where('shop_id',$history->shop_id)->delete();
+            $history->user_id = $user_id;
+            $history->save();
         }
  
         return view('shop.show',[
