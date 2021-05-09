@@ -2,6 +2,7 @@
 @section('nav')
 <a href="{{  route('mypage.visit.index',$user->id) }}">行ったお店リスト</a>
 <a href="{{  route('mypage.like.index',$user->id) }}">気になるお店リスト</a>
+<a href="{{  route('mypage.history.index',$user->id) }}">お店の閲覧履歴</a>
 @endsection
 @section('title', 'my-page')
 @section('content')

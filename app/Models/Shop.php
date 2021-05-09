@@ -29,4 +29,10 @@ class Shop extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function histories() 
+    {
+        return $this->hasMany(History::class);
+    }
+
 }

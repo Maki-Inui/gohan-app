@@ -36,6 +36,8 @@ Route::resource('mypage.visit', 'App\Http\Controllers\VisitsController',['only' 
 
 Route::resource('mypage.like', 'App\Http\Controllers\LikesController',['only' => ['index']]); 
 
+Route::resource('mypage.history', 'App\Http\Controllers\HistoriesController',['only' => ['index']]); 
+
 Route::resource('users', 'App\Http\Controllers\UsersController', ['only' => ['index','show']]);
 
 Route::resource('users.follow', 'App\Http\Controllers\FollowsController', ['only' => ['store','destroy']]);
