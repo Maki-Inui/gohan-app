@@ -29,4 +29,5 @@ class Shop extends Model
     {
         return $this->hasMany(Like::class);
     }
+
 }

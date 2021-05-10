@@ -9,6 +9,7 @@ use App\Models\Review;
 use App\Models\Visit;
 use App\Models\Like;
 use App\Models\Nice;
+use App\Models\History;
 use Illuminate\Support\Facades\Auth;
 
 class ShopsController extends Controller
@@ -62,6 +63,24 @@ class ShopsController extends Controller
         $user_id = Auth::id();
         $visit = Visit::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
         $like = Like::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
+
+        if (Auth::check()) 
+        {
+            $old_history = History::where('user_id',$user_id)->where('shop_id',$shop->id);
+            if ($old_history->exists())
+            {
+                $update = ['last_view_at' => date("Y-m-d H:i:s")];
+                $old_history->update($update);
+            }else 
+            {
+                $history = new History();
+                $history->shop_id = $shop->id;
+                $history->user_id = $user_id;
+                $history->last_view_at = date("Y-m-d H:i:s");
+                $history->save();
+            }
+        }
+ 
         return view('shop.show',[
             'shop' => $shop,
             'reviews' => $reviews,

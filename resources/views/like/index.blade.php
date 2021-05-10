@@ -2,7 +2,7 @@
 @section('title', 'your-likes')
 @section('content')
 <h3>{{ $user->name }}さんの気になるお店一覧</h3>
-@if($likes === null)
+@if($likes->isEmpty())
     <p>お気に入りのお店はありません</p>
 @else
     @foreach($likes as $like)
