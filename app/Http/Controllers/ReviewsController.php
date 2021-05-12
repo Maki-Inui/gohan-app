@@ -38,7 +38,7 @@ class ReviewsController extends Controller
         $review->shop_id = $shop_id;
         $review->save();
 
-        return redirect()->route('shops.show', ['shop'=>$shop_id])->with('success', 'レビューを投稿しました！');
+        return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', 'レビューを投稿しました！');
     }
 
     /**

@@ -34,6 +34,6 @@ class FollowsController extends Controller
     {
         $follow = Follow::where('user_id', Auth::user()->id)->where('follow_user_id', $user_id)->first();
         $follow->delete();
-        return redirect()->route('users.show' , ['user' => $user_id]);
+        return redirect()->route('users.show', ['user' => $user_id]);
     }
 }
