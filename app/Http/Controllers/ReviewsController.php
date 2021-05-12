@@ -9,12 +9,25 @@ use App\Models\Shop;
 
 class ReviewsController extends Controller
 {
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  int  $id
+     * @return view
+     */
     public function create($id)
     {
         $shop = Shop::find($id);
         return view('review.post', compact('shop'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  StoreReview $request
+     * @param  int  $shop_id
+     * @return \Illuminate\Http\Response
+     */
     public function store(StoreReview $request,$shop_id)
     {
         $review = new Review();
@@ -28,18 +41,38 @@ class ReviewsController extends Controller
         return redirect()->route('shops.show', ['shop'=>$shop_id])->with('success', 'レビューを投稿しました！');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return view
+     */
     public function show($id)
     {
         $review = Review::find($id);
         return view('review.show', compact('review'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return view
+     */
     public function edit($id)
     {
         $review = Review::find($id);
         return view('review.edit', compact('review'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  StoreReview $request
+     * @param  int  $shop_id
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(StoreReview $request, $shop_id, $id)
     {
         $update = [
@@ -49,12 +82,19 @@ class ReviewsController extends Controller
             'food_score' => $request->food_score,
         ];
         Review::find($id)->update($update);
-        return redirect()->route('shops.show', ['shop'=>$shop_id])->with('success', '編集完了');
+        return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', '編集完了');
     }
 
-    public function destroy($shop_id,$id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $shop_id
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($shop_id, $id)
     {
         Review::find($id)->delete();
-        return redirect()->route('shops.show', ['shop'=>$shop_id])->with('success', 'レビューを削除しました');
+        return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', 'レビューを削除しました');
     }
 }

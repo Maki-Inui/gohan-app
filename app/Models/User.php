@@ -19,8 +19,7 @@ class User extends Authenticatable
 
     protected $fillable = ['name', 'email', 'password', 'profile', 'area_id'];
 
-    protected $hidden = [
-        'password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'];
+    protected $hidden = ['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'];
 
     protected $casts = ['email_verified_at' => 'datetime'];
 
