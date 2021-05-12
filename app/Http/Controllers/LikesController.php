@@ -9,38 +9,45 @@ use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return view
+     */
     public function index()
     {
         $user = Auth::user();
         $user_id = Auth::user()->id;
         $likes = Like::with('shop')->where('user_id', $user->id)->get(); 
-        return view('like.index',compact('user','likes'));
+        return view('like.index', compact('user', 'likes'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $shop_id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$shop_id)
+    public function store(Request $request, $shop_id)
     {
         $like = new Like();
         $like->shop_id = $shop_id;
         $like->user_id = Auth::user()->id;
         $like->save();
-        return redirect()->route('shops.show',['shop'=>$shop_id])->with('success', '気になるお店登録完了');
+        return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', '気になるお店登録完了');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  int  $shop_id
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($shop_id,$id)
+    public function destroy($shop_id, $id)
     {
         Like::find($id)->delete();
-        return redirect()->route('shops.show',['shop'=>$shop_id]);
+        return redirect()->route('shops.show', ['shop' => $shop_id]);
     }
 }

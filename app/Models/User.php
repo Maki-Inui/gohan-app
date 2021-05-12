@@ -16,50 +16,14 @@ class User extends Authenticatable
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
-/*     use TwoFactorAuthenticatable; */
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'profile',
-        'area_id',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'profile', 'area_id'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
-    ];
+    protected $hidden = ['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $casts = ['email_verified_at' => 'datetime'];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    protected $appends = ['profile_photo_url'];
 
     public function area()
     {
@@ -84,12 +48,12 @@ class User extends Authenticatable
     //フォロー中のユーザー
     public function follows()
     {
-      return $this->belongsToMany(User::class,'follows','user_id','follow_user_id');
+      return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id');
     }
 
     //フォロされているユーザー
     public function followUsers()
     {
-      return $this->belongsToMany(User::class,'follows','follow_user_id','user_id');
+      return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id');
     }
 }

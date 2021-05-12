@@ -8,15 +8,8 @@ use App\Models\Shop;
 
 class Review extends Model
 {
-    use HasFactory;
     protected $table = 'reviews';
-    protected $fillable = [
-        'shop_id',
-        'title',
-        'comment',
-        'recommend_score',
-        'food_score'
-    ];
+    protected $fillable = ['shop_id', 'title', 'comment', 'recommend_score', 'food_score'];
 
     public function shop()
     {
