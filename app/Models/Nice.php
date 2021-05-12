@@ -10,12 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class Nice extends Model
 {
-    use HasFactory;
     protected $table = 'nices';
-    protected $fillable = [
-        'review_id',
-        'user_id',
-    ];
+    protected $fillable = ['review_id', 'user_id'];
 
     public function review()
     {
