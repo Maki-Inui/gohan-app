@@ -44,6 +44,6 @@
         </div>
         <input type="submit" value="登録">
     </form>
-    <p><a href="{{ route('shops.show', ['shop' => $shop])}}">お店情報へ戻る</a></p>
+    <p><a href="{{ route('shops.show', ['shop' => $shop]) }}">お店情報へ戻る</a></p>
 </main>
 @endsection
