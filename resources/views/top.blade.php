@@ -1,32 +1,27 @@
 @extends('layouts.app')
-
 @section('title', 'top-page')
-
 @section('nav')
-
+<ul>
   @auth
-    <a href="{{ route('mypage.show',['mypage'=>$user])}}">mypage</a>
-    <form method="POST" action="{{ route('logout') }}">
+    <li><a href="{{ route('mypage.show', ['mypage' => $user]) }}">mypage</a></li>
+    <li><form method="POST" action="{{ route('logout') }}">
       @csrf
-
-      <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                      this.closest('form').submit();">
+      <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
           {{ __('Log Out') }}
       </x-jet-responsive-nav-link>
-    </form>
+    </form></li>
   @else
-    <a href="{{ route('login') }}">Login</a>
+    <li><a href="{{ route('login') }}">Login</a></li>
     @if (Route::has('register'))
-        <a href="{{ route('register') }}">Register</a>
+      <li><a href="{{ route('register') }}">Register</a></li>
     @endif
   @endif
-
-  <p><a href="{{ route('shops.index') }}">お店一覧はこちら</a></p>
-
+  <li><a href="{{ route('shops.index') }}">お店一覧はこちら</a></li>
+</ul>
 @endsection
-
+@section('content')
 <main>
 </main>
+@endsection
 
 
