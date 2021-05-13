@@ -20,9 +20,9 @@
       </div>
       <input type="submit" value="登録する">
     @else
-    <h3>{{ $user->name }}さんの設定エリア</h3>
-    <p>現在のエリア：{{ $area->area_name }} </p>
-    <p>↓</p>
+      <h3>{{ $user->name }}さんの設定エリア</h3>
+      <p>現在のエリア：{{ $area->area_name }} </p>
+      <p>↓</p>
       <div class="form-group">
           <label>変更後のエリア</label>
           <select name="area_id">
@@ -36,7 +36,7 @@
           <textarea name="profile">{{ $user->profile }}</textarea>
       </div>
       <input type="submit" value="更新する">
-      @endif
+    @endif
   </form>
   <a href="{{ url('/') }}">トップページに戻る</a>
 </main>
