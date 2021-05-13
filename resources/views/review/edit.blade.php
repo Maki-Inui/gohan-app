@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('title', 'edit-review')
 @section('content')
+<main>
   <h3>レビューを編集する</h3>  
     @include('layouts.error_message')
-  <form action="{{ route('shops.review.update',['review'=>$review->id, 'shop'=>$review->shop_id])}}" method="POST">
+  <form action="{{ route('shops.review.update', ['review' => $review->id, 'shop' => $review->shop_id])}}" method="POST">
   @csrf
   @method('PUT')
     <div class="form-group">
@@ -32,5 +33,6 @@
     </div> 
     <input type="submit" value="更新する">
   </form>
-  <a href="{{ route('shops.show', ['shop'=>$review->shop_id]) }}">お店の詳細画面に戻る</a>
+  <a href="{{ route('shops.show', ['shop' => $review->shop_id]) }}">お店の詳細画面に戻る</a>
+</main>
 @endsection
