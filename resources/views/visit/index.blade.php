@@ -2,14 +2,14 @@
 @section('title', 'your-visits')
 @section('content')
 <h3>{{ $user->name }}さんの行ったお店一覧</h3>
-@if($visits === null)
+@if(empty($visits))
     <p>行ったお店はありません</p>
   @else
     @foreach($visits as $visit)
-    <div class="article">
-    <li><a href="{{  route('shops.show',$visit->shop_id) }}">{{ $visit->shop->name }}</a></li>
-    </div>
+    <ul class="article">
+      <li><a href="{{  route('shops.show', $visit->shop_id) }}">{{ $visit->shop->name }}</a></li>
+    </ul>
     @endforeach
 @endif
-  <a href="{{ route('mypage.show',['mypage'=>$user])}}">mypageへ戻る</a>
+  <a href="{{ route('mypage.show', ['mypage' => $user]) }}">mypageへ戻る</a>
 @endsection

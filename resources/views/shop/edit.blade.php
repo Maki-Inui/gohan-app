@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('title', 'edit-shop')
 @section('content')
+<main>
   <h3>お店情報を編集する</h3>  
     @include('layouts.error_message')
-  <form action="{{ route('shops.update',$shop->id)}}" method="POST">
+  <form action="{{ route('shops.update', $shop->id) }}" method="POST">
   @csrf
   @method('PUT')
     <div class="form-group">
@@ -17,4 +18,5 @@
     <input type="submit" value="更新する">
     <p><a href="{{ route('shops.index') }}">お店一覧画面へ戻る</a></p>
   </form>
+</main>
 @endsection

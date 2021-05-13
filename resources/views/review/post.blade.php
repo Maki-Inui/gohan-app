@@ -2,9 +2,10 @@
 
 @section('title', 'post-review')
 @section('content')
-<h3>レビュー投稿画面</h3>
+<main>
+    <h3>レビュー投稿画面</h3>
     @include('layouts.error_message')
-    <form action="{{ route('shops.review.store', $shop)}}" method="POST">
+    <form action="{{ route('shops.review.store', $shop) }}" method="POST">
         @csrf
         <input name="shop_id" type="hidden" value="{{ $shop }}">
         <div class="form-group">
@@ -43,5 +44,6 @@
         </div>
         <input type="submit" value="登録">
     </form>
-    <p><a href="{{ route('shops.show',['shop'=>$shop])}}">お店情報へ戻る</a></p>
+    <p><a href="{{ route('shops.show', ['shop' => $shop])}}">お店情報へ戻る</a></p>
+</main>
 @endsection
