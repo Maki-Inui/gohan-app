@@ -19,6 +19,8 @@ class CreateHistoriesTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->comment('閲覧したユーザー');
             $table->datetime('last_view_at');
             $table->timestamps();
+
+            $table->unique(['shop_id', 'user_id']);
         });
     }
 

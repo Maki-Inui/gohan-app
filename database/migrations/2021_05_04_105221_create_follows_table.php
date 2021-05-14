@@ -18,6 +18,8 @@ class CreateFollowsTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade'); 
             $table->foreignId('follow_user_id')->references('id')->on('users')->onDelete('cascade'); 
             $table->timestamps();
+
+            $table->unique(['user_id', 'follow_user_id']);
         });
     }
 
