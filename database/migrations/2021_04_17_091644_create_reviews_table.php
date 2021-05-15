@@ -26,7 +26,7 @@ class CreateReviewsTable extends Migration
             $table->integer('food_score');
             $table->timestamps();
 
-            $table->index(['shop_id', 'user_id']);
+            $table->unique(['shop_id', 'user_id']);
         });
     }
 

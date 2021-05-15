@@ -19,7 +19,7 @@ class CreateNicesTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade'); 
             $table->timestamps();
 
-            $table->unique(['review_id', 'user_id']);
+            $table->unique(['user_id', 'review_id']);
         });
     }
 
