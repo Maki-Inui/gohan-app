@@ -18,6 +18,8 @@ class CreateNicesTable extends Migration
             $table->foreignId('review_id')->references('id')->on('reviews')->onDelete('cascade'); 
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade'); 
             $table->timestamps();
+
+            $table->unique(['user_id', 'review_id']);
         });
     }
 

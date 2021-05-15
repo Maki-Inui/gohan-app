@@ -18,6 +18,8 @@ class CreateLikesTable extends Migration
             $table->foreignId('shop_id')->references('id')->on('shops')->onDelete('cascade'); 
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade'); 
             $table->timestamps();
+
+            $table->unique(['shop_id', 'user_id']);
         });
     }
 
