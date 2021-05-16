@@ -11,10 +11,9 @@ class VisitsController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
         $user_id = Auth::user()->id;
-        $visits = Visit::with('shop')->where('user_id', $user->id)->get(); 
-        return view('visit.index',compact('user','visits'));
+        $visits = Visit::with('shop')->where('user_id', $user_id)->get(); 
+        return view('visit.index',compact('visits'));
     }
 
     public function store(Request $request, $shop_id)
@@ -23,11 +22,11 @@ class VisitsController extends Controller
         $visit->shop_id = $shop_id;
         $visit->user_id = Auth::user()->id;
         $visit->save();
-        return redirect()->route('shops.show',['shop'=>$shop_id])->with('success', '来店済み登録完了');
+        return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', '来店済み登録完了');
     }
 
     public function destroy($shop_id, $id) {
         Visit::find($id)->delete();
-        return redirect()->route('shops.show',['shop'=>$shop_id]);
+        return redirect()->route('shops.show', ['shop' => $shop_id]);
     }
 }

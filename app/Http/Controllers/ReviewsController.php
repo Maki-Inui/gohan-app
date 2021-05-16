@@ -47,9 +47,15 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return view
      */
-    public function show($id)
+    public function show($id, $shop_id)
     {
-        $review = Review::find($id);
+        $review = Review::where('shop_id', $shop_id)->where('id', $id)->first();
+
+        if ($review === null)
+        {
+            return redirect()->route('shops.index')->with('failure', '指定されたIDのショップレビューは存在しません');
+        }
+
         return view('review.show', compact('review'));
     }
 

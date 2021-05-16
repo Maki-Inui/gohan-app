@@ -9,7 +9,6 @@ class TopPageController extends Controller
 {
     //トップページを表示
     public function show(){
-        $user = Auth::id();
-        return view('top', compact('user'));
+        return view('top');
     }
 }
