@@ -17,9 +17,14 @@ class UsersController extends Controller
 
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        $login_user = Auth::user();
-        $follow = Follow::where('user_id', $login_user->id)->where('follow_user_id',$user->id)->first();
-        return view('users.show', compact('user','follow','login_user'));
+        $user = User::find($id);
+
+        if ($user === null)
+        {
+            return redirect()->route('users.index')->with('failure', '指定されたIDのアカウントは存在しません');
+        }
+
+        $follow = Follow::where('user_id', Auth::id())->where('follow_user_id',$user->id)->first();
+        return view('users.show', compact('user','follow'));
     }
 }

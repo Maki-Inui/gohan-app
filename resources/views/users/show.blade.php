@@ -5,7 +5,7 @@
 <main>
   <p>{{$user->name}}さん</p>
   @if (Auth::check())
-    @if($login_user->id !== $user->id)
+    @if(Auth::id() !== $user->id)
       @if(empty($follow))
       <form action="{{ route('users.follow.store', $user->id) }}" method="POST">
       @csrf
@@ -19,7 +19,7 @@
       </form>
       @endif
     @endif
-    @if($login_user->followUsers()->where('user_id', $user->id)->first())
+    @if(Auth::user()->followUsers()->where('user_id', $user->id)->first())
     <p style="color:pink;">{{ $user->name }}さんにフォローされています</p>
     @endif
   @endif
