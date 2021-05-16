@@ -3,6 +3,9 @@
 @section('title', 'shop-page')
 @section('content')
 <main>
+    @if ($message = Session::get('failure'))
+      <p style="color: red;">{{ $message }}</p>
+    @endif
     <p><a href="{{ route('shops.create') }}" class="btn btn-primary">新規のお店を登録する</a></p>
     <section style="text-align: center;">
       @if ($message = Session::get('success'))

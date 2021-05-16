@@ -8,19 +8,17 @@ use App\Models\Area;
 
 class MypagesController extends Controller
 {
-    //
     public function show($id)
     {
-        $user = User::find($id);
-        return view('mypage.show', compact('user'));
+        return view('mypage.show');
     }
 
     public function edit($id)
     {
         $user = User::find($id);
         $area = $user->area;
-        $areas = Area::select('id','area_name')->get();
-        return view('mypage.edit', compact('user','area','areas'));
+        $areas = Area::select('id', 'area_name')->get();
+        return view('mypage.edit', compact('area', 'areas'));
     }
 
     public function update(Request $request, $id)
@@ -30,6 +28,6 @@ class MypagesController extends Controller
             'profile' => $request->profile,
         ];
         User::find($id)->update($update);
-        return redirect()->route('mypage.show',['mypage'=>$id])->with('success', '変更完了');
+        return redirect()->route('mypage.show', ['mypage' => $id])->with('success', '変更完了');
     }
 }

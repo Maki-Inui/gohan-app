@@ -10,8 +10,7 @@ class HistoriesController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $histories = History::with('shop')->where('user_id',$user->id)->orderby('last_view_at','desc')->get();
-        return view('history.index',compact('histories','user'));
+        $histories = History::with('shop')->where('user_id', Auth::id())->orderby('last_view_at', 'desc')->get();
+        return view('history.index', compact('histories'));
     }
 }

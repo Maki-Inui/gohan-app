@@ -2,7 +2,7 @@
 @section('title', 'your-shop_history')
 @section('content')
 <main>
-  <h3>{{ $user->name }}さんのお店の閲覧履歴</h3>
+  <h3>{{ Auth::user()->name }}さんのお店の閲覧履歴</h3>
   @if($histories->isEmpty())
     <p>履歴はありません</p> 
   @else
@@ -12,6 +12,6 @@
     </ul>
     @endforeach
   @endif
-    <a href="{{ route('mypage.show', ['mypage' => $user]) }}">mypageへ戻る</a>
+    <a href="{{ route('mypage.show', ['mypage' => Auth::id()]) }}">mypageへ戻る</a>
 </main>
 @endsection

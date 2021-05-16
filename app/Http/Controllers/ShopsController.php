@@ -11,6 +11,7 @@ use App\Models\Like;
 use App\Models\Nice;
 use App\Models\History;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ShopsController extends Controller
 {
@@ -55,30 +56,36 @@ class ShopsController extends Controller
      */
     public function show($id)
     {
-        $shop = Shop::findOrFail($id);
+        $shop = Shop::find($id);
+
+        if ($shop === null)
+        {
+            return redirect()->route('shops.index')->with('failure', '指定されたIDのお店は存在しません');
+        }
+        
         $reviews = Review::with('nices.user')->where('shop_id', $shop->id)->latest()->get();
         $user_id = Auth::id();
         $visit = Visit::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
         $like = Like::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
 
-        if (Auth::check()) 
-        {
-            $old_history = History::where('user_id', $user_id)->where('shop_id', $shop->id);
-            if ($old_history->exists())
+            if (Auth::check()) 
             {
-                $update = ['last_view_at' => date("Y-m-d H:i:s")];
-                $old_history->update($update);
-            }else 
-            {
-                $history = new History();
-                $history->shop_id = $shop->id;
-                $history->user_id = $user_id;
-                $history->last_view_at = date("Y-m-d H:i:s");
-                $history->save();
+                $old_history = History::where('user_id', $user_id)->where('shop_id', $shop->id);
+                $last_view_at = Carbon::now();
+                if ($old_history->exists())
+                {
+                    $update = ['last_view_at' => $last_view_at];
+                    $old_history->update($update);
+                }else 
+                {
+                    $history = new History();
+                    $history->shop_id = $shop->id;
+                    $history->user_id = $user_id;
+                    $history->last_view_at = $last_view_at;
+                    $history->save();
+                }
             }
-        }
- 
-        return view('shop.show', compact('shop', 'reviews', 'visit', 'like', 'user_id'));
+        return view('shop.show', compact('shop', 'reviews', 'visit', 'like'));
     }
 
     /**
