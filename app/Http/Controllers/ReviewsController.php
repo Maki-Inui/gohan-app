@@ -47,9 +47,9 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return view
      */
-    public function show($id, $shop_id)
+    public function show($shop_id, $id)
     {
-        $review = Review::where('shop_id', $shop_id)->where('id', $id)->first();
+        $review = Review::find($id);
 
         if ($review === null)
         {
