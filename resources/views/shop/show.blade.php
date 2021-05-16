@@ -70,7 +70,7 @@
             <div class="review" style="background-color: pink;">
                 <h2>レビュータイトル：<a href ="{{ route('shops.review.show', ['shop' => $shop, 'review' => $review->id]) }}">{{ $review->title }}</a></h2>
                 @if (Auth::check())
-                    @if($review->nices()->where('user_id', $user_id)->exists())
+                    @if($review->nices()->where('user_id', Auth::id())->exists())
                         @foreach($review->nices as $nice)
                         <form action="{{ route('shops.review.nice.destroy', ['shop' => $shop, 'review' => $review, 'nice' => $nice->id]) }}" method="POST">
                         @csrf

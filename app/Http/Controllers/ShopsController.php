@@ -11,6 +11,7 @@ use App\Models\Like;
 use App\Models\Nice;
 use App\Models\History;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ShopsController extends Controller
 {
@@ -64,21 +65,22 @@ class ShopsController extends Controller
         if (Auth::check()) 
         {
             $old_history = History::where('user_id', $user_id)->where('shop_id', $shop->id);
+            $last_view_at = Carbon::now();
             if ($old_history->exists())
             {
-                $update = ['last_view_at' => date("Y-m-d H:i:s")];
+                $update = ['last_view_at' => $last_view_at];
                 $old_history->update($update);
             }else 
             {
                 $history = new History();
                 $history->shop_id = $shop->id;
                 $history->user_id = $user_id;
-                $history->last_view_at = date("Y-m-d H:i:s");
+                $history->last_view_at = $last_view_at;
                 $history->save();
             }
         }
  
-        return view('shop.show', compact('shop', 'reviews', 'visit', 'like', 'user_id'));
+        return view('shop.show', compact('shop', 'reviews', 'visit', 'like'));
     }
 
     /**
@@ -89,7 +91,7 @@ class ShopsController extends Controller
      */
     public function edit($id)
     {
-        $shop = Shop::find($id);
+        $shop = Shop::findOrFail($id);
         return view('shop.edit', compact('shop'));
     }
 
@@ -106,7 +108,7 @@ class ShopsController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ];
-        Shop::find($id)->update($update);
+        Shop::findOrFail($id)->update($update);
         return redirect()->route('shops.show', $id)->with('success', '編集完了');
     }
 
@@ -118,7 +120,7 @@ class ShopsController extends Controller
      */
     public function destroy($id)
     {
-        Shop::find($id)->delete();
+        Shop::findOrFail($id)->delete();
         return redirect()->route('shops.index')->with('success', 'お店を削除しました');
     }
 }

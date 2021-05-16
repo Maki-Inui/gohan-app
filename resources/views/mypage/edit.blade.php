@@ -2,10 +2,10 @@
 @section('title', 'change_area-page')
 @section('content')
 <main>
-  <form action="{{ route('mypage.update', $user->id) }}" method="POST">
+  <form action="{{ route('mypage.update', Auth::id()) }}" method="POST">
   @csrf
     @method('PUT')
-    @if($user->area_id == 0)
+    @if(Auth::user()->area_id == 0)
       <div class="form-group">
           <label>よく行くエリアの設定</label>
           <select name="area_id">
@@ -20,7 +20,7 @@
       </div>
       <input type="submit" value="登録する">
     @else
-      <h3>{{ $user->name }}さんの設定エリア</h3>
+      <h3>{{ Auth::user()->name }}さんの設定エリア</h3>
       <p>現在のエリア：{{ $area->area_name }} </p>
       <p>↓</p>
       <div class="form-group">
@@ -33,7 +33,7 @@
       </div>
       <div class="form-group">
           <label>プロフィール</label><br>
-          <textarea name="profile">{{ $user->profile }}</textarea>
+          <textarea name="profile">{{ Auth::user()->profile }}</textarea>
       </div>
       <input type="submit" value="更新する">
     @endif

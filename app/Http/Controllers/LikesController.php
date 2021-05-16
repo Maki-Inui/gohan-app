@@ -16,10 +16,8 @@ class LikesController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $user_id = Auth::user()->id;
-        $likes = Like::with('shop')->where('user_id', $user->id)->get(); 
-        return view('like.index', compact('user', 'likes'));
+        $likes = Like::with('shop')->where('user_id', Auth::id())->get(); 
+        return view('like.index', compact('likes'));
     }
 
     /**
@@ -33,7 +31,7 @@ class LikesController extends Controller
     {
         $like = new Like();
         $like->shop_id = $shop_id;
-        $like->user_id = Auth::user()->id;
+        $like->user_id = Auth::id();
         $like->save();
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', '気になるお店登録完了');
     }

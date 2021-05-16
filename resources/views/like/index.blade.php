@@ -2,7 +2,7 @@
 @section('title', 'your-likes')
 @section('content')
 <main>
-  <h3>{{ $user->name }}さんの気になるお店一覧</h3>
+  <h3>{{ Auth::user()->name }}さんの気になるお店一覧</h3>
   @if($likes->isEmpty())
     <p>お気に入りのお店はありません</p>
   @else
@@ -12,6 +12,6 @@
     </ul>
     @endforeach
   @endif
-    <a href="{{ route('mypage.show', ['mypage' => $user]) }}">mypageへ戻る</a>
+    <a href="{{ route('mypage.show', ['mypage' => Auth::id()]) }}">mypageへ戻る</a>
 </main>
 @endsection
