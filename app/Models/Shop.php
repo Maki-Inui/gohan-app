@@ -11,23 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class Shop extends Model
 {
-    use HasFactory;
     protected $table = 'shops';
-    protected $fillable = ['name','description'];
-
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
-    }
-
-    public function visits()
-    {
-        return $this->hasMany(Visit::class);
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
-
+    protected $fillable = ['name', 'description', 'category_id', 'area_id', 'image', 'recommend_score', 'food_score'];
 }

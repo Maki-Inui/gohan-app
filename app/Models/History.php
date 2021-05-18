@@ -8,9 +8,8 @@ use App\Models\Shop;
 
 class History extends Model
 {
-    use HasFactory;
     protected $table = 'histories';
-    protected $fillable = ['shop_id','user_id','last_view_at'];
+    protected $fillable = ['shop_id', 'user_id', 'last_view_at'];
 
     public function shop()
     {
