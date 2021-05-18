@@ -9,11 +9,6 @@ use App\Models\Area;
 
 class MypagesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('login_user_check');
-    }
-
     public function show($id)
     {
         return view('mypage.show');

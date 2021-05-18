@@ -8,12 +8,7 @@ use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('login_user_check');
-    }
-    
+{    
     /**
      * Display a listing of the resource.
      *
