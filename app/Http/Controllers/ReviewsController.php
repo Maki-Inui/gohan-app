@@ -9,6 +9,11 @@ use App\Models\Shop;
 
 class ReviewsController extends Controller
 {
+    public function __construct() 
+    {      
+        $this->middleware('auth')->except(['show']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +33,7 @@ class ReviewsController extends Controller
      * @param  int  $shop_id
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReview $request,$shop_id)
+    public function store(StoreReview $request, $shop_id)
     {
         $review = new Review();
         $review->recommend_score = $request->recommend_score;
@@ -36,6 +41,7 @@ class ReviewsController extends Controller
         $review->title = $request->title;
         $review->comment = $request->comment;
         $review->shop_id = $shop_id;
+        $review->user_id = Auth::id();
         $review->save();
 
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', 'レビューを投稿しました！');

@@ -8,7 +8,7 @@ use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
-{
+{    
     /**
      * Display a listing of the resource.
      *

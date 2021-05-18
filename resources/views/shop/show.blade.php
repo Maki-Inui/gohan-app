@@ -60,7 +60,11 @@
                 <dd>星{{ $shop->food_score }}個</dd>
             </div>
         </dl>
-        <p><a href="{{ route('shops.review.create', ['shop' => $shop] ) }}" >レビューを投稿する</a></p>
+        @auth
+        <div>
+            <a href="{{ route('shops.review.create', ['shop' => $shop] ) }}" >レビューを投稿する</a>
+        </div>
+        @endauth
     </section>
     <section style="text-align: center;">
     @if($reviews->isEmpty())
@@ -105,14 +109,18 @@
                         <dd>星{{ $review->food_score }}個</dd>
                     </div>
                 </dl>
-                <div class="edit">
-                    <a href="{{ route('shops.review.edit', ['shop' => $shop, 'review' => $review]) }}">編集する</a>
-                </div>
-                <form action="{{ route('shops.review.destroy', ['shop' => $shop, 'review' => $review]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="削除する">
-                </form>
+                @auth
+                    @if ($review->user_id == Auth::id()) 
+                    <div class="edit">
+                        <a href="{{ route('shops.review.edit', ['shop' => $shop, 'review' => $review]) }}">編集する</a>
+                    </div>
+                    <form action="{{ route('shops.review.destroy', ['shop' => $shop, 'review' => $review]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="削除する">
+                    </form>
+                    @endif
+                @endauth
             </div>
         @endforeach
     @endif

@@ -2,6 +2,9 @@
 @section('title', 'top-page')
 @section('nav')
 <ul>
+  @if ($message = Session::get('failure'))
+      <p style="color: red;">{{ $message }}</p>
+  @endif
   @auth
     <li><a href="{{ route('mypage.show', ['mypage' => Auth::id() ]) }}">mypage</a></li>
     <li><form method="POST" action="{{ route('logout') }}">

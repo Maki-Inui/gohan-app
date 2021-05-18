@@ -20,24 +20,25 @@ Route::resource('shops', 'App\Http\Controllers\ShopsController');
 
 Route::resource('shops.review', 'App\Http\Controllers\ReviewsController');
 
-Route::resource('shops.review.nice', 'App\Http\Controllers\NicesController',['only' => ['store', 'destroy']]); 
+Route::resource('shops.review.nice', 'App\Http\Controllers\NicesController', ['only' => ['store', 'destroy']]); 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('mypage', 'App\Http\Controllers\MypagesController',['only' => ['show', 'edit', 'update']]); 
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('users', 'App\Http\Controllers\UsersController', ['only' => ['index', 'show']]);
+});
 
-Route::resource('shops.visit', 'App\Http\Controllers\VisitsController',['only' => ['store', 'destroy']]); 
+Route::group(['middleware' => ['login_user_check']], function() {
+    Route::resource('mypage', 'App\Http\Controllers\MypagesController', ['only' => ['show', 'edit', 'update']]); 
+    Route::resource('mypage.visit', 'App\Http\Controllers\VisitsController', ['only' => ['index']]); 
+    Route::resource('mypage.like', 'App\Http\Controllers\LikesController', ['only' => ['index']]); 
+    Route::resource('mypage.history', 'App\Http\Controllers\HistoriesController', ['only' => ['index']]); 
+});
 
-Route::resource('shops.like', 'App\Http\Controllers\LikesController',['only' => ['store', 'destroy']]); 
+Route::resource('shops.visit', 'App\Http\Controllers\VisitsController', ['only' => ['store', 'destroy']]); 
 
-Route::resource('mypage.visit', 'App\Http\Controllers\VisitsController',['only' => ['index']]); 
+Route::resource('shops.like', 'App\Http\Controllers\LikesController', ['only' => ['store', 'destroy']]); 
 
-Route::resource('mypage.like', 'App\Http\Controllers\LikesController',['only' => ['index']]); 
-
-Route::resource('mypage.history', 'App\Http\Controllers\HistoriesController',['only' => ['index']]); 
-
-Route::resource('users', 'App\Http\Controllers\UsersController', ['only' => ['index','show']]);
-
-Route::resource('users.follow', 'App\Http\Controllers\FollowsController', ['only' => ['store','destroy']]);
+Route::resource('users.follow', 'App\Http\Controllers\FollowsController', ['only' => ['store', 'destroy']]);

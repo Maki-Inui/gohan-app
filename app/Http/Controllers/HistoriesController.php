@@ -7,7 +7,7 @@ use App\Models\History;
 use Illuminate\Support\Facades\Auth;
 
 class HistoriesController extends Controller
-{
+{    
     public function index()
     {
         $histories = History::with('shop')->where('user_id', Auth::id())->orderby('last_view_at', 'desc')->get();

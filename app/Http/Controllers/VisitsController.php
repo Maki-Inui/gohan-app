@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class VisitsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('login_user_check');
+    }
+    
     public function index()
     {
         $user_id = Auth::user()->id;
