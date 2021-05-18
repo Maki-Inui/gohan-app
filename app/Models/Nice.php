@@ -13,11 +13,6 @@ class Nice extends Model
     protected $table = 'nices';
     protected $fillable = ['review_id', 'user_id'];
 
-    public function review()
-    {
-        return $this->belongsTo(Review::class);
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -12,7 +12,7 @@ class UsersController extends Controller
     public function index()
     {
         $all_users = User::all();
-        return view('users.index',compact('all_users'));
+        return view('users.index', compact('all_users'));
     }
 
     public function show($id)
@@ -24,7 +24,7 @@ class UsersController extends Controller
             return redirect()->route('users.index')->with('failure', '指定されたIDのアカウントは存在しません');
         }
 
-        $follow = Follow::where('user_id', Auth::id())->where('follow_user_id',$user->id)->first();
-        return view('users.show', compact('user','follow'));
+        $follow = Follow::where('user_id', Auth::id())->where('follow_user_id', $user->id)->first();
+        return view('users.show', compact('user', 'follow'));
     }
 }

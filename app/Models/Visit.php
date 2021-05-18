@@ -10,11 +10,6 @@ class Visit extends Model
     protected $table = 'visits';
     protected $fillable = ['shop_id', 'user_id'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function shop()
     {
         return $this->belongsTo(Shop::class);

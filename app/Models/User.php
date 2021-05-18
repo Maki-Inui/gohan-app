@@ -13,7 +13,6 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens;
-    use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
 
@@ -29,21 +28,6 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Area::class);
     }
-
-    public function visits()
-    {
-        return $this->hasMany(Visit::class);
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    } 
-
-    public function nices()
-    {
-        return $this->hasMany(Nice::class);
-    } 
 
     //フォロー中のユーザー
     public function follows()

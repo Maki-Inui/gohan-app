@@ -8,17 +8,12 @@ use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 
 class VisitsController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('login_user_check');
-    }
-    
+{   
     public function index()
     {
         $user_id = Auth::user()->id;
         $visits = Visit::with('shop')->where('user_id', $user_id)->get(); 
-        return view('visit.index',compact('visits'));
+        return view('visit.index', compact('visits'));
     }
 
     public function store(Request $request, $shop_id)
