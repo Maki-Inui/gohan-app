@@ -67,8 +67,15 @@ class ShopsController extends Controller
         $user_id = Auth::id();
         $visit = Visit::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
         $like = Like::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
-        $last_view_at = Carbon::now();
-        $history = History::historyCreateOrUpdate($user_id, $shop->id, $last_view_at);
+
+        if (Auth::check()) 
+        {
+            $last_view_at = Carbon::now();
+            $history = History::updateOrCreate(
+                ['user_id' => $user_id, 'shop_id' => $shop->id],
+                ['last_view_at' => $last_view_at]
+            );
+        }
         return view('shop.show', compact('shop', 'reviews', 'visit', 'like'));
     }
 
