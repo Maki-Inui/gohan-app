@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreReview;
 use App\Models\Review;
 use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewsController extends Controller
 {
     public function __construct() 
     {      
-        $this->middleware('auth')->except(['show']);
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
+        $this->middleware('review_post_user_check')->only(['edit', 'update', 'destroy']);
     }
 
     /**

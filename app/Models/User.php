@@ -16,7 +16,10 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
 
-    protected $fillable = ['name', 'email', 'password', 'profile', 'area_id'];
+    protected $fillable = ['name', 'email', 'password', 'profile', 'area_id', 'role_id'];
+
+    const NORMAL = 0;
+    const ADMIN  = 1;
 
     protected $hidden = ['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'];
 
@@ -39,5 +42,20 @@ class User extends Authenticatable
     public function followUsers()
     {
       return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id');
+    }
+
+    public function hasShopVisit($shop_id)
+    {
+      return $this->hasMany(Visit::class)->where('shop_id', $shop_id)->exists();
+    }
+
+    public function hasShopLike($shop_id)
+    {
+      return $this->hasMany(Like::class)->where('shop_id', $shop_id)->exists();
+    }
+
+    public function hasReviewNice($review_id)
+    {
+      return $this->hasMany(Nice::class)->where('review_id', $review_id)->exists();
     }
 }

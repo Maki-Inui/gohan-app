@@ -63,20 +63,21 @@ class ShopsController extends Controller
             return redirect()->route('shops.index')->with('failure', '指定されたIDのお店は存在しません');
         }
         
-        $reviews = Review::with('nices.user')->where('shop_id', $shop->id)->latest()->get();
-        $user_id = Auth::id();
-        $visit = Visit::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
-        $like = Like::where('shop_id', $shop->id)->where('user_id', $user_id)->first();
+        $reviews = Review::where('shop_id', $shop->id)->latest()->get();
+        $user = Auth::user();
 
         if (Auth::check()) 
         {
+            $has_shop_visit = $user->hasShopVisit($shop->id);
+            $has_shop_like = $user->hasShopLike($shop->id);
             $last_view_at = Carbon::now();
             $history = History::updateOrCreate(
-                ['user_id' => $user_id, 'shop_id' => $shop->id],
+                ['user_id' => $user->id, 'shop_id' => $shop->id],
                 ['last_view_at' => $last_view_at]
             );
+            return view('shop.show', compact('shop', 'reviews', 'has_shop_visit', 'has_shop_like'));
         }
-        return view('shop.show', compact('shop', 'reviews', 'visit', 'like'));
+        return view('shop.show', compact('shop', 'reviews'));
     }
 
     /**

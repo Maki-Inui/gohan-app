@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 
 class Review extends Model
 {
@@ -16,8 +17,8 @@ class Review extends Model
         return $this->belongsTo(Shop::class);
     }
 
-    public function nices()
+    public function userNices()
     {
-        return $this->HasMany(Nice::class);
+        return $this->HasMany(Nice::class)->where('user_id', Auth::id());
     }
 }
