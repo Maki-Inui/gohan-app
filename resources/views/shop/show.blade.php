@@ -5,30 +5,30 @@
 <main>
     <section style="text-align: center;">
         @if (Auth::check())
-            @if(empty($has_shop_visit))
-            <form action="{{ route('shops.visit.store', ['shop' => $shop]) }}" method="POST">
-            @csrf
-                <input type="submit" value="行ったお店に登録する">
-            </form>
-            @else
+            @if($has_shop_visit)
             <p style='color: pink;'>行ったお店</p>
             <form action="{{ route('shops.visit.destroy', ['shop' => $shop, 'visit' => $has_shop_visit]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="来店済みを解除">
             </form>
-            @endif
-            @if(empty($has_shop_like))
-            <form action="{{ route('shops.like.store', ['shop' => $shop]) }}" method="POST">
-            @csrf
-                <input type="submit" value="気になるお店に登録する">
-            </form>
             @else
+            <form action="{{ route('shops.visit.store', ['shop' => $shop]) }}" method="POST">
+                @csrf
+                <input type="submit" value="行ったお店に登録する">
+            </form>
+            @endif
+            @if($has_shop_like)
             <p style='color: orange;'>気になるお店</p>
             <form action="{{ route('shops.like.destroy', ['shop' => $shop, 'like' => $has_shop_like]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="気になるお店を解除">
+            </form>
+            @else
+            <form action="{{ route('shops.like.store', ['shop' => $shop]) }}" method="POST">
+                @csrf
+                <input type="submit" value="気になるお店に登録する">
             </form>
             @endif
         @endif

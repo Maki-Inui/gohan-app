@@ -12,8 +12,8 @@ class ReviewsController extends Controller
 {
     public function __construct() 
     {      
-        $this->middleware('auth')->except(['show']);
-        $this->middleware('review_post_user_check')->except(['create', 'store', 'show']);
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
+        $this->middleware('review_post_user_check')->only(['edit', 'update', 'destroy']);
     }
 
     /**

@@ -65,7 +65,6 @@ class ShopsController extends Controller
         
         $reviews = Review::where('shop_id', $shop->id)->latest()->get();
         $user = Auth::user();
-        $user_id = Auth::id();
 
         if (Auth::check()) 
         {
@@ -73,7 +72,7 @@ class ShopsController extends Controller
             $has_shop_like = $user->hasShopLike($shop->id);
             $last_view_at = Carbon::now();
             $history = History::updateOrCreate(
-                ['user_id' => $user_id, 'shop_id' => $shop->id],
+                ['user_id' => $user->id, 'shop_id' => $shop->id],
                 ['last_view_at' => $last_view_at]
             );
             return view('shop.show', compact('shop', 'reviews', 'has_shop_visit', 'has_shop_like'));

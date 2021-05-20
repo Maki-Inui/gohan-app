@@ -20,9 +20,8 @@ class ReviewPostUserCheck
     {
         $id = $request->review;
         $review = Review::find($id);
-        $review_user_id = $review->user_id;
 
-        if (Auth::id() != $review_user_id) {
+        if (Auth::id() != $review->user_id) {
            return redirect(route('shops.index'))->with('failure', '指定されたページは開けません');
         }
 
