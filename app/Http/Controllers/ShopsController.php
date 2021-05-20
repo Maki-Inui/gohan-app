@@ -102,10 +102,6 @@ class ShopsController extends Controller
      */
     public function update(StoreShop $request, $id)
     {
-        if($request->user()->cannot('update', $shop)){
-            return redirect()->route('shops.index')->with('failure', '操作する権限がありません');
-        }
-
         $update = [
             'name' => $request->name,
             'description' => $request->description,
