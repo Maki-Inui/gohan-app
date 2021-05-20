@@ -40,4 +40,19 @@ class User extends Authenticatable
     {
       return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id');
     }
+
+    public function hasShopVisit($shop_id)
+    {
+      return $this->hasMany(Visit::class)->where('shop_id', $shop_id)->exists();
+    }
+
+    public function hasShopLike($shop_id)
+    {
+      return $this->hasMany(Like::class)->where('shop_id', $shop_id)->exists();
+    }
+
+    public function hasReviewNice($review_id)
+    {
+      return $this->hasMany(Nice::class)->where('review_id', $review_id)->exists();
+    }
 }

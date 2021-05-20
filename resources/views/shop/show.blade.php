@@ -5,27 +5,27 @@
 <main>
     <section style="text-align: center;">
         @if (Auth::check())
-            @if(empty($visit))
+            @if(empty($has_shop_visit))
             <form action="{{ route('shops.visit.store', ['shop' => $shop]) }}" method="POST">
             @csrf
                 <input type="submit" value="行ったお店に登録する">
             </form>
             @else
             <p style='color: pink;'>行ったお店</p>
-            <form action="{{ route('shops.visit.destroy', ['shop' => $shop, 'visit' => $visit]) }}" method="POST">
+            <form action="{{ route('shops.visit.destroy', ['shop' => $shop, 'visit' => $has_shop_visit]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="来店済みを解除">
             </form>
             @endif
-            @if(empty($like))
+            @if(empty($has_shop_like))
             <form action="{{ route('shops.like.store', ['shop' => $shop]) }}" method="POST">
             @csrf
                 <input type="submit" value="気になるお店に登録する">
             </form>
             @else
             <p style='color: orange;'>気になるお店</p>
-            <form action="{{ route('shops.like.destroy', ['shop' => $shop, 'like' => $like]) }}" method="POST">
+            <form action="{{ route('shops.like.destroy', ['shop' => $shop, 'like' => $has_shop_like]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="気になるお店を解除">
@@ -74,8 +74,8 @@
             <div class="review" style="background-color: pink;">
                 <h2>レビュータイトル：<a href ="{{ route('shops.review.show', ['shop' => $shop, 'review' => $review->id]) }}">{{ $review->title }}</a></h2>
                 @if (Auth::check())
-                    @if($review->nices()->where('user_id', Auth::id())->exists())
-                        @foreach($review->nices->where('user_id', Auth::id()) as $nice)
+                        @if(Auth::user()->hasReviewNice($review->id))
+                        @foreach($review->userNices as $nice)
                         <form action="{{ route('shops.review.nice.destroy', ['shop' => $shop, 'review' => $review, 'nice' => $nice->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')

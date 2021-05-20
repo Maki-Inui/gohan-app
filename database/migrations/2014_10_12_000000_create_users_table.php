@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('profile_photo_path')->nullable();
             $table->timestamps();
             $table->foreignId('area_id');
+            $table->integer('role_id')->default(10)->index();
         });
     }
 
