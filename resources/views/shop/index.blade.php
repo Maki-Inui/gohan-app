@@ -19,7 +19,7 @@
       @else
           @foreach($shops as $shop)
             <div class="article" style="background-color: gray;">
-                <h3>{{$shop->id}}:{{$shop->name}}</h3>
+                <h3>{{$shop->id}}:<a href="{{ route('shops.show', $shop->id) }}">{{$shop->name}}</a></h3>
                 <ul>
                   <li>おすすめ度→星{{ $shop->recommend_score }}個</li>
                   <li>料理の満足度→星{{ $shop->food_score }}個</li>
@@ -36,5 +36,6 @@
           @endforeach
       @endif
     </section>
+    <a href="{{ url('/') }}">トップページに戻る</a>
 </main>
 @endsection

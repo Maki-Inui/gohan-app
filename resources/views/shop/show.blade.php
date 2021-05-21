@@ -73,6 +73,7 @@
           @foreach($reviews as $review)
             <div class="review" style="background-color: pink;">
                 <h2>レビュータイトル：<a href ="{{ route('shops.review.show', ['shop' => $shop, 'review' => $review->id]) }}">{{ $review->title }}</a></h2>
+                <p>投稿者<a href="{{ route('users.show', ['user' => $review->user_id]) }}">{{ $review->user->name }}</a>
                 @if (Auth::check())
                         @if(Auth::user()->hasReviewNice($review->id))
                         @foreach($review->userNices as $nice)

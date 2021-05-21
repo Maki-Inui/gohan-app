@@ -24,7 +24,8 @@ class UsersController extends Controller
             return redirect()->route('users.index')->with('failure', '指定されたIDのアカウントは存在しません');
         }
 
-        $follow = Follow::where('user_id', Auth::id())->where('follow_user_id', $user->id)->first();
-        return view('users.show', compact('user', 'follow'));
+        $following = Auth::user()->following($user->id);
+        $followed = Auth::user()->followed($user->id);
+        return view('users.show', compact('user', 'following', 'followed'));
     }
 }
