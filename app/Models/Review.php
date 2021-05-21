@@ -21,4 +21,9 @@ class Review extends Model
     {
         return $this->HasMany(Nice::class)->where('user_id', Auth::id());
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

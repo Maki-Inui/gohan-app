@@ -6,20 +6,20 @@
   <p>{{$user->name}}さん</p>
   @if (Auth::check())
     @if(Auth::id() !== $user->id)
-      @if(empty($follow))
+      @if(empty($following))
       <form action="{{ route('users.follow.store', $user->id) }}" method="POST">
       @csrf
         <input type="submit" value="フォロー">
       </form>
       @else
-      <form action="{{ route('users.follow.destroy', ['user' => $user->id, 'follow' => $follow->id]) }}" method="POST">
+      <form action="{{ route('users.follow.destroy', ['user' => $user->id, 'follow' => $following->id]) }}" method="POST">
       @csrf
       @method('DELETE')
         <input type="submit" value="フォロー解除">
       </form>
       @endif
     @endif
-    @if(Auth::user()->followUsers()->where('user_id', $user->id)->first())
+    @if($followed)
     <p style="color:pink;">{{ $user->name }}さんにフォローされています</p>
     @endif
   @endif
@@ -31,5 +31,6 @@
   @if($user->profile !== null)
   <p>{{ $user->profile }}</p>
   @endif
+  <a href="{{ url()->previous() }}">前のページに戻る</a>
 </main>
 @endsection

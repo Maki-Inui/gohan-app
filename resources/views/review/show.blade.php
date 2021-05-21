@@ -13,6 +13,11 @@
     </div>
     <div class="description">
       <dt>
+          <h3>投稿者</h3>
+      </dt>
+    <dd><a href="{{ route('users.show', ['user' => $review->user_id]) }}">{{ $review->user->name }}</a></dd>
+    <div class="description">
+      <dt>
           <h3>コメント</h3>
       </dt>
       <dd>{{ $review->comment }}</dd>
