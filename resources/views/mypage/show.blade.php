@@ -10,6 +10,7 @@
 @section('content')
 <main>
   <h3>こんにちは{{ Auth::user()->name }}さん</h3>
+  <i class="fab fa-acquisitions-incorporated"></i>
     @if(Auth::user()->area_id == 0)
     <p>エリア未登録です <a href="{{  route('mypage.edit', Auth::id()) }}">登録はこちら</a></p>  
     @else

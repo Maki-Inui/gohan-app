@@ -4,6 +4,8 @@
 @section('content')
 <main class="bg-gray-100 pb-40">
     <p class="text-center p-4">お店の詳細ページです</p>
+    <i class="far fa-grin-hearts"></i>
+    <i class="fab fa-acquisitions-incorporated"></i>
     <section class="article bg-white w-2/5 mx-auto p-6 shadow">
         @if (Auth::check())
             @if($has_shop_visit)
