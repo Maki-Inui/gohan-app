@@ -368,7 +368,7 @@ ul {
  */
 
 html {
-  font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
@@ -2032,12 +2032,6 @@ select{
 }
 
 .prose-pink{
-}
-
-.main {
-  --tw-bg-opacity: 1;
-  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
-  padding-bottom: 10rem;
 }
 
 .space-y-0 > :not([hidden]) ~ :not([hidden]){
@@ -12775,7 +12769,7 @@ select{
 }
 
 .font-sans{
-  font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .font-serif{
@@ -12784,10 +12778,6 @@ select{
 
 .font-mono{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-.font-body{
-  font-family: ヒラギノ角ゴシック, メイリオ, Meiryo, YuGothic, Yu Gothic, ＭＳ Ｐゴシック, MS PGothic;
 }
 
 .font-thin{
@@ -13038,15 +13028,69 @@ select{
   height: 100vh;
 }
 
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .text-2xl{
-  font-size: 24px;
-  letter-spacing: -0.01em;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl{
-  font-size: 32px;
-  line-height: 40px;
-  letter-spacing: -0.02em;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-5xl{
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-6xl{
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.text-7xl{
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.text-8xl{
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.text-9xl{
+  font-size: 8rem;
+  line-height: 1;
 }
 
 .leading-3{
@@ -39629,6 +39673,12 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
+main {
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+  padding-bottom: 10rem;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
@@ -51649,7 +51699,7 @@ readers do not read off random characters that represent icons */
   }
 
   .sm\:font-sans{
-    font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .sm\:font-serif{
@@ -51658,10 +51708,6 @@ readers do not read off random characters that represent icons */
 
   .sm\:font-mono{
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .sm\:font-body{
-    font-family: ヒラギノ角ゴシック, メイリオ, Meiryo, YuGothic, Yu Gothic, ＭＳ Ｐゴシック, MS PGothic;
   }
 
   .sm\:font-thin{
@@ -51912,15 +51958,69 @@ readers do not read off random characters that represent icons */
     height: 100vh;
   }
 
+  .sm\:text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .sm\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .sm\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .sm\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .sm\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .sm\:text-2xl{
-    font-size: 24px;
-    letter-spacing: -0.01em;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .sm\:text-3xl{
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -0.02em;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .sm\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .sm\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .sm\:text-6xl{
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .sm\:text-7xl{
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .sm\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .sm\:text-9xl{
+    font-size: 8rem;
+    line-height: 1;
   }
 
   .sm\:leading-3{
@@ -84196,7 +84296,7 @@ readers do not read off random characters that represent icons */
   }
 
   .md\:font-sans{
-    font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .md\:font-serif{
@@ -84205,10 +84305,6 @@ readers do not read off random characters that represent icons */
 
   .md\:font-mono{
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .md\:font-body{
-    font-family: ヒラギノ角ゴシック, メイリオ, Meiryo, YuGothic, Yu Gothic, ＭＳ Ｐゴシック, MS PGothic;
   }
 
   .md\:font-thin{
@@ -84459,15 +84555,69 @@ readers do not read off random characters that represent icons */
     height: 100vh;
   }
 
+  .md\:text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .md\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .md\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .md\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .md\:text-2xl{
-    font-size: 24px;
-    letter-spacing: -0.01em;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:text-3xl{
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -0.02em;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .md\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .md\:text-6xl{
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .md\:text-7xl{
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .md\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .md\:text-9xl{
+    font-size: 8rem;
+    line-height: 1;
   }
 
   .md\:leading-3{
@@ -116743,7 +116893,7 @@ readers do not read off random characters that represent icons */
   }
 
   .lg\:font-sans{
-    font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .lg\:font-serif{
@@ -116752,10 +116902,6 @@ readers do not read off random characters that represent icons */
 
   .lg\:font-mono{
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .lg\:font-body{
-    font-family: ヒラギノ角ゴシック, メイリオ, Meiryo, YuGothic, Yu Gothic, ＭＳ Ｐゴシック, MS PGothic;
   }
 
   .lg\:font-thin{
@@ -117006,15 +117152,69 @@ readers do not read off random characters that represent icons */
     height: 100vh;
   }
 
+  .lg\:text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .lg\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .lg\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .lg\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .lg\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .lg\:text-2xl{
-    font-size: 24px;
-    letter-spacing: -0.01em;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .lg\:text-3xl{
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -0.02em;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .lg\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .lg\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .lg\:text-6xl{
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .lg\:text-7xl{
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .lg\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .lg\:text-9xl{
+    font-size: 8rem;
+    line-height: 1;
   }
 
   .lg\:leading-3{
@@ -149290,7 +149490,7 @@ readers do not read off random characters that represent icons */
   }
 
   .xl\:font-sans{
-    font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .xl\:font-serif{
@@ -149299,10 +149499,6 @@ readers do not read off random characters that represent icons */
 
   .xl\:font-mono{
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .xl\:font-body{
-    font-family: ヒラギノ角ゴシック, メイリオ, Meiryo, YuGothic, Yu Gothic, ＭＳ Ｐゴシック, MS PGothic;
   }
 
   .xl\:font-thin{
@@ -149553,15 +149749,69 @@ readers do not read off random characters that represent icons */
     height: 100vh;
   }
 
+  .xl\:text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .xl\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .xl\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .xl\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .xl\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .xl\:text-2xl{
-    font-size: 24px;
-    letter-spacing: -0.01em;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .xl\:text-3xl{
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -0.02em;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .xl\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .xl\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .xl\:text-6xl{
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .xl\:text-7xl{
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .xl\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .xl\:text-9xl{
+    font-size: 8rem;
+    line-height: 1;
   }
 
   .xl\:leading-3{
@@ -181837,7 +182087,7 @@ readers do not read off random characters that represent icons */
   }
 
   .\32xl\:font-sans{
-    font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .\32xl\:font-serif{
@@ -181846,10 +182096,6 @@ readers do not read off random characters that represent icons */
 
   .\32xl\:font-mono{
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .\32xl\:font-body{
-    font-family: ヒラギノ角ゴシック, メイリオ, Meiryo, YuGothic, Yu Gothic, ＭＳ Ｐゴシック, MS PGothic;
   }
 
   .\32xl\:font-thin{
@@ -182100,15 +182346,69 @@ readers do not read off random characters that represent icons */
     height: 100vh;
   }
 
+  .\32xl\:text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .\32xl\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .\32xl\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .\32xl\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .\32xl\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .\32xl\:text-2xl{
-    font-size: 24px;
-    letter-spacing: -0.01em;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .\32xl\:text-3xl{
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -0.02em;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .\32xl\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .\32xl\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .\32xl\:text-6xl{
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .\32xl\:text-7xl{
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .\32xl\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .\32xl\:text-9xl{
+    font-size: 8rem;
+    line-height: 1;
   }
 
   .\32xl\:leading-3{
