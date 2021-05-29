@@ -2,7 +2,7 @@
 
 @section('title', 'shop-page')
 @section('content')
-<main class="bg-gray-100 pb-40">
+<main>
     <p class="text-center p-4">お店の詳細ページです</p>
     <i class="far fa-grin-hearts"></i>
     <i class="fab fa-acquisitions-incorporated"></i>
