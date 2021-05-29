@@ -2,7 +2,7 @@
 
 @section('title', 'shop-page')
 @section('content')
-<main>
+<main class="bg-gray-100 pb-40">
     @if ($message = Session::get('failure'))
       <p style="color: red;">{{ $message }}</p>
     @endif
@@ -18,8 +18,11 @@
       <p>登録がありません</p>  
       @else
           @foreach($shops as $shop)
-            <div class="article" style="background-color: gray;">
-                <h3>{{$shop->id}}:<a href="{{ route('shops.show', $shop->id) }}">{{$shop->name}}</a></h3>
+            <div class="article bg-white w-2/5 mx-auto p-6 shadow">
+                <h3 class="text-3xl">{{$shop->id}}:<a href="{{ route('shops.show', $shop->id) }}">{{$shop->name}}</a></h3>
+                <div class="shop_area">
+                    <p>{{ $shop->area->area_name }}</p>
+                </div>
                 <ul>
                   <li>おすすめ度→星{{ $shop->recommend_score }}個</li>
                   <li>料理の満足度→星{{ $shop->food_score }}個</li>
