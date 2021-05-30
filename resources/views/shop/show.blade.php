@@ -2,7 +2,7 @@
 
 @section('title', 'shop-page')
 @section('content')
-<main class="bg-gray-100 pb-40">
+<main>
     <p class="text-center p-4">お店の詳細ページです</p>
     <section class="article bg-white w-2/5 mx-auto p-6 shadow">
         @if (Auth::check())

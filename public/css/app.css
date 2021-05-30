@@ -39625,7 +39625,7 @@ readers do not read off random characters that represent icons */
 
 main {
   --tw-bg-opacity: 1;
-  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
   padding-bottom: 10rem;
 }
 
