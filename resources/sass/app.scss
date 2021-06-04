@@ -2,8 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-$fa-font-path: "../webfonts";
-
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
@@ -13,4 +11,31 @@ $fa-font-path: "../webfonts";
 main {
   @apply bg-gray-100;
   @apply pb-40;
+}
+
+textarea {
+  resize: vertical;
+  width: 350px;
+  height: 200px;
+}
+
+label:not(:last-of-type) {
+  margin-right: 14px;
+}
+
+.form-group {
+  margin-top: 18px;
+  
+  .title{
+    width: 350px;
+  }
+}
+
+.icon-button {
+  @apply bg-transparent;
+  @apply border-none;
+  @apply cursor-pointer;
+  @apply outline-none;
+  @apply p-0;
+  @apply appearance-none;
 }

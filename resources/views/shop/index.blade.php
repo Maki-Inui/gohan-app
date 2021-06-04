@@ -2,7 +2,7 @@
 
 @section('title', 'shop-page')
 @section('content')
-<main class="bg-gray-100 pb-40">
+<main>
     @if ($message = Session::get('failure'))
       <p style="color: red;">{{ $message }}</p>
     @endif
