@@ -3,19 +3,21 @@
 @section('title', 'user_description')
 @section('content')
 <main>
+  <p class="text-center">プロフィール</p>
+  <section class="article bg-white w-2/5 mx-auto mt-6 p-6 shadow rounded-lg">
   <p>{{$user->name}}さん</p>
   @if (Auth::check())
     @if(Auth::id() !== $user->id)
       @if(empty($following))
       <form action="{{ route('users.follow.store', $user->id) }}" method="POST">
       @csrf
-        <input type="submit" value="フォロー">
+        <button class="icon-button" type="submit">フォロー<i class="fas fa-user-plus"></i></button>
       </form>
       @else
       <form action="{{ route('users.follow.destroy', ['user' => $user->id, 'follow' => $following->id]) }}" method="POST">
       @csrf
       @method('DELETE')
-        <input type="submit" value="フォロー解除">
+        <button class="icon-button" type="submit">フォロー解除<i class="fas fa-user-plus"></i></button>
       </form>
       @endif
     @endif
@@ -31,6 +33,7 @@
   @if($user->profile !== null)
   <p>{{ $user->profile }}</p>
   @endif
-  <a href="{{ url()->previous() }}">前のページに戻る</a>
+  </section>
+  <p class="mt-6 text-gray-400 text-center"><a href="{{ url()->previous() }}">前のページに戻る</a></p>
 </main>
 @endsection

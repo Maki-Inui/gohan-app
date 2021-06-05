@@ -7,10 +7,16 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
+body {
+  @apply flex;
+  @apply flex-col;
+  @apply min-h-screen;
+}
 
 main {
   @apply bg-gray-100;
   @apply py-6;
+  @apply flex-grow;
 }
 
 textarea {
