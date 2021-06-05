@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'top-page')
 @section('content')
-<main class="pb-40">
+<main class="pb-40 pt-0">
   <div class="top-wrapper bg-cover bg-center ... pt-64 pb-64" style="background-image: url(image/hamburger.jpg)">
     <div class="container mx-auto">
       <ul class="text-lg text-gray-600 leading-normal ml-40">

@@ -10,6 +10,7 @@ use App\Models\Visit;
 use App\Models\Like;
 use App\Models\Nice;
 use App\Models\History;
+use App\Models\Area;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -33,7 +34,8 @@ class ShopsController extends Controller
      */
     public function create()
     {
-        return view('shop.create');
+        $areas = Area::all();
+        return view('shop.create', compact('areas'));
     }
 
     /**

@@ -10,7 +10,7 @@
 
 main {
   @apply bg-gray-100;
-  @apply pb-40;
+  @apply py-6;
 }
 
 textarea {
@@ -20,11 +20,11 @@ textarea {
 }
 
 label:not(:last-of-type) {
-  margin-right: 14px;
+  @apply mr-4;
 }
 
 .form-group {
-  margin-top: 18px;
+  @apply mt-6;
   
   .title{
     width: 350px;
