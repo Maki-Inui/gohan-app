@@ -11,7 +11,7 @@
       @else
       <li>よく行くエリア：{{ Auth::user()->area->area_name }} <a class="text-indigo-600" href="{{  route('mypage.edit', Auth::id()) }}">エリアを変更する(プロフィール編集)</a></li>
       @endif
-      <li class="mt-2"><a href="{{  route('mypage.history.index', Auth::id()) }}">お店の閲覧履歴<i class="fas fa-user-plus"></i></a></li>
+      <li class="mt-2"><a href="{{  route('mypage.history.index', Auth::id()) }}">お店の閲覧履歴<i class="fas fa-store"></i></a></li>
     </ul>
   </section>
   <p class="mt-6 text-gray-400 text-center"><a href="{{ url('/') }}">トップページに戻る</a></p>
