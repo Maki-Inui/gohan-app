@@ -48,9 +48,9 @@ class ShopsController extends Controller
     {
         if ($file = $request->image) 
         {
-            $fileName = time() . $file->getClientOriginalName();
+            $file_name = time() . $file->getClientOriginalName();
             $target_path = public_path('image/');
-            $file->move($target_path, $fileName);
+            $file->move($target_path, $file_name);
         } else {
             $fileName = "";
         }
@@ -59,7 +59,7 @@ class ShopsController extends Controller
         $shop->name = $request->name;
         $shop->description = $request->description;
         $shop->area_id = $request->area_id;
-        $shop->image = $fileName;
+        $shop->image = $file_name;
         $shop->save();
 
         return redirect()->route('shops.index')->with('success', '新規登録完了');
@@ -123,19 +123,19 @@ class ShopsController extends Controller
         {
             $path = public_path('image/' . $shop->image);
             \File::delete($path);
-            $fileName = time() . $file->getClientOriginalName();
+            $file_name = time() . $file->getClientOriginalName();
             $target_path = public_path('image/');
-            $file->move($target_path, $fileName);
+            $file->move($target_path, $file_name);
         } else {
-            $fileName = "";
+            $file_name = "";
         }
 
-        $shop->image = $fileName;
+        $shop->image = $file_name;
 
         $update = [
             'name' => $request->name,
             'description' => $request->description,
-            'image' => $fileName
+            'image' => $file_name
         ];
 
         $shop->update($update);
@@ -151,7 +151,7 @@ class ShopsController extends Controller
     public function destroy($id)
     {
         $shop = Shop::find($id);
-        if($file = $shop->image) 
+        if($shop->image) 
         {
             $path = public_path('image/' . $shop->image);
             \File::delete($path);
