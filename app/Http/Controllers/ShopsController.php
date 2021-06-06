@@ -13,7 +13,6 @@ use App\Models\History;
 use App\Models\Area;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
 
 class ShopsController extends Controller
 {
