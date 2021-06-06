@@ -42,9 +42,14 @@
         <div class="shop_name text-3xl font-bold">
             <h2>{{ $shop->name }}</h2>
         </div>
-        <div class="shop_area">
+        <div class="shop_area mb-6">
             <p>{{ $shop->area->area_name }}</p>
         </div>
+        @if( $shop->image )
+        <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/' . $shop->image ) }}" alt="画像"></div>
+        @else
+        <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ url( 'https://placehold.jp/320x240.png?text=No Image' ) }}" alt="画像"></div>
+        @endif
         <dl class="p-6 my-6 bg-yellow-100 rounded">
             <div class="description">
                 <dt>
@@ -76,11 +81,11 @@
     @if($reviews->isEmpty())
       <p>レビューがまだありません！</p>
       @else
-      <div class="flex flex-row">
+      <div class="flex content-between">
           @foreach($reviews as $review)
-                <div class="article w-full lg:w-1/2  max-h-92 bg-white p-4 shadow border-t-4 border-red-400 text-gray-500 rounded-t-sm">
+                <div class="article mx-auto w-5/12 h-80 bg-white p-4 shadow border-t-4 border-red-400 text-gray-500 rounded-t-sm">
                     <div class="text-red-400 text-center">
-                    <a href="{{ route('users.show', ['user' => $review->user_id]) }}">{{ $review->user->name }}さん</a>
+                        <a href="{{ route('users.show', ['user' => $review->user_id]) }}">{{ $review->user->name }}さん</a>
                     </div>
                     <dl class="mt-2">
                         <div class="recomend_score flex">
@@ -106,29 +111,28 @@
                         <dt>
                             <h3>コメント</h3>
                         </dt>
-                        <dd class="pl-4">{{ $review->comment }}</dd>
+                        <dd class="pl-4 truncate">{{ $review->comment }}</dd>
+                        <dd class="mt-2 text-center text-red-400"><a href ="{{ route('shops.review.show', ['shop' => $shop, 'review' => $review->id]) }}">続きを読む</a></dd>
                     </div>
                     @if (Auth::check())
-                    <div class="relative">
-                    <div class= "absolute top-0 right-0">
+                    <div class="text-right">
                         @if(Auth::user()->hasReviewNice($review->id))
                         @foreach($review->userNices as $nice)
                         <form action="{{ route('shops.review.nice.destroy', ['shop' => $shop, 'review' => $review, 'nice' => $nice->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="icon-button" type="submit"><i class="fas fa-heart"></i></button>
+                        <button class="icon-button" type="submit"><i class="fas fa-heart fa-lg text-red-400"></i></button>
                         </form>
                         @endforeach
                         @else
                         <form action="{{ route('shops.review.nice.store', ['shop' => $shop, 'review' => $review->id]) }}" method="POST">
                         @csrf
-                            <button class="icon-button" type="submit"><i class="far fa-heart"></i></button>
+                            <button class="icon-button" type="submit"><i class="far fa-heart fa-lg text-red-400"></i></button>
                         </form>
-                    </div>
-                    </div>
-                        @endif
+                    @endif
                     @endif
                     @auth
+                    </div>
                         @if ($review->user_id == Auth::id()) 
                         <div class="flex">
                             <div class="edit mr-4 text-xs">

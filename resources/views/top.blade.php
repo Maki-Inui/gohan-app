@@ -12,9 +12,9 @@
           <li><a href="{{ route('mypage.show', ['mypage' => Auth::id() ]) }}">マイページ</a></li>
           <li><form method="POST" action="{{ route('logout') }}">
             @csrf
-            <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
                 {{ __('Log Out') }}
-            </x-jet-responsive-nav-link>
+            </a>
           </form></li>
         @else
           <li><a href="{{ route('login') }}">ログイン</a></li>

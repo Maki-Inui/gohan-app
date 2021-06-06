@@ -13,6 +13,7 @@ use App\Models\History;
 use App\Models\Area;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class ShopsController extends Controller
 {
@@ -46,7 +47,22 @@ class ShopsController extends Controller
      */
     public function store(StoreShop $request)
     {
-        Shop::create($request->all());
+        if ($file = $request->image) 
+        {
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('image/');
+            $file->move($target_path, $fileName);
+        } else {
+            $fileName = "";
+        }
+
+        $shop = new Shop;
+        $shop->name = $request->name;
+        $shop->description = $request->description;
+        $shop->area_id = $request->area_id;
+        $shop->image = $fileName;
+        $shop->save();
+
         return redirect()->route('shops.index')->with('success', '新規登録完了');
     }
 
@@ -103,11 +119,27 @@ class ShopsController extends Controller
      */
     public function update(StoreShop $request, $id)
     {
+        $shop = Shop::find($id);
+        if($file = $request->image) 
+        {
+            $path = public_path('image/' . $shop->image);
+            \File::delete($path);
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('image/');
+            $file->move($target_path, $fileName);
+        } else {
+            $fileName = "";
+        }
+
+        $shop->image = $fileName;
+
         $update = [
             'name' => $request->name,
             'description' => $request->description,
+            'image' => $fileName
         ];
-        Shop::find($id)->update($update);
+
+        $shop->update($update);
         return redirect()->route('shops.show', $id)->with('success', '編集完了');
     }
 
@@ -119,7 +151,13 @@ class ShopsController extends Controller
      */
     public function destroy($id)
     {
-        Shop::find($id)->delete();
+        $shop = Shop::find($id);
+        if($file = $shop->image) 
+        {
+            $path = public_path('image/' . $shop->image);
+            \File::delete($path);
+        }
+        $shop->delete();
         return redirect()->route('shops.index')->with('success', 'お店を削除しました');
     }
 }
