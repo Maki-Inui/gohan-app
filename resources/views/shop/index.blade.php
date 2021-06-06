@@ -2,12 +2,12 @@
 
 @section('title', 'shop-page')
 @section('content')
-<main class="bg-gray-100 pb-40">
+<main>
     @if ($message = Session::get('failure'))
       <p style="color: red;">{{ $message }}</p>
     @endif
     @can('isAdmin')
-    <p><a href="{{ route('shops.create') }}" class="btn btn-primary">新規のお店を登録する</a></p>
+    <p class="mb-6 text-center">お店の一覧ページです<span class="ml-8 text-indigo-600"><a href="{{ route('shops.create') }}" class="btn btn-primary">新規のお店を登録する(管理者メニュー)<i class="fas fa-desktop"></i></a></span></p>
     @endcan
     <section style="text-align: center;">
       @if ($message = Session::get('success'))
@@ -18,27 +18,34 @@
       <p>登録がありません</p>  
       @else
           @foreach($shops as $shop)
-            <div class="article bg-white w-2/5 mx-auto p-6 shadow">
-                <h3 class="text-3xl">{{$shop->id}}:<a href="{{ route('shops.show', $shop->id) }}">{{$shop->name}}</a></h3>
+            <div class="article bg-white w-2/5 mt-10 mx-auto p-10 shadow">
+            <a href="{{ route('shops.show', $shop->id) }}">
+                <h3 class="text-3xl pb-1 font-bold text-indigo-600">{{$shop->id}}:{{$shop->name}}</h3>
                 <div class="shop_area">
                     <p>{{ $shop->area->area_name }}</p>
                 </div>
-                <ul>
-                  <li>おすすめ度→星{{ $shop->recommend_score }}個</li>
-                  <li>料理の満足度→星{{ $shop->food_score }}個</li>
+                <ul class="py-6">
+                  <li>おすすめ度→★ｘ{{ $shop->recommend_score }}個</li>
+                  <li>料理の満足度→★ｘ{{ $shop->food_score }}個</li>
                 </ul>
+                @if( $shop->image )
+                <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/' . $shop->image ) }}" alt="画像"></div>
+                @else
+                <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ url( 'https://placehold.jp/320x240.png?text=No Image' ) }}" alt="画像"></div>
+                @endif
                 @can('isAdmin')
-                <a href="{{ route('shops.edit', $shop->id) }}">編集する</a>
+                <a href="{{ route('shops.edit', $shop->id) }}">編集する<i class="fas fa-pencil-alt"></i></a>
                 <form action="{{ route('shops.destroy', $shop->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <input type="submit" value="削除する">
+                    <button class="icon-button" type="submit">削除する<i class="fas fa-trash-alt"></i></button>
                 </form>
                 @endcan
+                </a>
             </div>
           @endforeach
       @endif
     </section>
-    <a href="{{ url('/') }}">トップページに戻る</a>
+    <div class="mt-10 text-center text-gray-400"><a href="{{ url('/') }}">トップページに戻る</a></div>
 </main>
 @endsection

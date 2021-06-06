@@ -1,25 +1,25 @@
 @extends('layouts.app')
 @section('title', 'top-page')
 @section('content')
-<main class="pb-40">
+<main class="pb-40 pt-0">
   <div class="top-wrapper bg-cover bg-center ... pt-64 pb-64" style="background-image: url(image/hamburger.jpg)">
     <div class="container mx-auto">
-      <ul class="text-lg text-gray-600 leading-normal ml-40">
+      <ul class="text-lg text-white leading-normal ml-40">
         @if ($message = Session::get('failure'))
             <p style="color: red;">{{ $message }}</p>
         @endif
         @auth
-          <li><a href="{{ route('mypage.show', ['mypage' => Auth::id() ]) }}">マイページ</a></li>
-          <li><form method="POST" action="{{ route('logout') }}">
+          <li><buttun class="main-button"><a href="{{ route('mypage.show', ['mypage' => Auth::id() ]) }}">マイページ</a></button><li>
+          <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                {{ __('Log Out') }}
-            </x-jet-responsive-nav-link>
-          </form></li>
+            <li><buttun class="main-button mt-4"><a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                {{ __('ログアウト') }}
+            </a></button><li>
+          </form>
         @else
-          <li><a href="{{ route('login') }}">ログイン</a></li>
+          <li><buttun class="main-button"><a href="{{ route('login') }}">ログイン</a></li>
           @if (Route::has('register'))
-            <li><a href="{{ route('register') }}">ユーザー登録</a></li>
+            <li><buttun class="main-button mt-4"><a href="{{ route('register') }}">ユーザー登録</a></li>
           @endif
         @endif
       </ul>
