@@ -2,7 +2,7 @@
 	<a href="{{ url('/') }}">
 	<div class="flex items-center">
 		<div class="w-12">
-			<img src="{{ asset('image/crossed spoon and fork.png') }}" alt="ロゴ">
+			<img src="{{ asset('image/spoon-fork.png') }}" alt="ロゴ">
 		</div>
 		<p class="ml-2 text-gray-500 text-4xl transition duration-300 hover:text-black">ご飯アプリ</p>
 	</div>
