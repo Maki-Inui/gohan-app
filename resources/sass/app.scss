@@ -7,6 +7,21 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
+.menu {
+  @apply pr-4 border-r-2 text-gray-500 transition duration-300 border-yellow-300;
+  &:hover {
+    @apply text-yellow-300;
+  }
+}
+
+.main-button {
+  @apply bg-yellow-400 px-4 py-2 inline-block rounded-xl transition duration-300;
+  &:hover {
+    @apply text-white;
+    @apply bg-opacity-75;
+  }
+}
+
 body {
   @apply flex;
   @apply flex-col;
@@ -45,3 +60,4 @@ label:not(:last-of-type) {
   @apply p-0;
   @apply appearance-none;
 }
+
