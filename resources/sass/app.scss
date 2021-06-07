@@ -7,7 +7,69 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
-main {
-  @apply bg-gray-400;
-  @apply pb-40;
+.menu {
+  @apply pr-4;
+  @apply border-r-2;
+  @apply text-gray-500;
+  @apply transition; 
+  @apply duration-300;
+  @apply border-yellow-300;
+  &:hover {
+    @apply text-yellow-300;
+  }
 }
+
+.main-button {
+  @apply bg-yellow-400;
+  @apply px-4;
+  @apply py-2;
+  @apply inline-block;
+  @apply rounded-xl;  
+  @apply transition;
+  @apply duration-300;
+  
+  &:hover {
+    @apply text-white;
+    @apply bg-opacity-75;
+  }
+}
+
+body {
+  @apply flex;
+  @apply flex-col;
+  @apply min-h-screen;
+}
+
+main {
+  @apply bg-gray-100;
+  @apply py-6;
+  @apply flex-grow;
+}
+
+textarea {
+  resize: vertical;
+  width: 350px;
+  height: 200px;
+}
+
+label:not(:last-of-type) {
+  @apply mr-4;
+}
+
+.form-group {
+  @apply mt-6;
+  
+  .title{
+    width: 350px;
+  }
+}
+
+.icon-button {
+  @apply bg-transparent;
+  @apply border-none;
+  @apply cursor-pointer;
+  @apply outline-none;
+  @apply p-0;
+  @apply appearance-none;
+}
+

@@ -16,30 +16,32 @@ class ShopsSeeder extends Seeder
     public function run()
     {
         DB::table('shops')->insert([
-            // 挿入データを設定
             [
                 'name' => 'ハンバーガー店A',
                 'description' => 'お店のダミーデータです',
-                'category' => 'Hamburger',
+                'category_id' => 1,
                 'area_id' => 1,
                 'recommend_score' => 5,
                 'food_score' => 5,
+                'image' => 'public/image/hamburger.jpg',
             ],
             [
-                'name' => 'ハンバーガー店B',
+                'name' => 'ラーメン店B',
                 'description' => 'お店のダミーデータです',
-                'category' => 'Hamburger',
+                'category_id' => 3,
                 'area_id' => 2,
                 'recommend_score' => 5,
                 'food_score' => 5,
+                'image' => 'public/image/4641100_s.jpg',
             ],
             [
                 'name' => 'タイ料理店C',
                 'description' => 'お店のダミーデータです',
-                'category' => 'Ethnic-food',
+                'category_id' => 2,
                 'area_id' => 3,
                 'recommend_score' => 5,
                 'food_score' => 5,
+                'image' =>'https://placehold.jp/320x240.png?text=ダミー画像'
             ]
         ]);
     }

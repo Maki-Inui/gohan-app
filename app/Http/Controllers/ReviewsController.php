@@ -73,7 +73,7 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return view
      */
-    public function edit($id)
+    public function edit($shop_id, $id)
     {
         $review = Review::find($id);
         return view('review.edit', compact('review'));
