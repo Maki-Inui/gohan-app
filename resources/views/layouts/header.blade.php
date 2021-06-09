@@ -1,4 +1,4 @@
-<header class="py-4 px-6 flex justify-between items-center">
+<header class="py-4 flex justify-between items-center mx-40">
 	<a href="{{ url('/') }}">
 	<div class="flex items-center">
 		<div class="w-12">
@@ -7,7 +7,7 @@
 		<p class="ml-2 text-gray-500 text-4xl transition duration-300 hover:text-black">ご飯アプリ</p>
 	</div>
 	</a>
-	<nav class="mr-6 mt-6">
+	<nav class="">
 		<ul class="flex">
 		　<li class="menu border-l-2 pl-4"><a href="{{ url('/') }}">トップ</a></li>
 			@auth
