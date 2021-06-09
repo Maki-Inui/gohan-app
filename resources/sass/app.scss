@@ -45,6 +45,29 @@ main {
   @apply py-6;
   @apply flex-grow;
 }
+.point {
+  @apply text-gray-500;
+  @apply opacity-0;
+  @apply translate-y-96;
+  @apply transition;
+  @apply duration-300;
+
+  &.show {
+    @apply opacity-100;
+    @apply transform-none;
+    } 
+
+  } 
+
+.feature {
+  @apply mx-2;
+  @apply bg-gray-200;
+  @apply h-full;
+  @apply p-4;
+  @apply bg-yellow-100;
+  @apply rounded-lg;
+  @apply mt-10;
+}
 
 textarea {
   resize: vertical;

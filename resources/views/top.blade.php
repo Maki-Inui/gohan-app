@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'top-page')
 @section('content')
-<main class="pb-40 pt-0">
+<main class="pb-40 pt-0 bg-white">
   <div class="top-wrapper bg-cover bg-center ... pt-64 pb-64" style="background-image: url(image/hamburger.jpg)">
     <div class="container mx-auto">
       <ul class="text-lg text-white leading-normal ml-40">
@@ -25,15 +25,30 @@
       </ul>
     </div>
   </div>
-  <div class="message-wrapper text-center w-2/5 mx-auto">
-    <ul class="mt-16">このアプリの特徴
-      <li class="mt-6">
-      <div class=""><img src="" alt=""></div>
-      <p>女性一人でも気軽に入店できるお店を集めました</p></li>
-      <li>ラーメン、お寿司、焼き鳥、カレーなどジャンルは様々</li>
-      <li>エリア検索でオフィスや自宅付近のお店をチェックできます</li>
-    </ul>
-  </div>
+  <ul class="mt-24 w-9/12 mx-auto text-gray-500">
+    <p class="text-center text-xl">このアプリの特徴</p>
+    <li class="mt-24 flex justify-center">
+      <div class="point w-4/12 mx-2"><img src="image/women3.jpg" alt=""></div>
+      <div class="feature">
+        <p class="text-xl"><span class="font-bold text-yellow-500">女性一人でも</span>気軽に</p>
+        <p class="text-xl pt-1">入店できるお店を集めました</p>
+      </div>
+    </li>
+    <li class="mt-24 flex justify-center">
+      <div class="feature">
+        <p class="text-xl">ラーメン、お寿司、焼き鳥、カレーなど</p>
+        <p class="text-xl pt-1"><span class="font-bold text-yellow-500">様々なジャンル</span>のお店を紹介しています</p>
+      </div>
+      <div class="point w-4/12 mx-2"><img src="image/yummy.png" alt=""></div>
+    </li>
+    <li class="mt-24 flex justify-center">
+      <div class="point w-4/12 mx-2"><img src="image/map.jpg" alt=""></div>
+      <div class="feature">
+        <p class="text-xl"><span class="font-bold text-yellow-500">エリア検索</span>でオフィスや自宅付近にある</p>
+        <p class="text-xl pt-1">お店をチェックできます</p>
+      </div>
+    </li>
+  </ul>
 </main>
 @endsection
 

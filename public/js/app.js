@@ -10,6 +10,16 @@
 /* require('./bootstrap');
 
 require('alpinejs'); */
+var targetElements = document.querySelectorAll(".point");
+window.addEventListener("scroll", function () {
+  for (var i = 0; i < targetElements.length; i++) {
+    var getElementDistance = targetElements[i].getBoundingClientRect().top + targetElements[i].clientHeight * .5;
+
+    if (window.innerHeight > getElementDistance) {
+      targetElements[i].classList.add("show");
+    }
+  }
+});
 
 /***/ }),
 
