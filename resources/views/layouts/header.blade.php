@@ -19,7 +19,7 @@
 		</ul>
 	</nav>
 	<div class="sp-menu lg:hidden" id="open">
-		<a href=""><i class="fas fa-bars fa-2x text-yellow-400"></i></a>
+		<i class="fas fa-bars fa-2x text-yellow-400"></i>
 	</div>
 
 	<div class="overlay fixed -inset-y-0 right-0">

@@ -4,7 +4,7 @@
 @section('content')
 <main>
     <p class="text-center p-4">お店の詳細ページです</p>
-    <section class="article bg-white w-2/5 mx-auto p-6 shadow">
+    <section class="article bg-white w-4/5 lg:w-2/5 mx-auto p-6 shadow">
         <div class="relative">         
             <div class= "absolute top-0 right-0 text-right">
             @if (Auth::check())
