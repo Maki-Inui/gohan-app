@@ -45,6 +45,7 @@ main {
   @apply py-6;
   @apply flex-grow;
 }
+
 .point {
   @apply text-gray-500;
   @apply opacity-0;
@@ -66,7 +67,23 @@ main {
   @apply p-4;
   @apply bg-yellow-100;
   @apply rounded-lg;
-  @apply mt-10;
+
+  &:sm {
+    @apply mt-2;
+  }
+
+  &:md {
+    @apply mt-4;
+  }
+
+  &:lg {
+    @apply mt-10;
+  }
+
+  &:lx {
+    @apply mt-10;
+  }
+
 }
 
 textarea {
@@ -94,5 +111,48 @@ label:not(:last-of-type) {
   @apply outline-none;
   @apply p-0;
   @apply appearance-none;
+}
+
+.sp-menu {
+  #open {
+    cursor: pointer;
+
+    &.hide {
+      display: none;
+    }
+  }
+}
+
+.overlay {
+  left: 20%;
+  @apply opacity-0;
+  @apply pointer-events-none;
+  @apply bg-white;
+  transition: opacity 0.6s;
+  z-index: 50;
+
+  &.show {
+    @apply opacity-90;
+    @apply pointer-events-auto;
+  }
+
+  #close {
+    @apply fixed;
+    top: 20px;
+    right: 12px;
+    @apply cursor-pointer;
+    z-index: 60;
+  }
+
+  .sp-menu-inner {
+    width: 315px;
+    height: 80%;
+    @apply pt-6;
+
+    li:not(:first-of-type) {
+      @apply mt-6;
+    }
+    
+  }
 }
 

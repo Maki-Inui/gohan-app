@@ -10,6 +10,19 @@
 /* require('./bootstrap');
 
 require('alpinejs'); */
+document.addEventListener('DOMContentLoaded', function () {
+  var open = document.getElementById('open');
+  var overlay = document.querySelector('.overlay');
+  var close = document.getElementById('close');
+  open.addEventListener('click', function () {
+    overlay.classList.add('show');
+    open.classList.add('hide');
+  });
+  close.addEventListener('click', function () {
+    overlay.classList.remove('show');
+    open.classList.remove('hide');
+  });
+});
 var targetElements = document.querySelectorAll(".point");
 window.addEventListener("scroll", function () {
   for (var i = 0; i < targetElements.length; i++) {
