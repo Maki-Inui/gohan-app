@@ -27,13 +27,13 @@
 		<div class="sp-menu-inner px-10">
 			<nav>
 				<ul class="pt-6">
-					<li><a href="{{ url('/') }}">トップ</a></li>
+					<li class="sp-menu_list"><a href="{{ url('/') }}">トップ</a></li>
 					@auth
-					<li class=""><a href="{{ route('mypage.show', ['mypage' => Auth::id()]) }}">マイページ</a></li>
-					<li class=""><a href="{{ route('mypage.visit.index', Auth::id()) }}">行ったお店</a></li>
-					<li class=""><a href="{{ route('mypage.like.index', Auth::id()) }}">気になるお店</a></li>
+					<li class="sp-menu_list"><a href="{{ route('mypage.show', ['mypage' => Auth::id()]) }}">マイページ</a></li>
+					<li class="sp-menu_list"><a href="{{ route('mypage.visit.index', Auth::id()) }}">行ったお店</a></li>
+					<li class="sp-menu_list"><a href="{{ route('mypage.like.index', Auth::id()) }}">気になるお店</a></li>
 					@endauth
-					<li class=""><a href="{{ route('shops.index') }}">お店一覧</a></li>
+					<li class="sp-menu_list"><a href="{{ route('shops.index') }}">お店一覧</a></li>
 				</ul>
 			</nav>
 		</div>

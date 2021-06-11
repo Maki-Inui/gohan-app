@@ -46,6 +46,20 @@ main {
   @apply flex-grow;
 }
 
+.wrapper {
+  @apply mx-auto;
+  @apply mt-6;
+  @apply p-6;
+}
+
+.article {
+  @apply shadow;
+  @apply bg-white;
+  @apply mx-auto;
+  @apply mt-6;
+  @apply p-6;
+}
+
 .point {
   @apply text-gray-500;
   @apply opacity-0;
@@ -156,3 +170,7 @@ label:not(:last-of-type) {
   }
 }
 
+.sp-menu_list {
+    @apply text-yellow-300;
+    @apply font-bold;
+}

@@ -3,7 +3,7 @@
 @section('content')
 <main>
   <h3 class="text-center">{{ Auth::user()->name }}さんの行ったお店一覧</h3>
-  <div class="article bg-white w-2/5 mx-auto mt-6 p-6 shadow">
+  <div class="article w-4/5 lg:w-2/5">
   @if($visits->isEmpty())
     <p>行ったお店はありません</p>
   @else

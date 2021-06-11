@@ -2,7 +2,7 @@
 @section('title', 'edit-review')
 @section('content')
 <main>
-  <div class="wrapper w-2/5 mx-auto p-6">
+  <div class="wrapper w-4/5 lg:w-2/5">
     <h3>レビューを編集できます</h3>  
       @include('layouts.error_message')
     <form action="{{ route('shops.review.update', ['review' => $review->id, 'shop' => $review->shop_id])}}" method="POST">

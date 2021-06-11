@@ -2,7 +2,7 @@
 @section('title', 'edit-shop')
 @section('content')
 <main>
-  <div class="wrapper w-2/5 mx-auto p-6">
+  <div class="wrapper w-4/5 lg:w-2/5">
     <h3>お店情報を編集する</h3>  
       @include('layouts.error_message')
     <form action="{{ route('shops.update', $shop->id) }}" method="POST" enctype="multipart/form-data">

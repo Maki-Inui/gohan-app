@@ -2,7 +2,7 @@
 @section('title', 'change_area-page')
 @section('content')
 <main class="flex content-center">
-  <div class="wrapper w-2/5 mx-auto p-6">
+  <div class="wrapper w-4/5 lg:w-2/5">
     <form action="{{ route('mypage.update', Auth::id()) }}" method="POST">
     @csrf
       @method('PUT')

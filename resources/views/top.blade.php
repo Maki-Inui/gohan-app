@@ -11,7 +11,7 @@
         <li><buttun class="main-button"><a href="{{ route('mypage.show', ['mypage' => Auth::id() ]) }}">マイページ</a></button><li>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <li><buttun class="main-button lg:mt-4 lx:mt-4"><a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+          <li><buttun class="main-button mt-2 lg:mt-4 lx:mt-4"><a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
               {{ __('ログアウト') }}
           </a></button><li>
         </form>
