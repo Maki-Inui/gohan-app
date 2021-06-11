@@ -20,7 +20,7 @@ class ShopsSeeder extends Seeder
                 'name' => 'ハンバーガー店A',
                 'description' => 'お店のダミーデータです',
                 'category_id' => 1,
-                'area_id' => 1,
+                'area_id' => 4,
                 'recommend_score' => 5,
                 'food_score' => 5,
                 'image' => 'public/image/hamburger.jpg',
@@ -29,7 +29,7 @@ class ShopsSeeder extends Seeder
                 'name' => 'ラーメン店B',
                 'description' => 'お店のダミーデータです',
                 'category_id' => 3,
-                'area_id' => 2,
+                'area_id' => 34,
                 'recommend_score' => 5,
                 'food_score' => 5,
                 'image' => 'public/image/4641100_s.jpg',
@@ -38,10 +38,10 @@ class ShopsSeeder extends Seeder
                 'name' => 'タイ料理店C',
                 'description' => 'お店のダミーデータです',
                 'category_id' => 2,
-                'area_id' => 3,
+                'area_id' => 44,
                 'recommend_score' => 5,
                 'food_score' => 5,
-                'image' =>'https://placehold.jp/320x240.png?text=ダミー画像'
+                'image' =>'public/image/thai.jpg'
             ]
         ]);
     }
