@@ -2,7 +2,7 @@
 @section('title', 'create-shop')
 @section('content')
 <main>
-  <div class="wrapper w-2/5 mx-auto p-6">
+  <div class="wrapper w-4/5 lg:w-2/5">
     <h3>新規のお店を登録する</h3>
     @include('layouts.error_message')
     <form method="post" action="{{ route('shops.store') }}" enctype="multipart/form-data">
@@ -21,7 +21,7 @@
       </div>
       <div class="form-group">
         <label for="descInput">説明文</label><br>
-        <textarea name="description"></textarea>
+        <textarea class="w-5/6" name="description"></textarea>
       </div>
       <div class="form-group">
         <input type="file" name="image">

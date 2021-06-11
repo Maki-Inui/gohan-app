@@ -102,8 +102,10 @@ main {
 
 textarea {
   resize: vertical;
-  width: 350px;
   height: 200px;
+  &:lg {
+    width: 350px;
+  }
 }
 
 label:not(:last-of-type) {

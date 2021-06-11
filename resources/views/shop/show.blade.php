@@ -39,7 +39,7 @@
         @if ($message = Session::get('success'))
             <p style="color: red;">{{ $message }}</p>
         @endif
-        <div class="shop_name text-3xl font-bold">
+        <div class="shop_name text-3xl font-bold mt-10 lg:mt-0">
             <h2>{{ $shop->name }}</h2>
         </div>
         <div class="shop_area mb-6">

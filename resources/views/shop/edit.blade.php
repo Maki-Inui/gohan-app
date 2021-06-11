@@ -14,7 +14,7 @@
       </div>
       <div class="form-group">
           <label>説明文</label><br>
-          <textarea name="description">{{ $shop->description }}</textarea>
+          <textarea class="w-5/6" name="description">{{ $shop->description }}</textarea>
       </div>
       <div class="form-group">
           <label>画像</label><br>

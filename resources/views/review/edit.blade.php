@@ -14,7 +14,7 @@
       </div>
       <div class="form-group">
           <label>レビュー</label><br>
-          <textarea name="comment">{{ $review->comment }}</textarea>
+          <textarea class="w-5/6" name="comment">{{ $review->comment }}</textarea>
       </div>
       <div class="form-group">
         <p>おすすめ度<p>
