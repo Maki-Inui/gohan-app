@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AreasTableSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,21 +14,21 @@ class AreasTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('areas')->insert([
+        DB::table('categories')->insert([
             [
-                'area_name' => '表参道',
+                'category_name' => 'ハンバーガー',
             ],
             [
-                'area_name' => '渋谷',
+                'category_name' => 'エスニック',
             ],
             [
-                'area_name' => '虎ノ門',
+                'category_name' => 'ラーメン',
             ],
             [
-                'area_name' => '赤坂',
+                'category_name' => 'お寿司',
             ],
             [
-                'area_name' => '溜池山王',
+                'category_name' => '焼き鳥',
             ]
         ]);
     }
