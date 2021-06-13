@@ -46,10 +46,66 @@ main {
   @apply flex-grow;
 }
 
+.wrapper {
+  @apply mx-auto;
+  @apply mt-6;
+  @apply p-6;
+}
+
+.article {
+  @apply shadow;
+  @apply bg-white;
+  @apply mx-auto;
+  @apply mt-6;
+  @apply p-6;
+}
+
+.point {
+  @apply text-gray-500;
+  @apply opacity-0;
+  @apply translate-y-96;
+  @apply transition;
+  @apply duration-300;
+
+  &.show {
+    @apply opacity-100;
+    @apply transform-none;
+    } 
+
+  } 
+
+.feature {
+  @apply mx-2;
+  @apply bg-gray-200;
+  @apply h-full;
+  @apply p-4;
+  @apply bg-yellow-100;
+  @apply rounded-lg;
+
+  &:sm {
+    @apply mt-2;
+  }
+
+  &:md {
+    @apply mt-4;
+  }
+
+  &:lg {
+    @apply mt-10;
+  }
+
+  &:lx {
+    @apply mt-10;
+  }
+
+}
+
 textarea {
   resize: vertical;
-  width: 350px;
   height: 200px;
+  &:lg {
+    width: 350px;
+  }
 }
 
 label:not(:last-of-type) {
@@ -73,3 +129,50 @@ label:not(:last-of-type) {
   @apply appearance-none;
 }
 
+.sp-menu {
+  #open {
+    cursor: pointer;
+
+    &.hide {
+      display: none;
+    }
+  }
+}
+
+.overlay {
+  left: 20%;
+  @apply opacity-0;
+  @apply pointer-events-none;
+  @apply bg-white;
+  transition: opacity 0.6s;
+  z-index: 50;
+
+  &.show {
+    @apply opacity-90;
+    @apply pointer-events-auto;
+  }
+
+  #close {
+    @apply fixed;
+    top: 20px;
+    right: 12px;
+    @apply cursor-pointer;
+    z-index: 60;
+  }
+
+  .sp-menu-inner {
+    width: 315px;
+    height: 80%;
+    @apply pt-6;
+
+    li:not(:first-of-type) {
+      @apply mt-6;
+    }
+    
+  }
+}
+
+.sp-menu_list {
+    @apply text-yellow-300;
+    @apply font-bold;
+}

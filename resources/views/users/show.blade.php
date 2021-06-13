@@ -4,7 +4,7 @@
 @section('content')
 <main>
   <p class="text-center">プロフィール</p>
-  <section class="article bg-white w-2/5 mx-auto mt-6 p-6 shadow rounded-lg">
+  <section class="article w-4/5 lg:w-2/5 rounded-lg">
   <p>{{$user->name}}さん</p>
   @if (Auth::check())
     @if(Auth::id() !== $user->id)

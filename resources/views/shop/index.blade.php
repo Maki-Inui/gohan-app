@@ -6,8 +6,9 @@
     @if ($message = Session::get('failure'))
       <p style="color: red;">{{ $message }}</p>
     @endif
+    <p class="mb-6 text-center">お店の一覧ページです</p>
     @can('isAdmin')
-    <p class="mb-6 text-center">お店の一覧ページです<span class="ml-8 text-indigo-600"><a href="{{ route('shops.create') }}" class="btn btn-primary">新規のお店を登録する(管理者メニュー)<i class="fas fa-desktop"></i></a></span></p>
+    <p class="text-indigo-600 text-center"><a href="{{ route('shops.create') }}" class="btn btn-primary">新規のお店を登録する(管理者メニュー)<i class="fas fa-desktop"></i></a></p>
     @endcan
     <section style="text-align: center;">
       @if ($message = Session::get('success'))
@@ -18,7 +19,7 @@
       <p>登録がありません</p>  
       @else
           @foreach($shops as $shop)
-            <div class="article bg-white w-2/5 mt-10 mx-auto p-10 shadow">
+            <div class="article bg-white w-4/5 lg:w-2/5 mt-10 mx-auto p-10 shadow">
             <a href="{{ route('shops.show', $shop->id) }}">
                 <h3 class="text-3xl pb-1 font-bold text-indigo-600">{{$shop->id}}:{{$shop->name}}</h3>
                 <div class="shop_area">

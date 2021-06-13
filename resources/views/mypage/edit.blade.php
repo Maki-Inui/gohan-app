@@ -2,7 +2,7 @@
 @section('title', 'change_area-page')
 @section('content')
 <main class="flex content-center">
-  <div class="wrapper w-2/5 mx-auto p-6">
+  <div class="wrapper w-4/5 lg:w-2/5">
     <form action="{{ route('mypage.update', Auth::id()) }}" method="POST">
     @csrf
       @method('PUT')
@@ -17,9 +17,9 @@
         </div>
         <div class="form-group">
             <label>プロフィールの登録</label><br>
-            <textarea name="profile" placeholder="プロフィール文を入力してください"></textarea>
+            <textarea class="w-full" name="profile" placeholder="プロフィール文を入力してください"></textarea>
         </div>
-        <input type="submit" value="登録する">
+        <button class="mt-6 p-2 rounded bg-red-300 hover:bg-yellow-300 text-gray-800" type="submit">登録する</button>
       @else
         <h3>{{ Auth::user()->name }}さんの設定エリア</h3>
         <p class="mt-2">現在のエリア：{{ $area->area_name }} </p>
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             <label>プロフィール</label><br>
-            <textarea name="profile">{{ Auth::user()->profile }}</textarea>
+            <textarea class="w-full" name="profile">{{ Auth::user()->profile }}</textarea>
         </div>
         <button class="mt-6 p-2 rounded bg-red-300 hover:bg-yellow-300 text-gray-800" type="submit">更新する</button>
       @endif

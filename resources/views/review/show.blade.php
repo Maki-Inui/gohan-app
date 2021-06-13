@@ -4,9 +4,9 @@
 @section('content')
 <main>
   <h2 class="text-center mb-6">お店レビューの詳細を表示しています</h2>
-  <section class="article bg-white w-2/5 mx-auto p-6 shadow">
+  <section class="article w-4/5 lg:w-2/5">
     <p class="text-3xl font-bold">{{ $review->shop->name }}の口コミ</p>
-    <dl class="mt-4 flex content-between text-gray-500">
+    <dl class="mt-4 lg:flex content-between text-gray-500">
       <div class="description flex mr-4">
         <dt>
             <h3>投稿者</h3>

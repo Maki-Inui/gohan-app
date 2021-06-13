@@ -2,7 +2,7 @@
 @section('title', 'edit-review')
 @section('content')
 <main>
-  <div class="wrapper w-2/5 mx-auto p-6">
+  <div class="wrapper w-4/5 lg:w-2/5">
     <h3>レビューを編集できます</h3>  
       @include('layouts.error_message')
     <form action="{{ route('shops.review.update', ['review' => $review->id, 'shop' => $review->shop_id])}}" method="POST">
@@ -14,7 +14,7 @@
       </div>
       <div class="form-group">
           <label>レビュー</label><br>
-          <textarea name="comment">{{ $review->comment }}</textarea>
+          <textarea class="w-5/6" name="comment">{{ $review->comment }}</textarea>
       </div>
       <div class="form-group">
         <p>おすすめ度<p>

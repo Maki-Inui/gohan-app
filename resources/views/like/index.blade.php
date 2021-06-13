@@ -3,12 +3,12 @@
 @section('content')
 <main>
   <h3 class="text-center">{{ Auth::user()->name }}さんの気になるお店一覧</h3>
-  <div class="article bg-white w-2/5 mx-auto mt-6 p-6 shadow">
+  <div class="">
     @if($likes->isEmpty())
-      <p>お気に入りのお店はありません</p>
+      <p class="article w-4/5 lg:w-2/5 rounded-lg">お気に入りのお店はありません</p>
     @else
       @foreach($likes as $like)
-      <ul class="article">
+      <ul class="article w-4/5 lg:w-2/5">
         <li><a href="{{  route('shops.show', $like->shop_id) }}">{{ $like->shop->name }}</a></li>
         <li>{{ $like->shop->area->area_name }}</li>
       </ul>

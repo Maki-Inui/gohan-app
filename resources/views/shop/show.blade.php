@@ -4,7 +4,7 @@
 @section('content')
 <main>
     <p class="text-center p-4">お店の詳細ページです</p>
-    <section class="article bg-white w-2/5 mx-auto p-6 shadow">
+    <section class="article w-4/5 lg:w-2/5">
         <div class="relative">         
             <div class= "absolute top-0 right-0 text-right">
             @if (Auth::check())
@@ -39,7 +39,7 @@
         @if ($message = Session::get('success'))
             <p style="color: red;">{{ $message }}</p>
         @endif
-        <div class="shop_name text-3xl font-bold">
+        <div class="shop_name text-3xl font-bold mt-12 lg:mt-0">
             <h2>{{ $shop->name }}</h2>
         </div>
         <div class="shop_area mb-6">
@@ -76,14 +76,14 @@
         </button>
         @endauth
     </section>
-    <section class="w-2/5 mt-6 mx-auto">
+    <section class="w-4/5 lg:w-2/5 mt-6 mx-auto">
     <p class = "pl-2 font-semibold">レビュー一覧</p>
     @if($reviews->isEmpty())
       <p>レビューがまだありません！</p>
       @else
-      <div class="flex content-between">
+      <div class="lg:flex content-between">
           @foreach($reviews as $review)
-                <div class="article mx-auto w-5/12 h-80 bg-white p-4 shadow border-t-4 border-red-400 text-gray-500 rounded-t-sm">
+                <div class="article mx-auto w-4/5 lg:w-5/12 h-80 bg-white p-4 shadow border-t-4 border-red-400 text-gray-500 rounded-t-sm">
                     <div class="text-red-400 text-center">
                         <a href="{{ route('users.show', ['user' => $review->user_id]) }}">{{ $review->user->name }}さん</a>
                     </div>
