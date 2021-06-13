@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +11,10 @@
 </head>
 
 <body>
-@include('layouts.header')
-@yield('content')
-<h2>@yield('h2')</h2>
-@include('layouts.footer')
+  @include('layouts.header')
+  @yield('content')
+  <h2>@yield('h2')</h2>
+  @include('layouts.footer')
 </body>
 
 </html>
