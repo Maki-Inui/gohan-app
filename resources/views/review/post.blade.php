@@ -3,7 +3,7 @@
 @section('title', 'post-review')
 @section('content')
 <main>
-  div class="wrapper w-4/5 lg:w-2/5">
+  <div class="wrapper w-4/5 lg:w-2/5">
   <h3>レビューを投稿しよう</h3>
   @include('layouts.error_message')
   <form action="{{ route('shops.review.store', $shop) }}" method="POST">
