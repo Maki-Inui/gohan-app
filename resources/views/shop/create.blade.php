@@ -6,7 +6,7 @@
     <h3>新規のお店を登録する</h3>
     @include('layouts.error_message')
     <form method="post" action="{{ route('shops.store') }}" enctype="multipart/form-data">
-    @csrf
+      @csrf
       <div class="form-group">
         <label for="shopName">お店の名前</label><br>
         <input type="text" name="name">
@@ -15,9 +15,9 @@
         <label for="shopArea">エリア</label><br>
         <select name="area_id">
           @foreach ($areas as $value)
-            <option value="{{ $value->id }}">{{ $value->area_name }}</option>
+          <option value="{{ $value->id }}">{{ $value->area_name }}</option>
           @endforeach
-          </select>
+        </select>
       </div>
       <div class="form-group">
         <label for="descInput">説明文</label><br>
@@ -30,7 +30,7 @@
     </form>
   </div>
   <div class="mt-8 text-center text-gray-400">
-      <a class="p-4" href="{{ route('shops.index') }}">お店一覧ページへ戻る</a>
+    <a class="p-4" href="{{ route('shops.index') }}">お店一覧ページへ戻る</a>
   </div>
 </main>
 @endsection

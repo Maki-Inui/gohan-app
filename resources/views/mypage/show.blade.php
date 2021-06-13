@@ -6,11 +6,11 @@
   <section class="article w-4/5 lg:w-2/5 rounded-lg">
     <h3>こんにちは{{ Auth::user()->name }}さん</h3>
     <ul class="mt-8">
-      @if(Auth::user()->area_id == 0)
+    @if(Auth::user()->area_id == 0)
       <li>エリア未登録です <a href="{{  route('mypage.edit', Auth::id()) }}">登録はこちら</a></li>
-      @else
+    @else
       <li>よく行くエリア：{{ Auth::user()->area->area_name }} <a class="text-indigo-600" href="{{  route('mypage.edit', Auth::id()) }}">エリアを変更する(プロフィール編集)</a></li>
-      @endif
+    @endif
       <li class="mt-2"><a href="{{  route('mypage.history.index', Auth::id()) }}">お店の閲覧履歴<i class="fas fa-store text-yellow-300"></i></a></li>
     </ul>
   </section>

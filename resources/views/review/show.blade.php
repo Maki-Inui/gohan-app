@@ -9,34 +9,34 @@
     <dl class="mt-4 lg:flex content-between text-gray-500">
       <div class="description flex mr-4">
         <dt>
-            <h3>投稿者</h3>
+          <h3>投稿者</h3>
         </dt>
         <dd><a href="{{ route('users.show', ['user' => $review->user_id]) }}">{{ $review->user->name }}さん</a>
         </dd>
-      </div>  
+      </div>
       <div class="recomend_score flex mr-4">
-          <dt>
-              <h3>おすすめ度</h3>
-          </dt>
-          <dd>★ｘ{{ $review->recommend_score }}個</dd>
+        <dt>
+          <h3>おすすめ度</h3>
+        </dt>
+        <dd>★ｘ{{ $review->recommend_score }}個</dd>
       </div>
       <div class="food_score flex">
-          <dt>
-              <h3>料理の満足度</h3>
-          </dt>
-          <dd>★ｘ{{ $review->food_score }}個</dd>
-        </div>
+        <dt>
+          <h3>料理の満足度</h3>
+        </dt>
+        <dd>★ｘ{{ $review->food_score }}個</dd>
+      </div>
     </dl>
     <dl class="mt-4 text-gray-500">
       <div class="description">
         <dt>
-            <h3>タイトル</h3>
+          <h3>タイトル</h3>
         </dt>
         <dd class="text-center">{{ $review->title }}</dd>
       </div>
       <div class="description">
         <dt>
-            <h3>コメント</h3>
+          <h3>コメント</h3>
         </dt>
         <dd>{{ $review->comment }}</dd>
       </div>

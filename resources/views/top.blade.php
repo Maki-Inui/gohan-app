@@ -5,21 +5,29 @@
   <div class="top-wrapper bg-cover bg-center h-96 flex items-center lg:pt-64 lg:pb-64" style="background-image: url(image/hamburger.jpg)">
     <ul class="text-lg text-white leading-normal ml-2 md:ml-6 lg:ml-40 lx:ml-40">
       @if ($message = Session::get('failure'))
-          <p style="color: red;">{{ $message }}</p>
+      <p style="color: red;">{{ $message }}</p>
       @endif
       @auth
-        <li><buttun class="main-button"><a href="{{ route('mypage.show', ['mypage' => Auth::id() ]) }}">マイページ</a></button><li>
+      <li>
+        <buttun class="main-button"><a href="{{ route('mypage.show', ['mypage' => Auth::id() ]) }}">マイページ</a></button>
+      <li>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <li><buttun class="main-button mt-2 lg:mt-4 lx:mt-4"><a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-              {{ __('ログアウト') }}
-          </a></button><li>
+      <li>
+        <buttun class="main-button mt-2 lg:mt-4 lx:mt-4"><a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+            {{ __('ログアウト') }}
+          </a></button>
+      <li>
         </form>
-      @else
-        <li><buttun class="main-button"><a href="{{ route('login') }}">ログイン</a></li>
-        @if (Route::has('register'))
-          <li><buttun class="main-button mt-4"><a href="{{ route('register') }}">ユーザー登録</a></li>
-        @endif
+        @else
+      <li>
+        <buttun class="main-button"><a href="{{ route('login') }}">ログイン</a>
+      </li>
+      @if (Route::has('register'))
+      <li>
+        <buttun class="main-button mt-4"><a href="{{ route('register') }}">ユーザー登録</a>
+      </li>
+      @endif
       @endif
     </ul>
   </div>
@@ -33,7 +41,7 @@
       </div>
     </li>
     <li class="mt-24 lg:flex lx:flex justify-center flex-row-reverse">
-    <div class="point lg:w-4/12 lx:w-4/12 mx-2 sm:max-w-screen-sm md:max-w-screen-md"><img src="image/yummy.png" alt=""></div>
+      <div class="point lg:w-4/12 lx:w-4/12 mx-2 sm:max-w-screen-sm md:max-w-screen-md"><img src="image/yummy.png" alt=""></div>
       <div class="feature">
         <p class="text-xl">ラーメン、お寿司、焼き鳥、カレーなど</p>
         <p class="text-xl pt-1"><span class="font-bold text-yellow-500">様々なジャンル</span>のお店を紹介しています</p>
@@ -49,5 +57,3 @@
   </ul>
 </main>
 @endsection
-
-
