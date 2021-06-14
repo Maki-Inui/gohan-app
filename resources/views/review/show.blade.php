@@ -14,7 +14,7 @@
         <dd><a href="{{ route('users.show', ['user' => $review->user_id]) }}">{{ $review->user->name }}さん</a>
         </dd>
       </div>
-      <div class="recomend_score flex mr-4">
+      <div class="recomend_score flex mr-4 mb-4">
         <dt>
           <h3>おすすめ度</h3>
         </dt>
@@ -27,6 +27,10 @@
         <dd>★ｘ{{ $review->food_score }}個</dd>
       </div>
     </dl>
+      @if( $review->image )
+      <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/' . $review->image ) }}" alt="画像">
+      </div>
+      @endif
     <dl class="mt-4 text-gray-500">
       <div class="description">
         <dt>

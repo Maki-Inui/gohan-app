@@ -5,7 +5,7 @@
   <div class="wrapper w-4/5 lg:w-2/5">
     <h3>レビューを編集できます</h3>
     @include('layouts.error_message')
-    <form action="{{ route('shops.review.update', ['review' => $review->id, 'shop' => $review->shop_id])}}" method="POST">
+    <form action="{{ route('shops.review.update', ['review' => $review->id, 'shop' => $review->shop_id])}}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="form-group">
@@ -32,6 +32,9 @@
           <label><input type="radio" value="3" name="food_score" @if ($review->food_score == 3) checked @endif>3</label>
           <label><input type="radio" value="4" name="food_score" @if ($review->food_score == 4) checked @endif>4</label>
           <label><input type="radio" value="5" name="food_score" @if ($review->food_score == 5) checked @endif>5</label>
+      </div>
+      <div class="form-group">
+        <input type="file" name="image">
       </div>
       <button type="submit" class="mt-6 p-2 rounded bg-red-300 hover:bg-yellow-300 text-gray-800">更新する</button>
     </form>
