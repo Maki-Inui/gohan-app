@@ -127,7 +127,7 @@ class ShopsController extends Controller
             $target_path = public_path('image/');
             $file->move($target_path, $file_name);
         } else {
-            $file_name = "";
+            $file_name = $shop->image;
         }
 
         $shop->image = $file_name;

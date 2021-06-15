@@ -37,6 +37,15 @@ class ReviewsController extends Controller
      */
     public function store(StoreReview $request, $shop_id)
     {
+        if ($file = $request->image) 
+        {
+            $file_name = time() . $file->getClientOriginalName();
+            $target_path = public_path('image/');
+            $file->move($target_path, $file_name);
+        } else {
+            $file_name = "";
+        }
+
         $review = new Review();
         $review->recommend_score = $request->recommend_score;
         $review->food_score = $request->food_score;
@@ -44,6 +53,7 @@ class ReviewsController extends Controller
         $review->comment = $request->comment;
         $review->shop_id = $shop_id;
         $review->user_id = Auth::id();
+        $review->image = $file_name;
         $review->save();
 
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', 'レビューを投稿しました！');
@@ -89,13 +99,26 @@ class ReviewsController extends Controller
      */
     public function update(StoreReview $request, $shop_id, $id)
     {
+        $review = Review::find($id);
+        if($file = $request->image) 
+        {
+            $path = public_path('image/' . $review->image);
+            \File::delete($path);
+            $file_name = time() . $file->getClientOriginalName();
+            $target_path = public_path('image/');
+            $file->move($target_path, $file_name);
+        } else {
+            $file_name = $review->image;
+        }
+
         $update = [
             'title' => $request->title,
             'comment' => $request->comment,
             'recommend_score' => $request->recommend_score,
             'food_score' => $request->food_score,
+            'image' => $file_name
         ];
-        Review::find($id)->update($update);
+        $review->update($update);
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', '編集完了');
     }
 
@@ -108,7 +131,13 @@ class ReviewsController extends Controller
      */
     public function destroy($shop_id, $id)
     {
-        Review::find($id)->delete();
+        $review = Review::find($id);
+        if($review->image) 
+        {
+            $path = public_path('image/' . $review->image);
+            \File::delete($path);
+        }
+        $review->delete();
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', 'レビューを削除しました');
     }
 }

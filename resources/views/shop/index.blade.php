@@ -21,8 +21,13 @@
     <div class="article bg-white w-4/5 lg:w-2/5 mt-10 mx-auto p-10 shadow">
       <a href="{{ route('shops.show', $shop->id) }}">
         <h3 class="text-3xl pb-1 font-bold text-indigo-600">{{$shop->id}}:{{$shop->name}}</h3>
-        <div class="shop_area">
-          <p>{{ $shop->area->area_name }}</p>
+        <div class="flex justify-center">
+          <div class="shop_area">
+            <p>{{ $shop->area->area_name }}/</p>
+          </div>
+          <div class="shop_category">
+            <p>{{ $shop->category->category_name }}</p>
+          </div>        
         </div>
         <ul class="py-6">
           <li>おすすめ度→★ｘ{{ $shop->recommend_score }}個</li>

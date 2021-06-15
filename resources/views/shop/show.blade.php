@@ -42,8 +42,13 @@
     <div class="shop_name text-3xl font-bold mt-12 lg:mt-0">
       <h2>{{ $shop->name }}</h2>
     </div>
-    <div class="shop_area mb-6">
-      <p>{{ $shop->area->area_name }}</p>
+    <div class="flex mb-6">
+      <div class="shop_area">
+        <p>{{ $shop->area->area_name }}/</p>
+      </div>
+      <div class="shop_category">
+        <p>{{ $shop->category->category_name }}</p>
+      </div>        
     </div>
     @if( $shop->image )
     <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/' . $shop->image ) }}" alt="画像"></div>
@@ -83,7 +88,7 @@
     @else
     <div class="lg:flex content-between">
       @foreach($reviews as $review)
-      <div class="article mx-auto w-4/5 lg:w-5/12 h-80 bg-white p-4 shadow border-t-4 border-red-400 text-gray-500 rounded-t-sm">
+      <div class="article mx-auto w-4/5 lg:w-5/12 h-auto bg-white p-4 shadow border-t-4 border-red-400 text-gray-500 rounded-t-sm">
         <div class="text-red-400 text-center">
           <a href="{{ route('users.show', ['user' => $review->user_id]) }}">{{ $review->user->name }}さん</a>
         </div>
@@ -107,6 +112,10 @@
           </dt>
           <dd><a href="{{ route('shops.review.show', ['shop' => $shop, 'review' => $review->id]) }}">{{ $review->title }}</a></dd>
         </div>
+        @if( $review->image )
+        <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/' . $review->image ) }}" alt="画像">
+        </div>
+        @endif
         <div class="description h-28 mt-2">
           <dt>
             <h3>コメント</h3>

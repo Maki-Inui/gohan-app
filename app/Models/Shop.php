@@ -14,4 +14,9 @@ class Shop extends Model
     {
         return $this->belongsTo(Area::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
