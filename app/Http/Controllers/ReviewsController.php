@@ -43,7 +43,7 @@ class ReviewsController extends Controller
             $target_path = public_path('image/');
             $file->move($target_path, $file_name);
         } else {
-            $fileName = "";
+            $file_name = "";
         }
 
         $review = new Review();
@@ -110,8 +110,6 @@ class ReviewsController extends Controller
         } else {
             $file_name = $review->image;
         }
-
-        $review->image = $file_name;
 
         $update = [
             'title' => $request->title,
