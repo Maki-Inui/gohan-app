@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreReview;
 use App\Models\Review;
 use App\Models\Shop;
+use App\Models\Photo;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewsController extends Controller
@@ -37,15 +38,6 @@ class ReviewsController extends Controller
      */
     public function store(StoreReview $request, $shop_id)
     {
-        if ($file = $request->image) 
-        {
-            $file_name = time() . $file->getClientOriginalName();
-            $target_path = public_path('image/');
-            $file->move($target_path, $file_name);
-        } else {
-            $file_name = "";
-        }
-
         $review = new Review();
         $review->recommend_score = $request->recommend_score;
         $review->food_score = $request->food_score;
@@ -53,8 +45,22 @@ class ReviewsController extends Controller
         $review->comment = $request->comment;
         $review->shop_id = $shop_id;
         $review->user_id = Auth::id();
-        $review->image = $file_name;
         $review->save();
+
+        $files = $request->file('image');
+        if ($request->hasFile('image')) 
+        {
+            foreach($files as $file) 
+            {
+                $photo = new Photo();
+                $file_name = time() . $file->getClientOriginalName();
+                $target_path = public_path('image/review/');
+                $file->move($target_path, $file_name);
+                $photo->path = $file_name;
+                $photo->review_id = $review->id;
+                $photo->save();
+            }
+        }
 
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', 'レビューを投稿しました！');
     }

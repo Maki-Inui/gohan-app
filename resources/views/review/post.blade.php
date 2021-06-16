@@ -44,7 +44,10 @@
       <textarea class="w-5/6" name="comment"></textarea>
     </div>
     <div class="form-group">
-      <input type="file" name="image">
+      <input type="file" name="image[]" id="image1" multiple>
+    </div>
+    <div class="form-group">
+      <input type="file" name="image[]" id="image2" multiple>
     </div>
     <button class="mt-6 p-2 rounded bg-red-300 hover:bg-yellow-300 text-gray-800" type="submit">登録する</button>
   </form>

@@ -112,8 +112,8 @@
           </dt>
           <dd><a href="{{ route('shops.review.show', ['shop' => $shop, 'review' => $review->id]) }}">{{ $review->title }}</a></dd>
         </div>
-        @if( $review->image )
-        <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/' . $review->image ) }}" alt="画像">
+        @if( $review->main_photo())
+        <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/review/' . $review->main_photo()->path ) }}" alt="画像">
         </div>
         @endif
         <div class="description h-28 mt-2">

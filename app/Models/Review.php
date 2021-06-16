@@ -26,4 +26,14 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function photos()
+    {
+        return $this->HasMany(Photo::class);
+    }
+
+    public function main_photo()
+    {
+        return $this->HasMany(Photo::class)->first();
+    }
 }

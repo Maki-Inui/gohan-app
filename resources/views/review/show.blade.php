@@ -27,10 +27,12 @@
         <dd>★ｘ{{ $review->food_score }}個</dd>
       </div>
     </dl>
-      @if( $review->image )
-      <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/' . $review->image ) }}" alt="画像">
+    @if( $review->photos )
+      @foreach($review->photos as $photo)
+      <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/review/' . $photo->path ) }}" alt="画像">
       </div>
-      @endif
+      @endforeach
+    @endif
     <dl class="mt-4 text-gray-500">
       <div class="description">
         <dt>
