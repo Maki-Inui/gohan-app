@@ -18,8 +18,6 @@ class CreatePhotosTable extends Migration
             $table->foreignId('review_id')->references('id')->on('reviews')->onDelete('cascade');
             $table->string('path');
             $table->timestamps();
-
-            $table->unique('review_id');
         });
     }
 

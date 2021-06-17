@@ -176,3 +176,35 @@ label:not(:last-of-type) {
     @apply text-yellow-300;
     @apply font-bold;
 }
+
+.swiper-container {
+  @apply relative;
+  @apply overflow-hidden;
+  height: 30vw;
+  @apply mx-auto;
+  min-height: 350px; 
+
+  &:sm {
+    max-width: 300px;
+  }
+
+  &:lg {
+    max-width: 400px;;
+  }
+
+  &:lx {
+    max-width: 400px;;
+  }
+    
+  .swiper-slide {
+    @apply flex;
+    @apply items-center; 
+    @apply justify-center; 
+
+    img {
+      @apply max-w-full;
+      @apply max-h-full;
+      @apply self-center; 
+    }
+  }
+}

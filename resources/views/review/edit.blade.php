@@ -25,16 +25,25 @@
         <label><input type="radio" value="5" name="recommend_score" @if ($review->recommend_score == 5) checked @endif>5</label>
       </div>
       <div class="form-group">
-        <p>料理の満足度
-        <p>
+        <p>料理の満足度</p>
           <label><input type="radio" value="1" name="food_score" @if ($review->food_score == 1) checked @endif>1</label>
           <label><input type="radio" value="2" name="food_score" @if ($review->food_score == 2) checked @endif>2</label>
           <label><input type="radio" value="3" name="food_score" @if ($review->food_score == 3) checked @endif>3</label>
           <label><input type="radio" value="4" name="food_score" @if ($review->food_score == 4) checked @endif>4</label>
           <label><input type="radio" value="5" name="food_score" @if ($review->food_score == 5) checked @endif>5</label>
       </div>
+      <p class="form-group">※写真は最大４つまでアップロード可能(変更がない場合は前回のデータを保持します)</p>
       <div class="form-group">
-        <input type="file" name="image">
+      <input type="file" name="image[]" id="image1" multiple>
+      </div>
+      <div class="form-group">
+        <input type="file" name="image[]" id="image2" multiple>
+      </div>
+      <div class="form-group">
+        <input type="file" name="image[]" id="image3" multiple>
+      </div>
+      <div class="form-group">
+        <input type="file" name="image[]" id="image4" multiple>
       </div>
       <button type="submit" class="mt-6 p-2 rounded bg-red-300 hover:bg-yellow-300 text-gray-800">更新する</button>
     </form>

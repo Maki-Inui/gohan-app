@@ -26,7 +26,7 @@ class StoreReview extends FormRequest
         return [
             'title' => 'required',
             'comment' => 'required',
-            'image[]' => 'image|file|mimes:jpg,png',
+            'image.*' => 'image|file|mimes:jpg,png',
         ];
     }
 

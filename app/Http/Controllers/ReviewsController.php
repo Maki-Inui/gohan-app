@@ -106,25 +106,37 @@ class ReviewsController extends Controller
     public function update(StoreReview $request, $shop_id, $id)
     {
         $review = Review::find($id);
-        if($file = $request->image) 
-        {
-            $path = public_path('image/' . $review->image);
-            \File::delete($path);
-            $file_name = time() . $file->getClientOriginalName();
-            $target_path = public_path('image/');
-            $file->move($target_path, $file_name);
-        } else {
-            $file_name = $review->image;
-        }
-
         $update = [
             'title' => $request->title,
             'comment' => $request->comment,
             'recommend_score' => $request->recommend_score,
             'food_score' => $request->food_score,
-            'image' => $file_name
         ];
         $review->update($update);
+
+        $files = $request->file('image');
+        if ($request->hasFile('image')) 
+        {
+            if ($review->photos)
+            {
+                foreach($review->photos as $photo)
+                {
+                    $path = public_path('image/review/' . $photo->path);
+                    \File::delete($path);
+                    $photo->delete();
+                }
+            }
+            foreach($files as $file) 
+            {
+                $photo = new Photo();
+                $file_name = time() . $file->getClientOriginalName();
+                $target_path = public_path('image/review/');
+                $file->move($target_path, $file_name);
+                $photo->path = $file_name;
+                $photo->review_id = $review->id;
+                $photo->save();
+            }
+        }
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', '編集完了');
     }
 
@@ -138,10 +150,13 @@ class ReviewsController extends Controller
     public function destroy($shop_id, $id)
     {
         $review = Review::find($id);
-        if($review->image) 
+        if($photos = $review->photos) 
         {
-            $path = public_path('image/' . $review->image);
-            \File::delete($path);
+            foreach($photos as $photo)
+            {
+                $path = public_path('image/review/' . $photo->path);
+                \File::delete($path);
+            }
         }
         $review->delete();
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', 'レビューを削除しました');
