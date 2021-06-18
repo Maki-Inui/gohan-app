@@ -9,4 +9,9 @@ class Photo extends Model
 {
     protected $table = 'photos';
     protected $fillable = ['review_id', 'path'];
+
+    public function review()
+    {
+        return $this->belongsTo(Review::class);
+    }
 }
