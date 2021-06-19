@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Photo;
-use App\Models\Review;
+use App\Http\Requests\StorePhoto;
 
 class PhotosController extends Controller
 {
@@ -15,7 +15,7 @@ class PhotosController extends Controller
      * @param  int  $shop_id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $review_id)
+    public function store(StorePhoto $request, $review_id)
     {
         $photo = new Photo();
         $photo->review_id = $review_id;

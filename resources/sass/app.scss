@@ -120,6 +120,28 @@ label:not(:last-of-type) {
   }
 }
 
+.button-photo-add {
+  @apply p-2;
+  @apply rounded;
+  @apply bg-blue-300;
+  @apply mt-4;
+  @apply mx-auto;
+  
+  &:hover {
+    @apply opacity-70;
+  }
+
+  &:lg {
+    @apply mt-0;
+  }
+}
+
+.button-photo-delete {
+  @apply text-center;
+  @apply text-gray-500;
+  @apply my-2;
+}
+
 .icon-button {
   @apply bg-transparent;
   @apply border-none;
@@ -207,4 +229,11 @@ label:not(:last-of-type) {
       @apply self-center; 
     }
   }
+}
+
+.review-photo-display {
+  @apply flex;
+  @apply flex-col;
+  @apply mx-2;
+  @apply bg-white; 
 }
