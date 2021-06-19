@@ -36,7 +36,6 @@ class ReviewSeeder extends Seeder
                 'comment' =>'バンズがふわふわでお肉がジューシー',
                 'recommend_score' => 5,
                 'food_score' => 5,
-                'image' => 'review01.jpg',
             ],
             [
                 'shop_id' => $shop_id_3,
@@ -45,7 +44,6 @@ class ReviewSeeder extends Seeder
                 'comment' =>'しっかりとスパイシーです',
                 'recommend_score' => 5,
                 'food_score' => 5,
-                'image' => 'review02.jpg',
             ],
             [
                 'shop_id' => $shop_id_1,
@@ -54,7 +52,6 @@ class ReviewSeeder extends Seeder
                 'comment' =>'しっかりとスパイシーです',
                 'recommend_score' => 5,
                 'food_score' => 5,
-                'image' => 'review03.jpg',
             ]
         ]);
     }

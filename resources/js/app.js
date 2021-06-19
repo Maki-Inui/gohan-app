@@ -29,4 +29,28 @@ window.addEventListener("scroll", function() {
 })
 
 
+import Swiper from 'swiper';
+// import Swiper styles
+import 'swiper/swiper-bundle.css';
+
+// core version + navigation, pagination modules:
+import SwiperCore, { Navigation, Pagination } from 'swiper/core';
+
+// configure Swiper to use modules
+SwiperCore.use([Navigation, Pagination]);
+
+const swiper = new Swiper('.swiper-container', {
+  loop: true,
+  centeredSlides: true,
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination',
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  }
+});
+
+
 

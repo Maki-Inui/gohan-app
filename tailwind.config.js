@@ -13,6 +13,9 @@ module.exports = {
             colors: {
                 'regal-orange': '#E85A25',
             },
+            backgroundColor: theme => ({
+                'foot': '#FDD02D'
+            }),
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
                 body: [
