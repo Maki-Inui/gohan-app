@@ -32,24 +32,14 @@ class Review extends Model
         return $this->HasMany(Photo::class);
     }
 
+    public function has_photo()
+    {
+        return $this->HasMany(Photo::class)->exists();
+    }
+
     public function main_photo()
     {
         return $this->HasMany(Photo::class)->first();
-    }
-
-    public function second_photo()
-    {
-        return $this->HasMany(Photo::class)->skip(1)->first();
-    }
-
-    public function third_photo()
-    {
-        return $this->HasMany(Photo::class)->skip(2)->first();
-    }
-
-    public function fourth_photo()
-    {
-        return $this->HasMany(Photo::class)->skip(3)->first();
     }
 
     public function photos_count()

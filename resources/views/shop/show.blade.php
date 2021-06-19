@@ -115,6 +115,9 @@
         @if( $review->main_photo())
         <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/review/' . $review->main_photo()->path ) }}" alt="画像">
         </div>
+        @else
+        <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ url( 'https://placehold.jp/320x240.png?text=No Image' ) }}" alt="画像">
+        </div>
         @endif
         <div class="description h-28 mt-2">
           <dt>
