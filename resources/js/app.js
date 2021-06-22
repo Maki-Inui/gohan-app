@@ -39,7 +39,7 @@ import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 // configure Swiper to use modules
 SwiperCore.use([Navigation, Pagination]);
 
-const swiper = new Swiper('.swiper-container', {
+const swiper = new Swiper('.slider', {
   loop: true,
   centeredSlides: true,
   slidesPerView: 1,
@@ -49,8 +49,19 @@ const swiper = new Swiper('.swiper-container', {
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
+  },
+  thumbs: {
+    swiper: sliderThumbnail,
   }
 });
+
+const sliderThumbnail = new Swiper('.slider-thumbnail', {
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+});
+
 
 
 

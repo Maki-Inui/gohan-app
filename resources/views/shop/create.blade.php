@@ -20,11 +20,29 @@
         </select>
       </div>
       <div class="form-group">
+        <label for="shop_category">エリア</label><br>
+        <select name="category_id">
+          @foreach ($categories as $value)
+          <option value="{{ $value->id }}">{{ $value->category_name }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="form-group">
         <label for="descInput">説明文</label><br>
         <textarea class="w-5/6" name="description"></textarea>
       </div>
+      <p class="mt-6">画像は最大４つまでアップロード可能です</p>
       <div class="form-group">
-        <input type="file" name="image">
+        <input type="file" name="image[]" multiple>
+      </div>
+        <div class="form-group">
+        <input type="file" name="image[]" id="image2" multiple>
+      </div>
+      <div class="form-group">
+        <input type="file" name="image[]" id="image3" multiple>
+      </div>
+      <div class="form-group">
+        <input type="file" name="image[]" id="image4" multiple>
       </div>
       <button class="mt-6 py-2 px-6 rounded bg-red-300 hover:bg-yellow-300 text-gray-800" type="submit">新規追加</button>
     </form>

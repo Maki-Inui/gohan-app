@@ -41,7 +41,6 @@ class ShopSeeder extends Seeder
                 'area_id' => $area_id_1,
                 'recommend_score' => 5,
                 'food_score' => 5,
-                'image' => 'hamburger.jpg',
             ],
             [
                 'name' => 'ラーメン店B',
@@ -50,7 +49,6 @@ class ShopSeeder extends Seeder
                 'area_id' => $area_id_3,
                 'recommend_score' => 5,
                 'food_score' => 5,
-                'image' => '4641100_s.jpg',
             ],
             [
                 'name' => 'タイ料理店C',
@@ -59,7 +57,6 @@ class ShopSeeder extends Seeder
                 'area_id' => $area_id_4,
                 'recommend_score' => 5,
                 'food_score' => 5,
-                'image' =>'thai.jpg'
             ]
         ]);
     }

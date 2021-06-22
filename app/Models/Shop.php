@@ -19,4 +19,24 @@ class Shop extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function images()
+    {
+        return $this->HasMany(Image::class);
+    }
+
+    public function has_image()
+    {
+        return $this->HasMany(Image::class)->exists();
+    }
+
+    public function main_image()
+    {
+        return $this->HasMany(Image::class)->first();
+    }
+
+    public function images_count()
+    {
+        return $this->HasMany(Image::class)->count();
+    }
 }

@@ -48,10 +48,30 @@
       </div>
       <div class="shop_category">
         <p>{{ $shop->category->category_name }}</p>
-      </div>        
+      </div>
     </div>
-    @if( $shop->image )
-    <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ asset( 'image/' . $shop->image ) }}" alt="画像"></div>
+    @if( $shop->images )
+    <div class="swiper-container slider">
+      <div class="swiper-wrapper">
+        @foreach($shop->images as $image)
+        <div class="swiper-slide text-center">
+          <img class="mx-auto h-auto block" src="{{ asset( 'image/shop/' . $image->path ) }}" alt="画像">
+        </div>
+        @endforeach
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <div class="swiper-container slider-thumbnail">
+      <div class="swiper-wrapper">
+        @foreach($shop->images as $image)
+        <div class="swiper-slide">
+          <img class="mx-1 p-2 h-16 block" src="{{ asset( 'image/shop/' . $image->path ) }}" alt="画像">
+        </div>
+        @endforeach
+      </div>
+    </div>
     @else
     <div class="mx-auto my-0 w-10/12"><img class="mx-auto" src="{{ url( 'https://placehold.jp/320x240.png?text=No Image' ) }}" alt="画像"></div>
     @endif

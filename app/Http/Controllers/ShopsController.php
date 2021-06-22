@@ -6,11 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Http\Requests\StoreShop;
 use App\Models\Review;
-use App\Models\Visit;
-use App\Models\Like;
-use App\Models\Nice;
 use App\Models\History;
 use App\Models\Area;
+use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -35,7 +34,8 @@ class ShopsController extends Controller
     public function create()
     {
         $areas = Area::all();
-        return view('shop.create', compact('areas'));
+        $categories = Category::all();
+        return view('shop.create', compact('areas', 'categories'));
     }
 
     /**
@@ -46,21 +46,26 @@ class ShopsController extends Controller
      */
     public function store(StoreShop $request)
     {
-        if ($file = $request->image) 
-        {
-            $file_name = time() . $file->getClientOriginalName();
-            $target_path = public_path('image/');
-            $file->move($target_path, $file_name);
-        } else {
-            $fileName = "";
-        }
-
         $shop = new Shop;
         $shop->name = $request->name;
         $shop->description = $request->description;
         $shop->area_id = $request->area_id;
-        $shop->image = $file_name;
         $shop->save();
+
+        $files = $request->file('image');
+        if ($file = $request->image) 
+        {
+            foreach($files as $file) 
+            {
+                $image = new Image();
+                $file_name = time() . $file->getClientOriginalName();
+                $target_path = public_path('image/shop/');
+                $file->move($target_path, $file_name);
+                $image->path = $file_name;
+                $image->shop_id = $shop->id;
+                $image->save();
+            }
+        }
 
         return redirect()->route('shops.index')->with('success', '新規登録完了');
     }
@@ -119,23 +124,9 @@ class ShopsController extends Controller
     public function update(StoreShop $request, $id)
     {
         $shop = Shop::find($id);
-        if($file = $request->image) 
-        {
-            $path = public_path('image/' . $shop->image);
-            \File::delete($path);
-            $file_name = time() . $file->getClientOriginalName();
-            $target_path = public_path('image/');
-            $file->move($target_path, $file_name);
-        } else {
-            $file_name = $shop->image;
-        }
-
-        $shop->image = $file_name;
-
         $update = [
             'name' => $request->name,
             'description' => $request->description,
-            'image' => $file_name
         ];
 
         $shop->update($update);
@@ -151,11 +142,6 @@ class ShopsController extends Controller
     public function destroy($id)
     {
         $shop = Shop::find($id);
-        if($shop->image) 
-        {
-            $path = public_path('image/' . $shop->image);
-            \File::delete($path);
-        }
         $shop->delete();
         return redirect()->route('shops.index')->with('success', 'お店を削除しました');
     }

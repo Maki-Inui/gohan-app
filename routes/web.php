@@ -48,3 +48,5 @@ Route::resource('shops.like', 'App\Http\Controllers\LikesController', ['only' =>
 Route::resource('users.follow', 'App\Http\Controllers\FollowsController', ['only' => ['store', 'destroy']]);
 
 Route::resource('review.photo', 'App\Http\Controllers\PhotosController', ['only' => ['store', 'destroy']]);
+
+Route::resource('shops.image', 'App\Http\Controllers\ImagesController', ['only' => ['store', 'destroy']]);
