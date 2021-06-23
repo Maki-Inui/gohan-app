@@ -67,7 +67,7 @@
       <div class="swiper-wrapper">
         @foreach($shop->images as $image)
         <div class="swiper-slide">
-          <img class="mx-1 p-2 h-16 block" src="{{ asset( 'image/shop/' . $image->path ) }}" alt="画像">
+          <img class="mx-1 p-2 h-14 lg:h-16 block" src="{{ asset( 'image/shop/' . $image->path ) }}" alt="画像">
         </div>
         @endforeach
       </div>

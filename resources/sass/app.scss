@@ -239,16 +239,12 @@ label:not(:last-of-type) {
   &.slider-thumbnail {
     .swiper-wrapper {
       .swiper-slide {
+        width: 25%;
         @apply opacity-70;
         @apply overflow-hidden;
-
-        &.swiper-slide-thumb-active {
-          @apply opacity-100;
-        }
       }
     }
   }
-
 }
 
 .shop-image-display,

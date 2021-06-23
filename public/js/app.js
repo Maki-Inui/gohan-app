@@ -46,6 +46,13 @@ window.addEventListener("scroll", function () {
  // configure Swiper to use modules
 
 swiper_core__WEBPACK_IMPORTED_MODULE_1__.default.use([swiper_core__WEBPACK_IMPORTED_MODULE_2__.default, swiper_core__WEBPACK_IMPORTED_MODULE_3__.default]);
+var sliderThumbnail = new swiper_core__WEBPACK_IMPORTED_MODULE_1__.default('.slider-thumbnail', {
+  slidesPerView: 4,
+  spaceBetween: 10,
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true
+});
 var swiper = new swiper_core__WEBPACK_IMPORTED_MODULE_1__.default('.slider', {
   loop: true,
   centeredSlides: true,
@@ -60,12 +67,6 @@ var swiper = new swiper_core__WEBPACK_IMPORTED_MODULE_1__.default('.slider', {
   thumbs: {
     swiper: sliderThumbnail
   }
-});
-var sliderThumbnail = new swiper_core__WEBPACK_IMPORTED_MODULE_1__.default('.slider-thumbnail', {
-  slidesPerView: 4,
-  freeMode: true,
-  watchSlidesVisibility: true,
-  watchSlidesProgress: true
 });
 
 /***/ }),

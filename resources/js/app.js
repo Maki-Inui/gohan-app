@@ -39,6 +39,14 @@ import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 // configure Swiper to use modules
 SwiperCore.use([Navigation, Pagination]);
 
+const sliderThumbnail = new Swiper('.slider-thumbnail', {
+  slidesPerView: 4,
+  spaceBetween: 10,
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+});
+
 const swiper = new Swiper('.slider', {
   loop: true,
   centeredSlides: true,
@@ -55,12 +63,7 @@ const swiper = new Swiper('.slider', {
   }
 });
 
-const sliderThumbnail = new Swiper('.slider-thumbnail', {
-  slidesPerView: 4,
-  freeMode: true,
-  watchSlidesVisibility: true,
-  watchSlidesProgress: true,
-});
+
 
 
 
