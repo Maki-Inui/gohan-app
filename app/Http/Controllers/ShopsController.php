@@ -50,10 +50,11 @@ class ShopsController extends Controller
         $shop->name = $request->name;
         $shop->description = $request->description;
         $shop->area_id = $request->area_id;
+        $shop->category_id = $request->category_id;
         $shop->save();
 
         $files = $request->file('image');
-        if ($file = $request->image) 
+        if ($request->hasFile('image')) 
         {
             foreach($files as $file) 
             {
