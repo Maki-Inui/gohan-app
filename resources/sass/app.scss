@@ -240,7 +240,7 @@ label:not(:last-of-type) {
     .swiper-wrapper {
       .swiper-slide {
         width: 25%;
-        @apply opacity-70;
+        @apply opacity-50;
         @apply overflow-hidden;
 
         &.swiper-slide-thumb-active {
