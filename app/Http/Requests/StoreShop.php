@@ -26,7 +26,7 @@ class StoreShop extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'image' => 'image|file|mimes:jpg,png',
+            'image.*' => 'image|file|mimes:jpg,png',
         ];
     }
 

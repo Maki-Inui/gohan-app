@@ -33,8 +33,8 @@
           <li>おすすめ度→★ｘ{{ $shop->recommend_score }}個</li>
           <li>料理の満足度→★ｘ{{ $shop->food_score }}個</li>
         </ul>
-        @if( $shop->image )
-        <div class="mx-auto my-0 w-10/12"><img class="mx-auto lx:w-11/12" src="{{ asset( 'image/' . $shop->image ) }}" alt="画像"></div>
+        @if( $shop->has_image() )
+        <div class="mx-auto my-0 w-10/12"><img class="mx-auto lx:w-11/12" src="{{ asset( 'image/shop/' . $shop->main_image()->path ) }}" alt="画像"></div>
         @else
         <div class="mx-auto my-0 w-10/12"><img class="mx-auto lx:w-11/12" src="{{ url( 'https://placehold.jp/320x240.png?text=No Image' ) }}" alt="画像"></div>
         @endif

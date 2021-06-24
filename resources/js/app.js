@@ -29,17 +29,20 @@ window.addEventListener("scroll", function() {
 })
 
 
-import Swiper from 'swiper';
-// import Swiper styles
+import Swiper from'swiper/bundle';
+
 import 'swiper/swiper-bundle.css';
 
-// core version + navigation, pagination modules:
-import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 
-// configure Swiper to use modules
-SwiperCore.use([Navigation, Pagination]);
+const sliderThumbnail = new Swiper('.slider-thumbnail', {
+  slidesPerView: 4,
+  spaceBetween: 10,
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+});
 
-const swiper = new Swiper('.swiper-container', {
+const swiper = new Swiper('.slider', {
   loop: true,
   centeredSlides: true,
   slidesPerView: 1,
@@ -49,8 +52,14 @@ const swiper = new Swiper('.swiper-container', {
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
+  },
+  thumbs: {
+    swiper: sliderThumbnail,
   }
 });
+
+
+
 
 
 
