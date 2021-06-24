@@ -29,15 +29,10 @@ window.addEventListener("scroll", function() {
 })
 
 
-import Swiper from 'swiper';
-// import Swiper styles
+import Swiper from'swiper/bundle';
+
 import 'swiper/swiper-bundle.css';
 
-// core version + navigation, pagination modules:
-import SwiperCore, { Navigation, Pagination } from 'swiper/core';
-
-// configure Swiper to use modules
-SwiperCore.use([Navigation, Pagination]);
 
 const sliderThumbnail = new Swiper('.slider-thumbnail', {
   slidesPerView: 4,
