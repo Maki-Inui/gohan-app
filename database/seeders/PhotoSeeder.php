@@ -36,6 +36,14 @@ class PhotoSeeder extends Seeder
             [
                 'review_id' => $review_3,
                 'path' => 'review03.jpg'
+            ],
+            [
+                'review_id' => $review_1,
+                'path' => 'review01-2.jpg'
+            ],
+            [
+                'review_id' => $review_1,
+                'path' => 'review01-3.jpg'
             ]
         ]);
     }

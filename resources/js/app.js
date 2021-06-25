@@ -58,6 +58,19 @@ const swiper = new Swiper('.slider', {
   }
 });
 
+const review_slider = new Swiper('.review-slider', {
+  loop: true,
+  centeredSlides: true,
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination',
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  }
+});
+
 
 
 

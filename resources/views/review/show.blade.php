@@ -28,7 +28,7 @@
       </div>
     </dl>
     @if( $review->photos )
-    <div class="swiper-container slider">
+    <div class="swiper-container review-slider">
       <div class="swiper-wrapper">
         @foreach($review->photos as $photo)
         <div class="swiper-slide text-center">

@@ -61,6 +61,18 @@ var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__.default('.slider', {
     swiper: sliderThumbnail
   }
 });
+var review_slider = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__.default('.review-slider', {
+  loop: true,
+  centeredSlides: true,
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination'
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev'
+  }
+});
 
 /***/ }),
 
