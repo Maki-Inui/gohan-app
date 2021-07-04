@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'top-page')
+@section('title', 'manpukuアプリ')
 @section('content')
 <main class="pb-40 bg-white">
   <div class="top-wrapper bg-cover bg-center h-96 flex items-center lg:pt-64 lg:pb-64" style="background-image: url(image/hamburger.jpg)">
