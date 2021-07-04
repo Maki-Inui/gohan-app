@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'user_list')
+@section('title', 'manpukuアプリ -登録ユーザーリスト-')
 @section('content')
 <main>
   @if ($message = Session::get('failure'))

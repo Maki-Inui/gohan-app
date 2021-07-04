@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'edit-review')
+@section('title', 'manpukuアプリ -レビュー編集-')
 @section('content')
 <main>
   <div class="wrapper w-4/5 lg:w-2/5">

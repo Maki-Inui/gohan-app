@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'shop-page')
+@section('title', 'manpukuアプリ -お店一覧-')
 @section('content')
 <main>
   @if ($message = Session::get('failure'))

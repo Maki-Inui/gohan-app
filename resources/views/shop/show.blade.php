@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'shop-page')
+@section('title', 'manpukuアプリ -お店の詳細-')
 @section('content')
 <main>
   <p class="text-center p-4">お店の詳細ページです</p>

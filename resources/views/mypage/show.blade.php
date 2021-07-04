@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'my-page')
+@section('title', 'manpukuアプリ -マイページ-')
 @section('content')
 <main>
   <h3 class="text-center">マイページ</h3>

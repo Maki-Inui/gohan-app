@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'your-visits')
+@section('title', 'manpukuアプリ -行ったお店-')
 @section('content')
 <main>
   <h3 class="text-center">{{ Auth::user()->name }}さんの行ったお店一覧</h3>

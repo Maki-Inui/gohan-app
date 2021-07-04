@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'create-shop')
+@section('title', 'manpukuアプリ -お店の新規登録-')
 @section('content')
 <main>
   <div class="wrapper w-4/5 lg:w-2/5">

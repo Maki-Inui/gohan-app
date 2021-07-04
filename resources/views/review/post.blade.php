@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'post-review')
+@section('title', 'manpukuアプリ -レビュー投稿-')
 @section('content')
 <main>
   <div class="wrapper w-4/5 lg:w-2/5">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'change_area-page')
+@section('title', 'manpukuアプリ -プロフィール編集-')
 @section('content')
 <main class="flex content-center">
   <div class="wrapper w-4/5 lg:w-2/5">

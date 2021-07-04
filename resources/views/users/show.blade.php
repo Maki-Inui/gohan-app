@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'user_description')
+@section('title', 'manpukuアプリ -ユーザー情報-')
 @section('content')
 <main>
   <p class="text-center">プロフィール</p>

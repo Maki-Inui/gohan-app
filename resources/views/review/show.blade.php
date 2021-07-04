@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'review')
+@section('title', 'manpukuアプリ -レビュー詳細-')
 @section('content')
 <main>
   <h2 class="text-center mb-6">お店レビューの詳細を表示しています</h2>
