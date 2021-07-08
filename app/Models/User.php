@@ -15,6 +15,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasProfilePhoto;
     use Notifiable;
+    use HasFactory;
 
     protected $fillable = ['name', 'email', 'password', 'profile', 'area_id', 'role_id'];
 
@@ -47,6 +48,11 @@ class User extends Authenticatable
     public function hasShopVisit($shop_id)
     {
       return $this->hasMany(Visit::class)->where('shop_id', $shop_id)->exists();
+    }
+
+    public function shop_like($shop_id)
+    {
+      return $this->hasMany(Like::class)->where('shop_id', $shop_id)->first();
     }
 
     public function hasShopLike($shop_id)
