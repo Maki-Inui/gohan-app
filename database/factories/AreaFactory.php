@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Shops;
+use App\Models\Area;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ShopsFactory extends Factory
+class AreaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Shops::class;
+    protected $model = Area::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class ShopsFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'area_name' => $this->faker->city(),
         ];
     }
 }
