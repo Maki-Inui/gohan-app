@@ -50,11 +50,6 @@ class User extends Authenticatable
       return $this->hasMany(Visit::class)->where('shop_id', $shop_id)->exists();
     }
 
-    public function shop_like($shop_id)
-    {
-      return $this->hasMany(Like::class)->where('shop_id', $shop_id)->first();
-    }
-
     public function hasShopLike($shop_id)
     {
       return $this->hasMany(Like::class)->where('shop_id', $shop_id)->exists();
