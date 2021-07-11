@@ -9,6 +9,7 @@ class Visit extends Model
 {
     protected $table = 'visits';
     protected $fillable = ['shop_id', 'user_id'];
+    use HasFactory;
 
     public function shop()
     {
