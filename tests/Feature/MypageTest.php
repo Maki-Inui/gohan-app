@@ -11,6 +11,8 @@ use App\Models\Area;
 
 class MypageTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * A basic feature test example.
      *
@@ -44,7 +46,9 @@ class MypageTest extends TestCase
             'area_id' => $area->id,
             'profile' => 'こんにちは'
         ]);
-        $response = $this->get(action('App\Http\Controllers\MypagesController@show', $user->id));
-        $response->assertStatus(200)->assertViewIs('mypage.show')->assertSee('丸の内');
+        $user2 = User::find($user->id);
+        $response = $this->actingAs($user2)->get(action('App\Http\Controllers\MypagesController@show', $user2->id));
+        $response->assertStatus(200)->assertViewIs('mypage.show');
+        $response->assertSee('丸の内');
     }
 }
