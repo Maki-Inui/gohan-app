@@ -20,7 +20,7 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="shop_category">エリア</label><br>
+        <label for="shop_category">カテゴリー</label><br>
         <select name="category_id">
           @foreach ($categories as $value)
           <option value="{{ $value->id }}">{{ $value->category_name }}</option>
