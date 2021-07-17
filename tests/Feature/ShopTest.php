@@ -131,8 +131,8 @@ class ShopTest extends TestCase
     {
         //お店情報に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
-        $shop = Shop::factory()->state(['name' => 'おむらいす店'])->for(Area::factory()->state(['area_name' => '原宿',]))
-        ->for(Category::factory()->state(['category_name' => '洋食',]))->create();
+        $shop = Shop::factory()->state(['name' => 'おむらいす店'])->for(Area::factory()->state(['area_name' => '原宿']))
+        ->for(Category::factory()->state(['category_name' => '洋食']))->create();
 
         $this->actingAs($admin_user);
         $response = $this->delete(action('App\Http\Controllers\ShopsController@destroy', ['shop' => $shop->id]));
