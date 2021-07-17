@@ -11,6 +11,7 @@ class Review extends Model
 {
     protected $table = 'reviews';
     protected $fillable = ['shop_id', 'title', 'comment', 'recommend_score', 'food_score'];
+    use HasFactory;
 
     public function shop()
     {

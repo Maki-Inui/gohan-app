@@ -10,6 +10,7 @@ class History extends Model
 {
     protected $table = 'histories';
     protected $fillable = ['shop_id', 'user_id', 'last_view_at'];
+    use HasFactory;
 
     public function shop()
     {
