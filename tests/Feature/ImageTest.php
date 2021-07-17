@@ -24,9 +24,11 @@ class ImageTest extends TestCase
      */
     public function test_image_store()
     {
+        //お店情報作成に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
         $shop = Shop::factory()->state(['name' => 'おむらいす店'])->for(Area::factory()->state(['area_name' => '原宿']))
         ->for(Category::factory()->state(['category_name' => '洋食']))->create();
+
         Storage::fake('image');
         $file = UploadedFile::fake()->image('shop_image.jpg');
         $file_name = time() . $file->getClientOriginalName();
@@ -40,9 +42,11 @@ class ImageTest extends TestCase
 
     public function test_image_destroy()
     {
+        //お店情報作成に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
         $shop = Shop::factory()->state(['name' => 'おむらいす店'])->for(Area::factory()->state(['area_name' => '原宿']))
         ->for(Category::factory()->state(['category_name' => '洋食']))->create();
+
         $image = Image::factory()->state(['path' => time() . 'shop_image', 'shop_id' => $shop->id])->create();
         $response = $this->actingAs($admin_user)->delete(action('App\Http\Controllers\ImagesController@destroy', ['shop' => $shop, 'image' => $image->id]));
         $this->assertDeleted('images', [
