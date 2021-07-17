@@ -27,7 +27,7 @@ class ImagesController extends Controller
         $image->save();
         $shop = $image->shop;
 
-        return view('shop.edit', compact('shop'))->with('success', '画像を追加しました');
+        return redirect()->route('shops.edit', compact('shop'))->with('success', '画像を追加しました');
     }
 
     /**
@@ -44,6 +44,6 @@ class ImagesController extends Controller
         $path = public_path('image/shop/' . $image->path);
         \File::delete($path);
         $image->delete();
-        return view('shop.edit', compact('shop'))->with('success', '画像を削除しました');
+        return redirect()->route('shops.edit', compact('shop'))->with('success', '画像を削除しました');
     }
 }

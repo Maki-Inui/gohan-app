@@ -19,6 +19,9 @@
       <button class="mt-6 py-2 px-6 rounded bg-red-300 hover:bg-yellow-300 text-gray-800" type="submit">更新する</button>
       <p class="mt-10">画像の追加と削除ができます<br>※最大４つまで</p>
     </form>
+    @if ($message = Session::get('success'))
+    <p class="text-indigo-800 font-bold">{{ $message }}</p>
+    @endif
     @if($shop->has_image())
     <div class="flex flex-wrap justify-start mt-4 text-sm">
       @foreach($shop->images as $index => $image)
