@@ -35,6 +35,9 @@
       <button type="submit" class="mt-6 p-2 rounded bg-red-300 hover:bg-yellow-300 text-gray-800">更新する</button>
     </form>
     <p class="mt-10">画像の追加と削除ができます<br>※最大４つまで</p>
+    @if ($message = Session::get('success'))
+    <p class="text-indigo-800 font-bold">{{ $message }}</p>
+    @endif
     @if($review->has_photo())
     <div class="flex flex-wrap justify-start mt-4 text-sm">
       @foreach($review->photos as $index => $photo)
