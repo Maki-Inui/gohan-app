@@ -110,7 +110,7 @@ class ReviewTest extends TestCase
         //レビューに必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
         $shop = Shop::factory()->state(['name' => '中華B', 'description' => '餃子が絶品'])
-        ->for(Area::factory()->state(['area_name' => '新橋',]))
+        ->for(Area::factory()->state(['area_name' => '新橋']))
         ->for(Category::factory()->state(['category_name' => '中華']))->create();
 
         //レビュー作成
@@ -119,7 +119,7 @@ class ReviewTest extends TestCase
         $review = Review::factory()->state(['shop_id' => $shop->id, 'user_id' => $user->id])->create();
 
         //reviewsテーブルで更新したいデータ
-        $update = ['title' => '酢豚が美味しい', 'comment' => 'コメント', 'recommend_score' =>'5', 'food_score' => '5', ];
+        $update = ['title' => '酢豚が美味しい', 'comment' => 'コメント', 'recommend_score' =>'5', 'food_score' => '5' ];
 
         $response = $this->actingAs($user)->put(action('App\Http\Controllers\ReviewsController@update', ['shop' => $shop->id, 'review' => $review->id]), $update);
 
@@ -135,7 +135,7 @@ class ReviewTest extends TestCase
     {
         //レビューに必要なインスタンス作成
         $shop = Shop::factory()->state(['name' => '中華B', 'description' => '餃子が絶品'])
-        ->for(Area::factory()->state(['area_name' => '新橋',]))
+        ->for(Area::factory()->state(['area_name' => '新橋']))
         ->for(Category::factory()->state(['category_name' => '中華']))->create();
 
         //レビュー作成
