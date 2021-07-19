@@ -41,8 +41,12 @@ class NiceTest extends TestCase
             'review_id' => $review->id,
         ]);
 
+        //お店の詳細ページへのリダイレクト確認
+        $response->assertRedirect(route('shops.show', ['shop' => $shop->id]));
+
+        //niceの表示チェック
         $response = $this->actingAs($user)->get(action('App\Http\Controllers\ShopsController@show', $shop->id));
-        $response->assertViewIs('shop.show');
+        $response->assertViewIs('shop.show')->assertSee('fas fa-heart');
     }
 
     public function test_nice_destroy()
@@ -67,7 +71,11 @@ class NiceTest extends TestCase
             'user_id' => $user->id
         ]);
 
+        //お店の詳細ページへのリダイレクト確認
+        $response->assertRedirect(route('shops.show', ['shop' => $shop->id]));
+
+        //niceが消えているかチェック
         $response = $this->actingAs($user)->get(action('App\Http\Controllers\ShopsController@show', $shop->id));
-        $response->assertStatus(200)->assertViewIs('shop.show');
+        $response->assertViewIs('shop.show')->assertSee('far fa-heart');
     }
 }
