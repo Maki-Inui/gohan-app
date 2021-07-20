@@ -11,7 +11,7 @@
     @if(empty($following))
     <form action="{{ route('users.follow.store', $user->id) }}" method="POST">
       @csrf
-      <button class="icon-button" type="submit">フォロー<i class="fas fa-user-plus"></i></button>
+      <button class="icon-button" type="submit">フォローする<i class="fas fa-user-plus"></i></button>
     </form>
     @else
     <form action="{{ route('users.follow.destroy', ['user' => $user->id, 'follow' => $following->id]) }}" method="POST">
