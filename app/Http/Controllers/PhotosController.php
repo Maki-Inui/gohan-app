@@ -26,8 +26,9 @@ class PhotosController extends Controller
         $photo->path = $file_name;
         $photo->save();
         $review = $photo->review;
+        $shop = $review->shop_id;
 
-        return view('review.edit', compact('review'))->with('success', '写真を追加しました');
+        return redirect()->route('shops.review.edit', compact('shop', 'review'))->with('success', '写真を追加しました');
     }
 
     /**
@@ -41,9 +42,10 @@ class PhotosController extends Controller
     {
         $photo = Photo::find($id);
         $review = $photo->review;
+        $shop = $review->shop_id;
         $path = public_path('image/review/' . $photo->path);
         \File::delete($path);
         $photo->delete();
-        return view('review.edit', compact('review'))->with('success', '写真を削除しました');
+        return redirect()->route('shops.review.edit', compact('shop', 'review'))->with('success', '写真を削除しました');
     }
 }

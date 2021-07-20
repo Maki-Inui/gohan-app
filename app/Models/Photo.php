@@ -9,6 +9,7 @@ class Photo extends Model
 {
     protected $table = 'photos';
     protected $fillable = ['review_id', 'path'];
+    use HasFactory;
 
     public function review()
     {

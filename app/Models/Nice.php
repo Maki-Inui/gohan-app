@@ -10,6 +10,7 @@ class Nice extends Model
 {
     protected $table = 'nices';
     protected $fillable = ['review_id', 'user_id'];
+    use HasFactory;
 
     public function user()
     {
