@@ -24,7 +24,7 @@ class StoreReview extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|max:14',
             'comment' => 'required',
             'image.*' => 'image|file|mimes:jpg,png',
         ];
@@ -34,7 +34,10 @@ class StoreReview extends FormRequest
     {
         return [
             'title.required' => 'タイトルを入力して下さい。',
+            'title.max' => 'タイトルは14文字以内で入力してください',
             'comment.required' => 'レビューを入力して下さい。',
+            'image.*.image' => '画像を添付してください',
+            'image.*.mimes' => '画像はjpgかpngのみです'
         ];
     }
 }
