@@ -37,7 +37,7 @@ class StoreReview extends FormRequest
             'title.max' => 'タイトルは14文字以内で入力してください',
             'comment.required' => 'レビューを入力して下さい。',
             'image.*.image' => '画像を添付してください',
-            'image.*.mimes:jpg,png' => '画像はjpgかpngのみです'
+            'image.*.mimes' => '画像はjpgかpngのみです'
         ];
     }
 }
