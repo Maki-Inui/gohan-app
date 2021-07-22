@@ -33,7 +33,7 @@ class StorePhoto extends FormRequest
         return [
             'required' => 'ファイルが添付されていません',
             "image" => '指定されたファイルが画像ではありません',
-            "mines" => 'アップロードできるのはJPG・PNGファイルのみです'
+            "mimes" => 'アップロードできるのはJPG・PNGファイルのみです'
         ];
     }
 }
