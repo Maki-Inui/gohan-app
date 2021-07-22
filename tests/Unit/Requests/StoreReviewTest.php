@@ -21,7 +21,7 @@ class StoreReviewTest extends TestCase
         Storage::fake('image');
         $file = UploadedFile::fake()->image('review_image.jpg');
 
-        $dataList = [
+        $data_list = [
             'title' => 'タイトル',
             'comment' => 'レビューコメント',
             'image.*' => $file,
@@ -29,7 +29,7 @@ class StoreReviewTest extends TestCase
 
         $request = new StoreReview();
         $rules = $request->rules();
-        $validator = Validator::make($dataList, $rules);
+        $validator = Validator::make($data_list, $rules);
         $result = $validator->passes();
         $this->assertTrue($result);
     }

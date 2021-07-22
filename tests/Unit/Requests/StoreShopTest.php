@@ -20,7 +20,7 @@ class StoreShopTest extends TestCase
         Storage::fake('image');
         $file = UploadedFile::fake()->image('shop_image.jpg');
 
-        $dataList = [
+        $data_list = [
             'name' => 'お店の名前',
             'description' => '説明文',
             'image.*' => $file,
@@ -28,7 +28,7 @@ class StoreShopTest extends TestCase
 
         $request = new StoreShop();
         $rules = $request->rules();
-        $validator = Validator::make($dataList, $rules);
+        $validator = Validator::make($data_list, $rules);
         $result = $validator->passes();
         $this->assertTrue($result);
     }
