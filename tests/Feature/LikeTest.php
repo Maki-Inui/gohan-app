@@ -61,7 +61,7 @@ class LikeTest extends TestCase
             'user_id' => $user->id,
             'shop_id' => $shop->id
         ]);
-        $response = $this->delete(action('App\Http\Controllers\LikesController@destory', ['shop' => $shop->id, 'like' => $like->id]));
+        $response = $this->delete(action('App\Http\Controllers\LikesController@destroy', ['shop' => $shop->id, 'like' => $like->id]));
         $this->assertDeleted('likes', [
             'user_id' => $user->id,
             'shop_id' => $shop->id
