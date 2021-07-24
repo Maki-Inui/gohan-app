@@ -25,11 +25,15 @@ jobs:
       - run:
           name: 現行バージョンのノードのチェック
           command: node -v
-      - run:   
-          name: Install php-gd
-          command: |
-            sudo apt-get -y install libpng-dev  
-            sudo docker-php-ext-install  gd 
+      - run:
+          name: Install three libraries related to GD
+          command: sudo apt-get install -y wget git unzip libpq-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev
+      - run:
+          name: Support Freetype2 and jpeg
+          command: sudo docker-php-ext-configure gd --with-freetype --with-jpeg
+      - run:
+          name: Install GD library
+          command: sudo docker-php-ext-install -j$(nproc) gd
       - run:
           name: Docker php extensions install
           command: sudo docker-php-ext-install pdo_mysql
