@@ -15,7 +15,7 @@ jobs:
           - MYSQL_ALLOW_EMPTY_PASSWORD: true
           - MYSQL_DATABASE: gohan-app_testing
         cap_add:
-          - SYS_NICE
+          - SYS_NICE  
           
     steps:
       - checkout 
