@@ -37,11 +37,11 @@
     </div>
     <div class="form-group">
       <label>投稿タイトル</label><br>
-      <input type="text" name="title">
+      <input type="text" name="title" value="{{ old('title') }}">
     </div>
     <div class="form-group">
       <label>レビュー</label><br>
-      <textarea class="w-5/6" name="comment"></textarea>
+      <textarea class="w-5/6" name="comment">{{ old('comment') }}</textarea>
     </div>
     <div class="form-group">
       <p>写真は最大４つまでアップロード可能です</p>

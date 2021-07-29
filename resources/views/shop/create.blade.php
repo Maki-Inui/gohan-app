@@ -8,11 +8,11 @@
     <form method="post" action="{{ route('shops.store') }}" enctype="multipart/form-data">
       @csrf
       <div class="form-group">
-        <label for="shopName">お店の名前</label><br>
-        <input type="text" name="name">
+        <label for="shop_name">お店の名前</label><br>
+        <input type="text" name="name" value="{{ old('name') }}">
       </div>
       <div class="form-group">
-        <label for="shopArea">エリア</label><br>
+        <label for="shop_area">エリア</label><br>
         <select name="area_id">
           @foreach ($areas as $value)
           <option value="{{ $value->id }}">{{ $value->area_name }}</option>
@@ -29,7 +29,7 @@
       </div>
       <div class="form-group">
         <label for="descInput">説明文</label><br>
-        <textarea class="w-5/6" name="description"></textarea>
+        <textarea class="w-5/6" name="description">{{ old('description') }}</textarea>
       </div>
       <p class="mt-6">画像は最大４つまでアップロード可能です</p>
       <div class="form-group">
