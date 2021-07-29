@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ShopsController extends Controller
 {
@@ -46,29 +47,31 @@ class ShopsController extends Controller
      */
     public function store(StoreShop $request)
     {
-        $shop = new Shop;
-        $shop->name = $request->name;
-        $shop->description = $request->description;
-        $shop->area_id = $request->area_id;
-        $shop->category_id = $request->category_id;
-        $shop->save();
-
-        $files = $request->file('image');
-        if ($request->hasFile('image')) 
+        return DB::transaction(function () use ($request)
         {
-            foreach($files as $file) 
-            {
-                $image = new Image();
-                $file_name = time() . $file->getClientOriginalName();
-                $target_path = public_path('image/shop/');
-                $file->move($target_path, $file_name);
-                $image->path = $file_name;
-                $image->shop_id = $shop->id;
-                $image->save();
-            }
-        }
+            $shop = new Shop;
+            $shop->name = $request->name;
+            $shop->description = $request->description;
+            $shop->area_id = $request->area_id;
+            $shop->category_id = $request->category_id;
+            $shop->save();
 
-        return redirect()->route('shops.index')->with('success', '新規登録完了');
+            $files = $request->file('image');
+            if ($request->hasFile('image')) 
+            {
+                foreach($files as $file) 
+                {
+                    $image = new Image();
+                    $file_name = time() . $file->getClientOriginalName();
+                    $target_path = public_path('image/shop/');
+                    $file->move($target_path, $file_name);
+                    $image->path = $file_name;
+                    $image->shop_id = $shop->id;
+                    $image->save();
+                }
+            }
+            return redirect()->route('shops.index')->with('success', '新規登録完了');
+        });
     }
 
     /**
