@@ -116,30 +116,6 @@ class ReviewsController extends Controller
             'food_score' => $request->food_score,
         ];
         $review->update($update);
-
-        $files = $request->file('image');
-        if ($request->hasFile('image')) 
-        {
-            if ($review->photos)
-            {
-                foreach($review->photos as $photo)
-                {
-                    $path = public_path('image/review/' . $photo->path);
-                    \File::delete($path);
-                    $photo->delete();
-                }
-            }
-            foreach($files as $file) 
-            {
-                $photo = new Photo();
-                $file_name = time() . $file->getClientOriginalName();
-                $target_path = public_path('image/review/');
-                $file->move($target_path, $file_name);
-                $photo->path = $file_name;
-                $photo->review_id = $review->id;
-                $photo->save();
-            }
-        }
         return redirect()->route('shops.show', ['shop' => $shop_id])->with('success', '編集完了');
     }
 
