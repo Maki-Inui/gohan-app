@@ -25,7 +25,7 @@ class StoreReview extends FormRequest
     {
         return [
             'title' => 'required|max:14',
-            'comment' => 'required',
+            'comment' => 'required|max:200',
             'image.*' => 'image|file|mimes:jpg,png',
         ];
     }
@@ -36,6 +36,7 @@ class StoreReview extends FormRequest
             'title.required' => 'タイトルを入力して下さい。',
             'title.max' => 'タイトルは14文字以内で入力してください',
             'comment.required' => 'レビューを入力して下さい。',
+            'comment.max' => '文字数オーバーです！コメントは200文字以内で入力してください',
             'image.*.image' => '画像を添付してください',
             'image.*.mimes' => '画像はjpgかpngのみです'
         ];
