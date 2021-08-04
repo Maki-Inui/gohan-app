@@ -18,10 +18,10 @@ class StoreShopTest extends TestCase
 
     public function testStoreShop(array $keys, array $values, bool $expect)
     {
-        $dataList = array_combine($keys, $values);
+        $data_list = array_combine($keys, $values);
         $request = new StoreShop();
         $rules = $request->rules();
-        $validator = Validator::make($dataList, $rules);
+        $validator = Validator::make($data_list, $rules);
         $result = $validator->passes();
         $this->assertEquals($expect, $result);
     }

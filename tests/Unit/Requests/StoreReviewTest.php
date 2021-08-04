@@ -19,10 +19,10 @@ class StoreReviewTest extends TestCase
 
     public function testStoreReview(array $keys, array $values, bool $expect)
     {
-        $dataList = array_combine($keys, $values);
+        $data_list = array_combine($keys, $values);
         $request = new StoreReview();
         $rules = $request->rules();
-        $validator = Validator::make($dataList, $rules);
+        $validator = Validator::make($data_list, $rules);
         $result = $validator->passes();
         $this->assertEquals($expect, $result);
     }
