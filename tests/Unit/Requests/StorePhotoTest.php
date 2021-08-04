@@ -15,7 +15,7 @@ class StorePhotoTest extends TestCase
      *
      * @return void
      */
-    public function test_store_photo()
+    public function testStorePhoto()
     {
         Storage::fake('image');
         $file = UploadedFile::fake()->image('review_image.jpg');
@@ -29,7 +29,7 @@ class StorePhotoTest extends TestCase
         $this->assertTrue($result);
     }
 
-    public function test_store_photo_error_in_blank()
+    public function testErrorPhotoInBlank()
     {
         $image = ['image' => ''];
 
@@ -40,7 +40,7 @@ class StorePhotoTest extends TestCase
         $this->assertFalse($result);
     }
 
-    public function test_store_photo_error_end_of_file_name()
+    public function testErrorPhotoEndOfFileName()
     {
         Storage::fake('image');
         $file = UploadedFile::fake()->image('review_image.txt');
