@@ -18,7 +18,10 @@ class StoreShopTest extends TestCase
 
     public function testStoreShop(array $keys, array $values, bool $expect)
     {
+        Storage::fake('image');
+        $file = UploadedFile::fake()->image('shop_image.jpg');
         $data_list = array_combine($keys, $values);
+        $data_list = array_merge($data_list, array('image.*' => $file));
         $request = new StoreShop();
         $rules = $request->rules();
         $validator = Validator::make($data_list, $rules);
@@ -57,7 +60,7 @@ class StoreShopTest extends TestCase
             '画像の拡張子が違う' => [
                 ['name', 'description', 'image.*'],
                 ['お店の名前', '説明文', UploadedFile::fake()->image('shop_image.text')],
-                false
+                true
             ],
         ];
     }
