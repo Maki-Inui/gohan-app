@@ -18,7 +18,7 @@ class StorePhotoTest extends TestCase
     public function testStorePhoto(array $data, bool $expect)
     {
         $data_list = $data;
-        $data_list = array_merge($data_list, array('image' => UploadedFile::fake()->create('dummy.jpg')));
+        $data_list = array_merge($data_list, array('image[]' => ['*' => UploadedFile::fake()->create('dummy.jpg')]));
         $request = new StorePhoto();
         $rules = $request->rules();
         $validator = Validator::make($data_list, $rules);
