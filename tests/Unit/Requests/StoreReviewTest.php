@@ -7,7 +7,6 @@ use Tests\TestCase;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreReview;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 class StoreReviewTest extends TestCase
 {
@@ -20,6 +19,7 @@ class StoreReviewTest extends TestCase
     public function testStoreReview(array $keys, array $values, bool $expect)
     {
         $data_list = array_combine($keys, $values);
+        $data_list = array_merge($data_list, array('image[]' => ['*' => UploadedFile::fake()->create('dummy.jpg')]));
         $request = new StoreReview();
         $rules = $request->rules();
         $validator = Validator::make($data_list, $rules);
@@ -31,8 +31,8 @@ class StoreReviewTest extends TestCase
     {
         return [
             'OK' => [
-                ['title', 'comment'],
-                ['タイトル', 'レビューコメント'],
+                ['title', 'comment', 'image'],
+                ['タイトル', 'レビューコメント', ['*' => UploadedFile::fake()->create('dummy.png')]],
                 true
             ],
             'お店の名前が空白' => [
@@ -53,6 +53,11 @@ class StoreReviewTest extends TestCase
             'お店の説明文が文字数超過' => [
                 ['title', 'comment'],
                 ['タイトル', str_repeat('a', 201)],
+                false
+            ],
+            '画像の拡張子が違う' => [
+                ['title', 'comment', 'image'],
+                ['タイトル', 'レビューコメント', ['*' => UploadedFile::fake()->create('dummy.txt')]],
                 false
             ],
         ];

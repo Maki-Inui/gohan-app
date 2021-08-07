@@ -6,7 +6,6 @@ use Tests\TestCase;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StorePhoto;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 class StorePhotoTest extends TestCase
 {
@@ -14,43 +13,34 @@ class StorePhotoTest extends TestCase
      * A basic unit test example.
      *
      * @return void
+     * @dataProvider additionProvider
      */
-    public function testStorePhoto()
+    public function testStorePhoto(array $data, bool $expect)
     {
-        Storage::fake('image');
-        $file = UploadedFile::fake()->image('review_image.jpg');
-
-        $image = ['image' => $file];
-
+        $data_list = $data;
+        $data_list = array_merge($data_list, array('image[]' => ['*' => UploadedFile::fake()->create('dummy.jpg')]));
         $request = new StorePhoto();
         $rules = $request->rules();
-        $validator = Validator::make($image, $rules);
+        $validator = Validator::make($data_list, $rules);
         $result = $validator->passes();
-        $this->assertTrue($result);
+        $this->assertEquals($expect, $result);
     }
 
-    public function testErrorPhotoInBlank()
+    public function additionProvider()
     {
-        $image = ['image' => ''];
-
-        $request = new StorePhoto();
-        $rules = $request->rules();
-        $validator = Validator::make($image, $rules);
-        $result = $validator->passes();
-        $this->assertFalse($result);
-    }
-
-    public function testErrorPhotoEndOfFileName()
-    {
-        Storage::fake('image');
-        $file = UploadedFile::fake()->image('review_image.txt');
-
-        $image = ['image' => $file];
-
-        $request = new StorePhoto();
-        $rules = $request->rules();
-        $validator = Validator::make($image, $rules);
-        $result = $validator->passes();
-        $this->assertFalse($result);
+        return [
+            'OK' => [
+                ['image' => UploadedFile::fake()->create('dummy.png')], 
+                true
+            ],
+            'ファイルが添付されていない' => [
+                ['image' => null],
+                false
+            ],
+            '画像の拡張子が違う' => [
+                ['image' => UploadedFile::fake()->create('dummy.txt')],
+                false
+            ],
+        ];
     }
 }
