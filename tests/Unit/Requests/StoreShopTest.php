@@ -18,7 +18,6 @@ class StoreShopTest extends TestCase
     public function testStoreShop(array $keys, array $values, bool $expect)
     {
         $data_list = array_combine($keys, $values);
-        $data_list = array_merge($data_list, array('image[]' => ['*' => UploadedFile::fake()->create('dummy.jpg')]));
         $request = new StoreShop();
         $rules = $request->rules();
         $validator = Validator::make($data_list, $rules);
@@ -31,7 +30,7 @@ class StoreShopTest extends TestCase
         return [
             'OK' => [
                 ['name', 'description', 'image'],
-                ['お店の名前', '説明文', ['*' => UploadedFile::fake()->create('dummy.png')]],
+                ['お店の名前', '説明文', [UploadedFile::fake()->create('dummy.png')]],
                 true
             ],
             'お店の名前が空白' => [
@@ -56,7 +55,7 @@ class StoreShopTest extends TestCase
             ],
             '画像の拡張子が違う' => [
                 ['name', 'description', 'image'],
-                ['お店の名前', '説明文', ['*' => UploadedFile::fake()->create('dummy.txt')]],
+                ['お店の名前', '説明文', [UploadedFile::fake()->create('dummy.txt')]],
                 false
             ],
         ];
