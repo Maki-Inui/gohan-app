@@ -16,13 +16,12 @@ class StoreImageTest extends TestCase
      * @return void
      * @dataProvider additionProvider
      */
-    public function testStoreImage(array $data, bool $expect)
+    public function testStoreImage($key, $value, bool $expect)
     {
-        $data_list = $data;
-        $data_list = array_merge($data_list, array('image[]' => ['*' => UploadedFile::fake()->create('dummy.jpg')]));
+        $data = [$key => $value];
         $request = new StoreImage();
         $rules = $request->rules();
-        $validator = Validator::make($data_list, $rules);
+        $validator = Validator::make($data, $rules);
         $result = $validator->passes();
         $this->assertEquals($expect, $result);
     }
@@ -30,18 +29,9 @@ class StoreImageTest extends TestCase
     public function additionProvider()
     {
         return [
-            'OK' => [
-                ['image' => UploadedFile::fake()->create('dummy.png')], 
-                true
-            ],
-            'ファイルが添付されていない' => [
-                ['image' => null],
-                false
-            ],
-            '画像の拡張子が違う' => [
-                ['image' => UploadedFile::fake()->create('dummy.txt')],
-                false
-            ],
+            'OK' => ['image', UploadedFile::fake()->create('dummy.png'), true],
+            'ファイルが添付されていない' => ['image', null, false],
+            '画像の拡張子が違う' => ['image', UploadedFile::fake()->create('dummy.txt'), false],
         ];
     }
 }
