@@ -14,18 +14,24 @@ class StoreImageTest extends TestCase
      * A basic unit test example.
      *
      * @return void
+     * @dataProvider additionProvider
      */
-    public function test_store_image()
+    public function testStoreImage($key, $value, bool $expect)
     {
-        Storage::fake('image');
-        $file = UploadedFile::fake()->image('shop_image.jpg');
-
-        $image = ['image' => $file];
-
+        $data = [$key => $value];
         $request = new StoreImage();
         $rules = $request->rules();
-        $validator = Validator::make($image, $rules);
+        $validator = Validator::make($data, $rules);
         $result = $validator->passes();
-        $this->assertTrue($result);
+        $this->assertEquals($expect, $result);
+    }
+
+    public function additionProvider()
+    {
+        return [
+            'OK' => ['image', UploadedFile::fake()->create('dummy.png'), true],
+            'ファイルが添付されていない' => ['image', null, false],
+            '画像の拡張子が違う' => ['image', UploadedFile::fake()->create('dummy.txt'), false],
+        ];
     }
 }
