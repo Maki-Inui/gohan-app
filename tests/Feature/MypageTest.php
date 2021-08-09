@@ -18,7 +18,7 @@ class MypageTest extends TestCase
      *
      * @return void
      */
-    public function test_mypage_show()
+    public function testMypageShow()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -26,7 +26,7 @@ class MypageTest extends TestCase
         $response->assertStatus(200)->assertViewIs('mypage.show');
     }
 
-    public function test_mypage_edit()
+    public function testMypageEdit()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -34,7 +34,7 @@ class MypageTest extends TestCase
         $response->assertStatus(200)->assertViewIs('mypage.edit');
     }
 
-    public function test_mypage_update()
+    public function testMypageUpdate()
     {
         $user = User::factory()->for(Area::factory()->state(['area_name' => '大手町']))->create();
         $this->actingAs($user);

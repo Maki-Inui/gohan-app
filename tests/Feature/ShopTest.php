@@ -21,13 +21,13 @@ class ShopTest extends TestCase
      *
      * @return void
      */
-    public function test_shop_index()
+    public function testShopIndex()
     {
         $response = $this->get(action('App\Http\Controllers\ShopsController@index'));
         $response->assertStatus(200)->assertViewIs('shop.index');
     }
 
-    public function test_shop_create()
+    public function testShopCreate()
     {
         $areas = Area::factory(1)->create();
         $categories = Category::factory()->state(['category_name' => '中華'])->create();
@@ -37,7 +37,7 @@ class ShopTest extends TestCase
         $response ->assertStatus(200)->assertViewIs('shop.create');
     }
 
-    public function test_shop_store()
+    public function testShopStore()
     {
         //お店情報作成に必要なインスタンス作成
         $area = Area::factory()->state(['area_name' => '銀座'])->create();
@@ -62,7 +62,7 @@ class ShopTest extends TestCase
         $response->assertStatus(200)->assertViewIs('shop.index')->assertSee('中華レストランA');
     }
 
-    public function test_shop_show()
+    public function testShopShow()
     {
         //shop.show bladeの表示に必要なデータを作成
         $user = User::factory()->create();
@@ -86,11 +86,10 @@ class ShopTest extends TestCase
             'last_view_at' => $last_view_at
         ]);
 
-        //ビューの表示チェック
         $response->assertStatus(200)->assertViewIs('shop.show')->assertSee('餃子が絶品');
     }
 
-    public function test_shop_edit()
+    public function testShopEdit()
     {
         //お店情報作成に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
@@ -103,7 +102,7 @@ class ShopTest extends TestCase
         $response->assertStatus(200)->assertViewIs('shop.edit');
     }
 
-    public function test_shop_update()
+    public function testShopUpdate()
     {
         //お店情報に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
@@ -116,7 +115,6 @@ class ShopTest extends TestCase
 
         $response = $this->actingAs($admin_user)->put(action('App\Http\Controllers\ShopsController@update', $shop->id), $update);
 
-        //shopsテーブルに更新後のデータが保存されているか
         $this->assertDatabaseHas('shops', ['description' => '水餃子が大人気です']);
         
         //管理ユーザーの再取得
@@ -127,7 +125,7 @@ class ShopTest extends TestCase
         $response->assertSee('水餃子が大人気です');
     }
 
-    public function test_shop_destroy()
+    public function testShopDestroy()
     {
         //お店情報に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();

@@ -23,7 +23,7 @@ class PhotoTest extends TestCase
      *
      * @return void
      */
-    public function test_photo_store()
+    public function testPhotoStore()
     {
         //レビュー作成に必要なインスタンス作成
         $shop = Shop::factory()->state(['name' => 'おむらいす店'])->for(Area::factory()->state(['area_name' => '原宿']))
@@ -37,7 +37,6 @@ class PhotoTest extends TestCase
         $file_name = time() . $file->getClientOriginalName();
         $response = $this->actingAs($user)->post(action('App\Http\Controllers\PhotosController@store', $review), ['image' => $file]);
 
-        //photosテーブルに投稿したデータが保存されているか
         $this->assertDatabaseHas('photos', ['path' => $file_name]);
         
         $response = $this->actingAs($user)->get(action('App\Http\Controllers\ReviewsController@edit', ['shop' => $shop->id, 'review' => $review]));
@@ -48,7 +47,7 @@ class PhotoTest extends TestCase
         \File::delete($path);
     }
 
-    public function test_photo_destroy()
+    public function testPhotoDestroy()
     {
         //レビュー作成に必要なインスタンス作成
         $shop = Shop::factory()->state(['name' => 'おむらいす店'])->for(Area::factory()->state(['area_name' => '原宿']))
@@ -57,12 +56,10 @@ class PhotoTest extends TestCase
         $this->actingAs($user);
         $review = Review::factory()->state(['shop_id' => $shop->id, 'user_id' => $user->id])->create();
 
-        //フォトの作成
         $photo = Photo::factory()->state(['path' => time() . 'review_image', 'review_id' => $review->id])->create();
 
         $response = $this->actingAs($user)->delete(action('App\Http\Controllers\PhotosController@destroy', ['shop' => $shop, 'review' => $review->id, 'photo' => $photo->id]));
 
-        //photosテーブルからデータが削除されているか
         $this->assertDeleted('photos', [
             'review_id' => $review->id,
             'path' => $photo->path

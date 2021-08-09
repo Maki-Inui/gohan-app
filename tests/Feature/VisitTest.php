@@ -19,7 +19,7 @@ class VisitTest extends TestCase
      *
      * @return void
      */
-    public function test_visit_index()
+    public function testVisitIndex()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -27,13 +27,14 @@ class VisitTest extends TestCase
         $response->assertStatus(200)->assertViewIs('visit.index');
     }
 
-    public function test_visit_store()
+    public function testVisitStore()
     {
         $shop = Shop::factory()->for(Area::factory()->state([
             'area_name' => '新橋',
         ]))->for(Category::factory()->state([
             'category_name' => '中華',
         ]))->create();
+
         $user = User::factory()->create();
         $this->actingAs($user);
         $response = $this->post(action('App\Http\Controllers\VisitsController@store', $shop->id));
@@ -45,13 +46,14 @@ class VisitTest extends TestCase
         $response->assertStatus(200)->assertViewIs('shop.show')->assertSee('来店済み');
     }
 
-    public function test_visit_destroy()
+    public function testVisitDestroy()
     {
         $shop = Shop::factory()->for(Area::factory()->state([
             'area_name' => '新橋',
         ]))->for(Category::factory()->state([
             'category_name' => '中華',
         ]))->create();
+        
         $user = User::factory()->create();
         $this->actingAs($user);
         $visit = Visit::factory()->create([

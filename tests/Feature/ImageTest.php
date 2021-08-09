@@ -22,7 +22,7 @@ class ImageTest extends TestCase
      *
      * @return void
      */
-    public function test_image_store()
+    public function testImageStore()
     {
         //お店情報作成に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
@@ -40,7 +40,7 @@ class ImageTest extends TestCase
         \File::delete($path);
     }
 
-    public function test_image_destroy()
+    public function testImageDestroy()
     {
         //お店情報作成に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();

@@ -13,7 +13,7 @@ class TopPageTest extends TestCase
      *
      * @return void
      */
-    public function test_top_page_show()
+    public function testTopPageShow()
     {
         $response = $this->get('/');
         $response->assertStatus(200)->assertViewIs('top')->assertSee('image/hamburger.jpg');
