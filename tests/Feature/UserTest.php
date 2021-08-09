@@ -16,14 +16,14 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_user_index()
+    public function testUserIndex()
     {
         $user = User::factory()->create();
         $response = $this->actingAs($user)->get(action('App\Http\Controllers\UsersController@index'));
         $response->assertStatus(200)->assertViewIs('users.index');
     }
 
-    public function test_user_show()
+    public function testUserShow()
     {
         $login_user = User::factory()->state(['name' => 'Anna'])->create();
         $user = User::factory()->state(['name' => 'Mary'])->create();

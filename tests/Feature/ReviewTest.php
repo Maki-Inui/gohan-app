@@ -20,7 +20,7 @@ class ReviewTest extends TestCase
      *
      * @return void
      */
-    public function test_review_create()
+    public function testReviewCreate()
     {
         //レビュー作成に必要なインスタンス作成(お店情報など)
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
@@ -33,7 +33,7 @@ class ReviewTest extends TestCase
         $response ->assertStatus(200)->assertViewIs('review.post');
     }
 
-    public function test_review_store()
+    public function testReviewStore()
     {
         //レビュー作成に必要なインスタンス作成(お店情報など)
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
@@ -69,7 +69,7 @@ class ReviewTest extends TestCase
         $response->assertStatus(200)->assertViewIs('shop.show')->assertSee('小籠包が美味しい');
     }
 
-    public function test_review_show()
+    public function testReviewShow()
     {
         //レビューに必要なデータを作成
         $user = User::factory()->create();
@@ -78,16 +78,14 @@ class ReviewTest extends TestCase
             ->for(Area::factory()->state(['area_name' => '新橋']))
             ->for(Category::factory()->state(['category_name' => '中華']))->create();
 
-        //レビュー作成
         $review = Review::factory()->state(['shop_id' => $shop->id, 'title' => '小籠包が美味しい'])->create();
 
         $response = $this->actingAs($user)->get(action('App\Http\Controllers\ReviewsController@show', ['shop' => $shop->id, 'review' => $review]));
 
-        //ビューの表示チェック
         $response->assertStatus(200)->assertViewIs('review.show')->assertSee('小籠包が美味しい');
     }
 
-    public function test_review_edit()
+    public function testReviewEdit()
     {
         //レビュー作成に必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
@@ -96,7 +94,6 @@ class ReviewTest extends TestCase
             ->for(Area::factory()->state(['area_name' => '新橋']))
             ->for(Category::factory()->state(['category_name' => '中華']))->create();
 
-        //レビュー作成
         $user = User::factory()->create();
         $this->actingAs($user);
         $review = Review::factory()->state(['shop_id' => $shop->id, 'user_id' => $user->id])->create();
@@ -105,7 +102,7 @@ class ReviewTest extends TestCase
         $response->assertStatus(200)->assertViewIs('review.edit');
     }
 
-    public function test_review_update()
+    public function testReviewUpdate()
     {
         //レビューに必要なインスタンス作成
         $admin_user = User::factory()->state(['role_id' => '1'])->create();
@@ -123,7 +120,6 @@ class ReviewTest extends TestCase
 
         $response = $this->actingAs($user)->put(action('App\Http\Controllers\ReviewsController@update', ['shop' => $shop->id, 'review' => $review->id]), $update);
 
-        //reviewsテーブルに更新後のデータが保存されているか
         $this->assertDatabaseHas('reviews', ['title' => '酢豚が美味しい', 'food_score' => '5']);
 
         $response = $this->actingAs($user)->get(action('App\Http\Controllers\ShopsController@show', $shop->id));
@@ -131,7 +127,7 @@ class ReviewTest extends TestCase
         $response->assertSee('編集完了');
     }
 
-    public function test_review_destroy()
+    public function testReviewDestroy()
     {
         //レビューに必要なインスタンス作成
         $shop = Shop::factory()->state(['name' => '中華B', 'description' => '餃子が絶品'])
@@ -146,7 +142,6 @@ class ReviewTest extends TestCase
         $this->actingAs($user);
         $response = $this->delete(action('App\Http\Controllers\ReviewsController@destroy', ['shop' => $shop->id, 'review' => $review->id]));
 
-        //reviewsテーブルからデータが削除されているか
         $this->assertDatabaseMissing('reviews', [
             'id' => $review->id,
             'title' => '上品な中華'

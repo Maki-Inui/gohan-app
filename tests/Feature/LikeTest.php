@@ -22,7 +22,7 @@ class LikeTest extends TestCase
      *
      * @return void
      */
-    public function test_like_index()
+    public function testLikeIndex()
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -30,13 +30,14 @@ class LikeTest extends TestCase
         $response->assertStatus(200)->assertViewIs('like.index');
     }
 
-    public function test_like_store()
+    public function testLikeStore()
     {
         $shop = Shop::factory()->for(Area::factory()->state([
             'area_name' => '新橋',
         ]))->for(Category::factory()->state([
             'category_name' => '中華',
         ]))->create();
+
         $user = User::factory()->create();
         $this->actingAs($user);
         $response = $this->post(action('App\Http\Controllers\LikesController@store', $shop->id));
@@ -48,13 +49,14 @@ class LikeTest extends TestCase
         $response->assertStatus(200)->assertViewIs('shop.show')->assertSee('お気に入りのお店');
     }
 
-    public function test_like_destroy()
+    public function testLikeDestroy()
     {
         $shop = Shop::factory()->for(Area::factory()->state([
             'area_name' => '新橋',
         ]))->for(Category::factory()->state([
             'category_name' => '中華',
         ]))->create();
+        
         $user = User::factory()->create();
         $this->actingAs($user);
         $like = Like::factory()->create([

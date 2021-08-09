@@ -14,7 +14,7 @@ class HistoryTest extends TestCase
      *
      * @return void
      */
-    public function test_history_index()
+    public function testHistoryIndex()
     {
         $user = User::factory()->create();
         $this->actingAs($user);

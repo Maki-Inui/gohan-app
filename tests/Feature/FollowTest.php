@@ -17,7 +17,7 @@ class FollowTest extends TestCase
      *
      * @return void
      */
-    public function test_follow_store()
+    public function testFollowStore()
     {
         $login_user = User::factory()->state(['name' => 'Anna'])->create();
         $user = User::factory()->state(['name' => 'Mary'])->create();
@@ -39,7 +39,7 @@ class FollowTest extends TestCase
         $response->assertStatus(200)->assertViewIs('users.show')->assertSee('フォロー解除');
     }
 
-    public function test_follow_destroy()
+    public function testFollowDestroy()
     {
         $login_user = User::factory()->state(['name' => 'Anna'])->create();
         $user = User::factory()->state(['name' => 'Mary'])->create();
