@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowsController extends Controller
 {
+    public function index()
+    {
+        $follows = Follow::where('user_id', Auth::id())->get();
+        return view('follow.index', compact('follows'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

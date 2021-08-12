@@ -33,10 +33,27 @@ class User extends Authenticatable
         return $this->belongsTo(Area::class);
     }
 
+    public function follows()
+    {
+      return $this->belongsToMany(User::class);
+    }
+
     //フォローしている
     public function following($user_id)
     {
       return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id')->where('follow_user_id', $user_id)->first();
+    }
+
+    //フォローしている人数
+    public function followingsCount()
+    {
+      return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id')->count();
+    }
+
+    //フォローリスト
+    public function followingsList()
+    {
+      return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id')->get();
     }
 
     //フォロされている

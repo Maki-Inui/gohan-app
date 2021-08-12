@@ -5,6 +5,9 @@
   <h3 class="text-center">マイページ</h3>
   <section class="article w-4/5 lg:w-2/5 rounded-lg">
     <h3>こんにちは{{ Auth::user()->name }}さん</h3>
+      @if(Auth::user()->follows())
+      <p>フォロー中<a class="text-indigo-600" href="{{  route('users.follow.index', Auth::id()) }}">{{ Auth::user()->followingsCount() }}</a>人</p>
+      @endif
     <ul class="mt-8">
       @if(Auth::user()->area_id == 0)
       <li>エリア未登録です <a href="{{  route('mypage.edit', Auth::id()) }}">登録はこちら</a></li>
