@@ -50,22 +50,16 @@ class User extends Authenticatable
       return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id')->count();
     }
 
-    //フォローリスト
-    public function followingsList()
-    {
-      return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id')->get();
-    }
-
     //フォロされている
     public function followed($user_id)
     {
       return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->where('user_id', $user_id)->first();
     }
 
-    //フォローされている人数
+    //フォロワーの取得
     public function hasFollowers()
     {
-      return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->first();
+      return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->get();
     }
 
     //フォローされている人数
