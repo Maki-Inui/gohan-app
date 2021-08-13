@@ -3,14 +3,14 @@
 @section('content')
 <main>
   <h3 class="text-center">{{ Auth::user()->name }}さんがフォロー中のユーザー</h3>
-  <div class="">
+  <div>
     @if($follows->isEmpty())
     <p class="article w-4/5 lg:w-2/5 rounded-lg">フォロー中のユーザーはいません</p>
     @else
       @foreach($follows as $follow)
       <ul class="article w-4/5 lg:w-2/5">
-        <li><a href="{{  route('users.show', $follow->follow_user_id ) }}">{{ Auth::user()->following($follow->follow_user_id)->name }}</a></li>
-        <li>よく行くエリア：{{ Auth::user()->following($follow->follow_user_id)->area->area_name }}</li>
+        <li><a href="{{  route('users.show', $follow->id ) }}">{{ $follow->name }}</a></li>
+        <li>よく行くエリア：{{ $follow->area_name }}</li>
       </ul>
       @endforeach
     @endif

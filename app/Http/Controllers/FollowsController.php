@@ -10,13 +10,13 @@ class FollowsController extends Controller
 {
     public function index()
     {
-        $follows = Follow::where('user_id', Auth::id())->get();
+        $follows = Auth::user()->followingUser();
         return view('follow.index', compact('follows'));
     }
 
     public function followersIndex()
     {
-        $followers = Follow::where('follow_user_id', Auth::id())->get();
+        $followers = Auth::user()->hasFollowers();
         return view('follower.index', compact('followers'));
     }
 
