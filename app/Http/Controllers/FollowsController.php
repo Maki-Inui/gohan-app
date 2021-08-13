@@ -14,6 +14,12 @@ class FollowsController extends Controller
         return view('follow.index', compact('follows'));
     }
 
+    public function followersIndex()
+    {
+        $followers = Follow::where('follow_user_id', Auth::id())->get();
+        return view('follower.index', compact('followers'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

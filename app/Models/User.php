@@ -62,6 +62,18 @@ class User extends Authenticatable
       return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->where('user_id', $user_id)->first();
     }
 
+    //フォローされている人数
+    public function hasFollowers()
+    {
+      return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->first();
+    }
+
+    //フォローされている人数
+    public function followedCount()
+    {
+      return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->count();
+    }
+
     public function hasShopVisit($shop_id)
     {
       return $this->hasMany(Visit::class)->where('shop_id', $shop_id)->exists();
