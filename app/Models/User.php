@@ -33,16 +33,45 @@ class User extends Authenticatable
         return $this->belongsTo(Area::class);
     }
 
+    public function follows()
+    {
+      return $this->belongsToMany(User::class);
+    }
+
     //フォローしている
     public function following($user_id)
     {
       return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id')->where('follow_user_id', $user_id)->first();
     }
 
+    //フォローしている
+    public function followingUser()
+    {
+      return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id')->get();
+    }
+
+    //フォローしている人数
+    public function followingsCount()
+    {
+      return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_user_id')->count();
+    }
+
     //フォロされている
     public function followed($user_id)
     {
       return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->where('user_id', $user_id)->first();
+    }
+
+    //フォロワーの取得
+    public function hasFollowers()
+    {
+      return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->get();
+    }
+
+    //フォローされている人数
+    public function followedCount()
+    {
+      return $this->belongsToMany(User::class, 'follows', 'follow_user_id', 'user_id')->count();
     }
 
     public function hasShopVisit($shop_id)

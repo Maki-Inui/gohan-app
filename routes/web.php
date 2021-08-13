@@ -45,7 +45,9 @@ Route::resource('shops.visit', 'App\Http\Controllers\VisitsController', ['only' 
 
 Route::resource('shops.like', 'App\Http\Controllers\LikesController', ['only' => ['store', 'destroy']]); 
 
-Route::resource('users.follow', 'App\Http\Controllers\FollowsController', ['only' => ['store', 'destroy']]);
+Route::resource('users.follow', 'App\Http\Controllers\FollowsController', ['only' => ['index', 'store', 'destroy']]);
+
+Route::get('users/{user}/follower/', 'App\Http\Controllers\FollowsController@followersIndex')->name('followers.index');
 
 Route::resource('review.photo', 'App\Http\Controllers\PhotosController', ['only' => ['store', 'destroy']]);
 
