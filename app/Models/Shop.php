@@ -40,4 +40,9 @@ class Shop extends Model
     {
         return $this->HasMany(Image::class)->count();
     }
+
+    public function visits()
+    {
+        return $this->HasMany(Visit::class);
+    }
 }
