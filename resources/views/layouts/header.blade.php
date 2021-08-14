@@ -15,6 +15,7 @@
 			<li class="menu ml-4"><a href="{{ route('mypage.visit.index', Auth::id()) }}">行ったお店</a></li>
 			<li class="menu ml-4"><a href="{{ route('mypage.like.index', Auth::id()) }}">気になるお店</a></li>
 			@endauth
+			<li class="menu ml-4"><a href="{{ route('visited.index') }}">みんなが行ったお店</a></li>
 			<li class="menu ml-4"><a href="{{ route('shops.index') }}">お店一覧</a></li>
 		</ul>
 	</nav>

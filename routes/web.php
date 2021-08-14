@@ -20,6 +20,8 @@ Route::group(['middleware' => ['auth', 'can:isAdmin']], function () {
     Route::resource('shops', 'App\Http\Controllers\ShopsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });
 
+Route::get('shops/visited', 'App\Http\Controllers\ShopsController@visitedShopIndex')->name('visited.index');
+
 Route::resource('shops', 'App\Http\Controllers\ShopsController', ['only' => ['index', 'show']]);
 
 Route::resource('shops.review', 'App\Http\Controllers\ReviewsController');

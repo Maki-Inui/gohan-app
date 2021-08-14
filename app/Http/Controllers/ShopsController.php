@@ -27,6 +27,12 @@ class ShopsController extends Controller
         return view('shop.index', compact('shops'));
     }
 
+    public function visitedShopIndex()
+    {
+        $shops = Shop::withCount('visits')->orderBy('visits_count', 'desc')->get();
+        return view('shop_visited.index', compact('shops'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
