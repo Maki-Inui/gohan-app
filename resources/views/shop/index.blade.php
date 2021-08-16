@@ -17,6 +17,26 @@
     @if($shops->isEmpty())
     <p>登録がありません</p>
     @else
+    <form method="post" action="{{ route('selected.index') }}" class ="flex justify-center">
+      @csrf
+      <div class="form-group">
+        <label for="shop_area">エリア</label>
+        <select name="area_id" class="ml-2">
+          @foreach ($areas as $area)
+            @if(!isset($area_id))
+            <option value="{{ $area->id }}">{{ $area->area_name . $area->hasShopCount() . '件' }}</option>
+            @else
+              @if($area->id === $area_id)
+              <option value="{{ $area->id }}" selected="selected">{{ $area->area_name . $area->hasShopCount() . '件' }}</option>
+              @else
+              <option value="{{ $area->id }}">{{ $area->area_name . $area->hasShopCount() . '件' }}</option>
+              @endif
+            @endif
+          @endforeach
+        </select>
+      </div>
+      <button class="mt-6 ml-8 px-6 rounded bg-yellow-300 hover:bg-yellow-400 text-gray-500" type="submit">エリア検索</button>
+    </form>
     @foreach($shops as $shop)
     <div class="article bg-white w-4/5 lg:w-2/5 mt-10 mx-auto p-10 shadow">
       <a href="{{ route('shops.show', $shop->id) }}">
