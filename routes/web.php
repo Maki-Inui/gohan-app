@@ -22,6 +22,8 @@ Route::group(['middleware' => ['auth', 'can:isAdmin']], function () {
 
 Route::get('shops/visited', 'App\Http\Controllers\ShopsController@visitedShopIndex')->name('visited.index');
 
+Route::post('shops/select-area', 'App\Http\Controllers\ShopsController@selectedAreaShopIndex')->name('selected.index');
+
 Route::resource('shops', 'App\Http\Controllers\ShopsController', ['only' => ['index', 'show']]);
 
 Route::resource('shops.review', 'App\Http\Controllers\ReviewsController');
