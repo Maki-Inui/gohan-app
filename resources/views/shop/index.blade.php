@@ -23,14 +23,10 @@
         <label for="shop_area">エリア</label>
         <select name="area_id" class="ml-2">
           @foreach ($areas as $area)
-            @if(!isset($area_id))
-            <option value="{{ $area->id }}">{{ $area->area_name . $area->hasShopCount() . '件' }}</option>
+            @if(isset($area_id) && ($area_id == $area->id))
+              <option value="{{ $area->id }}" selected="selected"> {{ $area->area_name . $area->shopCount() . '件' }}</option>
             @else
-              @if($area->id === $area_id)
-              <option value="{{ $area->id }}" selected="selected">{{ $area->area_name . $area->hasShopCount() . '件' }}</option>
-              @else
-              <option value="{{ $area->id }}">{{ $area->area_name . $area->hasShopCount() . '件' }}</option>
-              @endif
+            <option value="{{ $area->id }}">{{ $area->area_name . $area->shopCount() . '件' }}</option>
             @endif
           @endforeach
         </select>

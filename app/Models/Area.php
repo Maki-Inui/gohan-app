@@ -15,7 +15,7 @@ class Area extends Model
         return $this->hasMany(User::class);
     }
 
-    public function hasShopCount()
+    public function shopCount()
     {
         return $this->hasMany(Shop::class)->count();
     }
