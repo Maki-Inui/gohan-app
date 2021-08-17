@@ -33,7 +33,6 @@ class ShopsController extends Controller
     {
         $shops = Shop::orderBy('created_at', 'desc')->get();
         $areas = Area::all();
-        $area_id = $request->area_id;
 
         if($request->has('area_id'))
         {
@@ -42,7 +41,7 @@ class ShopsController extends Controller
             return view('shop.index', compact('shops', 'areas', 'area_id'));
         }
 
-        return view('shop.index', compact('shops', 'areas', 'area_id'));     
+        return view('shop.index', compact('shops', 'areas'));     
     }
 
     public function visitedShopIndex()
