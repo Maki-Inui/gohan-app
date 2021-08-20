@@ -21,15 +21,7 @@ class ShopsController extends Controller
      *
      * @return view
      */
-    public function index()
-    {
-        $shops = Shop::orderBy('created_at', 'desc')->get();
-        $areas = Area::all();
-
-        return view('shop.index', compact('shops', 'areas'));     
-    }
-
-    public function selectedAreaShopIndex(Request $request)
+    public function index(Request $request)
     {
         $shops = Shop::orderBy('created_at', 'desc')->get();
         $areas = Area::all();
