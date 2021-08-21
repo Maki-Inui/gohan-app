@@ -17,7 +17,7 @@
     <form action="{{ route('users.follow.destroy', ['user' => $user->id, 'follow' => $following->id]) }}" method="POST">
       @csrf
       @method('DELETE')
-      <button class="icon-button" type="submit">フォロー解除<i class="fas fa-user-plus"></i></button>
+      <button class="icon-button" type="submit">フォロー解除<i class="fas fa-user-minus"></i></button>
     </form>
     @endif
     @endif
