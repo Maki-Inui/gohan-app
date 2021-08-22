@@ -17,6 +17,29 @@ class FollowTest extends TestCase
      *
      * @return void
      */
+
+    public function testIndex()
+    {
+        $login_user = User::factory()->state(['name' => 'Anna'])->create();
+        $this->actingAs($login_user);
+        $user = User::factory()->state(['name' => 'Mary'])->create();
+        Follow::factory()->state(['user_id' => $login_user->id, 'follow_user_id' => $user->id])->create();
+
+        $response = $this->get(action('App\Http\Controllers\FollowsController@index', $login_user->id));
+        $response->assertStatus(200)->assertViewIs('follow.index')->assertSee('Mary');
+    }
+
+    public function testfollowersIndex()
+    {
+        $login_user = User::factory()->state(['name' => 'Anna'])->create();
+        $this->actingAs($login_user);
+        $user = User::factory()->state(['name' => 'Mary'])->create();
+        Follow::factory()->state(['user_id' => $user->id, 'follow_user_id' => $login_user->id])->create();
+
+        $response = $this->get(action('App\Http\Controllers\FollowsController@followersIndex', $login_user->id));
+        $response->assertStatus(200)->assertViewIs('follower.index')->assertSee('Mary');;
+    }
+
     public function testFollowStore()
     {
         $login_user = User::factory()->state(['name' => 'Anna'])->create();
