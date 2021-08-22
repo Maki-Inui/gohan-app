@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\Review;
+use App\Models\Visit;
 use Carbon\Carbon;
 
 class ShopTest extends TestCase
@@ -25,6 +26,22 @@ class ShopTest extends TestCase
     {
         $response = $this->get(action('App\Http\Controllers\ShopsController@index'));
         $response->assertStatus(200)->assertViewIs('shop.index');
+    }
+
+    public function testVisitedShopIndex()
+    {
+        $shop = Shop::factory()->state(['name' => '中華B', 'description' => '餃子が絶品'])
+            ->for(Area::factory()->state(['area_name' => '新橋']))
+            ->for(Category::factory()->state(['category_name' => '中華']))->create();
+        $user = User::factory()->create();
+
+        Visit::factory()->create([
+            'user_id' => $user->id,
+            'shop_id' => $shop->id
+        ]);
+
+        $response = $this->get(action('App\Http\Controllers\ShopsController@visitedShopIndex'));
+        $response->assertStatus(200)->assertViewIs('shop_visited.index', compact('shop'))->assertSee('中華B');
     }
 
     public function testShopCreate()
