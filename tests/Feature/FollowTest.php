@@ -29,7 +29,7 @@ class FollowTest extends TestCase
         $response->assertStatus(200)->assertViewIs('follow.index')->assertSee('Mary');
     }
 
-    public function testfollowersIndex()
+    public function testFollowersIndex()
     {
         $login_user = User::factory()->state(['name' => 'Anna'])->create();
         $this->actingAs($login_user);
