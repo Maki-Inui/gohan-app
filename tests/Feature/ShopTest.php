@@ -35,7 +35,7 @@ class ShopTest extends TestCase
             ->for(Category::factory()->state(['category_name' => '中華']))->create();
         $user = User::factory()->create();
 
-        $visit = Visit::factory()->create([
+        Visit::factory()->create([
             'user_id' => $user->id,
             'shop_id' => $shop->id
         ]);
